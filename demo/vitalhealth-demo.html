@@ -1,0 +1,1359 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VitalHealth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F4F3; --surface:#FFFFFF; --surface-2:#E8EDEB; --ink:#13201E; --muted:#596663; --line:#D3DBD8;
+  --accent:#0B6B63; --accent-ink:#FFFFFF; --accent-soft:#DCEEEB;
+  --crit:#B3302A; --crit-bg:#FBE7E5; --warn:#935F08; --warn-bg:#F9EED8; --ok:#2A7347; --ok-bg:#E1F0E6; --info:#4F5E78; --info-bg:#E7EBF2;
+  --shadow:0 1px 2px rgba(19,32,30,.05),0 10px 30px rgba(19,32,30,.10);
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E1514; --surface:#15201F; --surface-2:#1C2927; --ink:#E3ECEA; --muted:#94A4A1; --line:#293735;
+    --accent:#44B9AE; --accent-ink:#06201D; --accent-soft:#16312E;
+    --crit:#F06A60; --crit-bg:#3A1917; --warn:#E3A84C; --warn-bg:#33270F; --ok:#62C08A; --ok-bg:#143020; --info:#9FB0CE; --info-bg:#1E2635;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1514; --surface:#15201F; --surface-2:#1C2927; --ink:#E3ECEA; --muted:#94A4A1; --line:#293735;
+  --accent:#44B9AE; --accent-ink:#06201D; --accent-soft:#16312E;
+  --crit:#F06A60; --crit-bg:#3A1917; --warn:#E3A84C; --warn-bg:#33270F; --ok:#62C08A; --ok-bg:#143020; --info:#9FB0CE; --info-bg:#1E2635;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45;padding-inline:16px;padding-block:14px 32px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.wrap{max-width:1440px;margin:0 auto;display:grid;gap:14px}
+
+/* header */
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.brand h1{font-size:20px;font-weight:700;letter-spacing:-.01em;margin:0}
+.brand small{display:block;color:var(--muted);font-size:12px;font-weight:500}
+.mark{width:30px;height:30px;border-radius:8px;background:var(--accent);display:grid;place-items:center;flex:none}
+.mark svg{width:20px;height:20px}
+.kpis{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.kpi{display:flex;align-items:baseline;gap:6px;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.kpi b{font-family:var(--mono);font-size:16px}
+.kpi span{color:var(--muted);font-size:12px}
+.kpi.crit b{color:var(--crit)} .kpi.warn b{color:var(--warn)} .kpi.info b{color:var(--info)}
+.clock{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}
+.clock .mono{color:var(--ink);font-size:14px;font-weight:600}
+.live{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 var(--ok);animation:ping 1.8s infinite}
+.live.off{background:var(--muted);animation:none}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 60%,transparent)}100%{box-shadow:0 0 0 8px transparent}}
+.btn{border:1px solid var(--line);background:var(--surface);padding:6px 11px;border-radius:7px;font-weight:600;font-size:13px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.danger{background:var(--crit);border-color:var(--crit);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* demo controls */
+.controls{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:8px}
+.controls-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.controls-head h2{margin:0;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+.controls-head p{margin:0;color:var(--muted);font-size:12px}
+.scen{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+.scen button{flex:none;text-align:left;border:1px dashed var(--line);background:var(--surface-2);border-radius:9px;padding:7px 11px;min-width:150px}
+.scen button:hover{border-color:var(--accent);border-style:solid}
+.scen button b{display:block;font-size:13px;font-weight:600}
+.scen button span{font-size:11.5px;color:var(--muted)}
+.scen button.used{border-style:solid;border-color:var(--accent);background:var(--accent-soft)}
+.scen button.used b::after{content:" ✓";color:var(--accent)}
+.scen button.used span{color:var(--accent);font-weight:600}
+
+/* main grid */
+.main{display:grid;grid-template-columns:250px minmax(0,1fr) 350px;gap:14px;align-items:start}
+@media (max-width:1180px){.main{grid-template-columns:230px minmax(0,1fr)}.feedcol{grid-column:1/-1}}
+@media (max-width:760px){.main{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.panel-h{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);gap:8px}
+.panel-h h2{margin:0;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+
+/* patient list */
+.plist{display:grid}
+.pt{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:10px 12px;position:relative}
+.pt:last-child{border-bottom:0;border-radius:0 0 12px 12px}
+.pt:hover{background:var(--surface-2)}
+.pt.sel{background:var(--accent-soft)}
+.pt.sel::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:2px;background:var(--accent)}
+.pt .bed{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--muted);grid-row:1/3;padding-top:1px}
+.pt .nm{font-weight:600;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.pt .dx{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;white-space:nowrap;letter-spacing:.01em}
+.chip.crit{background:var(--crit-bg);color:var(--crit)}
+.chip.warn{background:var(--warn-bg);color:var(--warn)}
+.chip.ok{background:var(--ok-bg);color:var(--ok)}
+.chip.info{background:var(--info-bg);color:var(--info)}
+.chip.neutral{background:var(--surface-2);color:var(--muted)}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.chip.crit .dot{animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* detail */
+.detail{display:grid;gap:14px}
+.phead{padding:14px 16px;display:grid;gap:10px}
+.phead-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.phead h2{margin:0;font-size:22px;letter-spacing:-.01em;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted);font-size:13px}
+.meta b{color:var(--ink);font-weight:600}
+.allergy{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:12px}
+.section{padding:12px 16px;display:grid;gap:10px}
+.section h3{margin:0;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;display:flex;justify-content:space-between;gap:8px}
+.section h3 span{text-transform:none;letter-spacing:0;font-weight:500}
+
+.vitals{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.vt{border:1px solid var(--line);border-radius:10px;padding:9px 11px;display:grid;gap:2px;background:var(--surface)}
+.vt .lbl{font-size:11.5px;color:var(--muted);font-weight:600;display:flex;justify-content:space-between}
+.vt .val{font-family:var(--mono);font-size:22px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2}
+.vt .val small{font-size:12px;color:var(--muted);font-weight:500;margin-left:3px}
+.vt.crit{border-color:var(--crit);background:var(--crit-bg)} .vt.crit .val{color:var(--crit)}
+.vt.warn{border-color:var(--warn)} .vt.warn .val{color:var(--warn)}
+.vt svg{width:100%;height:30px;display:block}
+
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td .sub{display:block;font-size:12px;color:var(--muted)}
+.hi{color:var(--crit);font-weight:700}
+.new{font-size:10px;font-weight:700;background:var(--accent);color:var(--accent-ink);padding:1px 5px;border-radius:4px;margin-left:6px;vertical-align:2px}
+tr.flag-crit td:first-child{box-shadow:inset 3px 0 0 var(--crit)}
+tr.flag-warn td:first-child{box-shadow:inset 3px 0 0 var(--warn)}
+
+/* alerts */
+.acard{border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;gap:6px;background:var(--surface)}
+.acard.crit{border-left-color:var(--crit)}
+.acard.warn{border-left-color:var(--warn)}
+.acard.info{border-left-color:var(--info)}
+.acard .ah{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.acard .at{font-weight:700;font-size:13.5px;line-height:1.3}
+.acard .aw{font-size:12px;color:var(--muted);font-family:var(--mono);white-space:nowrap}
+.acard p{margin:0;font-size:13px}
+.acard ul{margin:0;padding-left:16px;font-size:12px;color:var(--muted);font-family:var(--mono);display:grid;gap:2px}
+.acard .act{font-size:13px;background:var(--surface-2);border-radius:7px;padding:6px 9px}
+.acard .act b{font-weight:700}
+.acard .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.acard .trig{font-size:11.5px;color:var(--muted)}
+.acard.new-crit{animation:flash 1.2s ease-out 2}
+@keyframes flash{0%{box-shadow:0 0 0 3px var(--crit)}100%{box-shadow:0 0 0 0 transparent}}
+.feed{display:grid;gap:10px;padding:12px}
+.empty{padding:18px 12px;text-align:center;color:var(--muted);font-size:13px}
+.empty b{display:block;color:var(--ok);font-size:14px;margin-bottom:2px}
+details.held{border-top:1px solid var(--line)}
+details.held summary{padding:10px 12px;cursor:pointer;font-size:13px;color:var(--muted);font-weight:600}
+details.held .feed{padding-top:0}
+.log{padding:8px 12px 12px;display:grid;gap:6px;max-height:260px;overflow:auto}
+.log div{display:grid;grid-template-columns:44px 1fr;gap:8px;font-size:12.5px}
+.log .mono{color:var(--muted)}
+.log .k-crit{color:var(--crit)} .log .k-ok{color:var(--ok)} .log .k-warn{color:var(--warn)}
+
+.detail > div:empty{display:none}
+.ck select{font:inherit;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%;max-width:520px}
+.ckl{font-size:13px;color:var(--muted)}
+#d-check-res{display:grid;gap:10px}
+#d-check-res:empty{display:none}
+.verdict{display:grid;gap:2px;padding:10px 12px;border-radius:10px;border:1px solid var(--line)}
+.verdict b{font-size:15px}
+.verdict span{font-size:13px}
+.verdict.crit{background:var(--crit-bg);border-color:var(--crit)} .verdict.crit b{color:var(--crit)}
+.verdict.warn{background:var(--warn-bg);border-color:var(--warn)} .verdict.warn b{color:var(--warn)}
+.verdict.ok{background:var(--ok-bg);border-color:var(--ok)} .verdict.ok b{color:var(--ok)}
+.ckmeta{margin:0;font-size:11.5px;color:var(--muted);line-height:1.5}
+.ckbtns{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.ha{font-size:10px;font-weight:700;color:var(--accent);border:1px solid var(--accent);padding:0 5px;border-radius:4px;margin-left:6px;vertical-align:2px;letter-spacing:.03em}
+.modal-h.dc{background:var(--accent-soft)} .modal-h.dc .eyebrow{color:var(--accent)}
+.dcgrid{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13px;background:var(--surface-2);border-radius:10px;padding:10px 12px}
+.dcgrid span{color:var(--muted);font-size:12px;font-weight:600}
+.dcgrid b{font-weight:600}
+.dccheck{border:1px solid var(--line);border-radius:10px;padding:8px 12px 10px;margin:0;display:grid;gap:7px}
+.dccheck legend{font-size:12px;font-weight:700;color:var(--muted);padding:0 4px}
+.dccheck label{display:flex;gap:9px;align-items:flex-start;font-size:13px;cursor:pointer}
+.dccheck input{margin-top:3px;accent-color:var(--accent);width:16px;height:16px;flex:none}
+.dcdose{display:flex;gap:8px;align-items:center}
+.dcdose input{font:inherit;font-family:var(--mono);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:7px 9px;width:140px}
+.dcdose span{color:var(--muted);font-weight:600}
+.dcsc summary{font-size:12px;color:var(--accent);cursor:pointer;font-weight:600}
+.dcsc span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.dcerr{margin:0;background:var(--crit-bg);color:var(--crit);border:1px solid var(--crit);border-radius:8px;padding:9px 11px;font-size:13px;font-weight:600}
+.log .lp{color:var(--ink);font-weight:700}
+.mname{border:0;background:none;padding:0;font:inherit;font-weight:700;color:var(--ink);text-decoration:underline dotted;text-underline-offset:3px;text-decoration-color:var(--muted);cursor:pointer;text-align:left}
+.mname:hover{color:var(--accent)}
+.mname .i{font-weight:400;color:var(--muted);margin-left:4px;font-size:12px;text-decoration:none;display:inline-block}
+.tcl{display:block;font-size:12px;font-weight:600;margin-top:2px}
+.tcl.ok{color:var(--accent)} .tcl.warn{color:var(--warn)} .tcl.crit{color:var(--crit)} .tcl.done{color:var(--muted)}
+.tasks{display:grid;gap:8px}
+.task{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:9px 12px}
+.task.warn{border-left-color:var(--warn)} .task.crit{border-left-color:var(--crit);background:var(--crit-bg)} .task.ok{border-left-color:var(--accent)} .task.done{opacity:.7}
+.task b{font-size:13.5px} .task p{margin:0;font-size:12.5px;color:var(--muted)}
+.task .tr{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.bar{height:4px;border-radius:2px;background:var(--surface-2);grid-column:1/-1;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:2px}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0;font-size:13.5px}
+.info dt{color:var(--muted);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.05em;padding-top:2px}
+.info dd{margin:0}
+.info ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:13px}
+.modal-h.inf{background:var(--surface-2)} .modal-h.inf .eyebrow{color:var(--accent)}
+.btn.sm{padding:4px 9px;font-size:12px;white-space:nowrap}
+.conds label.full{display:grid;gap:4px;font-weight:700;color:var(--muted);font-size:12px}
+.btn.icon{padding:4px 9px;font-size:16px;line-height:1}
+.phbtns{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.pform{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pform .full{grid-column:1/-1}
+.pform label{display:grid;gap:4px;font-size:12px;font-weight:700;color:var(--muted)}
+.pform input[type=text],.pform input[type=number],.pform select{font:inherit;font-weight:400;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:7px 9px;width:100%;min-width:0}
+.bedrow{display:flex;gap:6px}
+.bedrow input{font-family:var(--mono)!important;text-transform:uppercase}
+.pform fieldset{border:1px solid var(--line);border-radius:10px;padding:8px 12px 12px;margin:0;display:grid;gap:8px}
+.pform legend{font-size:12px;font-weight:700;color:var(--muted);padding:0 4px}
+.conds{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.conds label{display:flex;gap:7px;align-items:center;font-weight:500;color:var(--ink);font-size:13px}
+.conds input{accent-color:var(--accent)}
+.algrow{display:grid;grid-template-columns:1.2fr 1.3fr .9fr auto;gap:6px;align-items:center}
+.algrow .alg-other{grid-column:1/-1;order:5}
+#algList{display:grid;gap:8px}
+.algnone{margin:0;font-size:13px;color:var(--muted)}
+.algs > .btn{justify-self:start}
+@media (max-width:560px){.pform{grid-template-columns:1fr}.algrow{grid-template-columns:1fr 1fr}}
+.linkbtn{border:0;background:none;color:var(--accent);font-weight:600;font-size:12px;cursor:pointer;padding:2px 4px}
+.note{font-size:12px;color:var(--muted);padding:10px 12px;display:grid;gap:4px}
+.note b{color:var(--ink)}
+
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(8,14,13,.55);display:grid;place-items:center;padding:16px;z-index:50}
+.modal{background:var(--surface);border-radius:14px;max-width:560px;width:100%;box-shadow:var(--shadow);max-height:92vh;overflow:auto}
+.modal-h{padding:14px 18px;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.modal-h.crit{background:var(--crit-bg)} .modal-h.warn{background:var(--warn-bg)}
+.modal-h .eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.modal-h.crit .eyebrow{color:var(--crit)} .modal-h.warn .eyebrow{color:var(--warn)}
+.modal-h h2{margin:0;font-size:18px;text-wrap:balance}
+.modal-b{padding:14px 18px;display:grid;gap:12px}
+.modal-f{padding:12px 18px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.decide{font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.ovr{display:grid;gap:8px;background:var(--surface-2);border-radius:10px;padding:12px}
+.ovr label{font-size:12px;font-weight:700;color:var(--muted)}
+.ovr select,.ovr textarea{font:inherit;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:7px 9px;width:100%}
+.ovr textarea{min-height:60px;resize:vertical}
+
+/* toasts */
+.toasts{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:grid;gap:8px;z-index:40;width:min(340px,calc(100vw - 32px))}
+.toast{background:var(--surface);border:1px solid var(--crit);border-left:5px solid var(--crit);border-radius:10px;padding:10px 12px;box-shadow:var(--shadow);text-align:left;display:grid;gap:2px;animation:slide .25s ease-out}
+.toast{position:relative;cursor:pointer;padding-right:36px}
+.tx{position:absolute;top:6px;right:6px;width:26px;height:26px;border:0;border-radius:6px;background:transparent;color:var(--muted);font-size:20px;line-height:1;display:grid;place-items:center}
+.tx:hover{background:var(--surface-2);color:var(--ink)}
+.toast .eyebrow{font-size:11px;font-weight:700;color:var(--crit);letter-spacing:.06em;text-transform:uppercase}
+.toast b{font-size:13.5px}
+.toast span{font-size:12px;color:var(--muted)}
+@keyframes slide{from{transform:translateY(-8px);opacity:0}to{transform:none;opacity:1}}
+
+.foot{color:var(--muted);font-size:12px;text-align:center}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head><body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M8 12.5h2l1.2-2.5 1.8 4.5 1.2-2H16"/></svg>
+      </div>
+      <div><h1>VitalHealth</h1><small>Vital AI · 4 West · Med-Surg · <span id="hdrCount">11</span> patients · RN view</small></div>
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <div class="clock">
+      <span class="live" id="live"></span>
+      <span>Sim time <span class="mono" id="clock">08:40</span></span>
+      <button class="btn" data-act="skip" title="Jump the clock forward to see time-critical items escalate">+15 min</button>
+      <button class="btn" data-act="pause" id="pauseBtn">Pause feed</button>
+    </div>
+  </header>
+
+  <section class="controls" aria-label="Demo events">
+    <div class="controls-head">
+      <h2>Demo · inject an event</h2>
+      <p>Each button changes a lab, vital, or order. Click it again to undo.</p>
+      <button class="btn" data-act="reset">Reset demo</button>
+    </div>
+    <div class="scen" id="scen"></div>
+  </section>
+
+  <div class="main">
+    <aside class="panel">
+      <div class="panel-h"><h2>Patients</h2><span style="display:flex;gap:6px;align-items:center"><span class="chip neutral" id="ptcount"></span><button class="btn sm primary" data-act="admit">+ Admit</button></span></div>
+      <div class="plist" id="plist"></div><div id="dischList"></div>
+    </aside>
+
+    <main class="detail" id="detail"></main>
+
+    <aside class="feedcol" style="display:grid;gap:14px">
+      <section class="panel">
+        <div class="panel-h"><h2>Vital alerts · all patients</h2><span class="chip neutral">sorted by severity</span></div>
+        <div id="feed"></div>
+      </section>
+      <section class="panel">
+        <div class="panel-h"><h2>Activity log</h2></div>
+        <div class="log" id="log"></div>
+      </section>
+      <section class="panel note">
+        <b>How this demo works</b>
+        <span>Vital, the AI safety layer, uses a rules engine to re-check every active order each time a vital, lab, or order changes. Critical alerts interrupt at administration, warnings stay in the panel, and low-priority checks are held back to reduce alert fatigue.</span>
+        <span>Time-critical meds and timed care tasks (sepsis antibiotics, Parkinson's doses, lab rechecks) count down on their own and escalate from warning to critical if they run late. Tap ⓘ on any medication for drug info. High-alert drugs (insulin, anticoagulants, opioids) need a second nurse to co-sign with an independently calculated dose. Explanations are templates here. In the full build an LLM writes them from the rule output, and never does dose math.</span>
+      </section>
+    </aside>
+  </div>
+  <p class="foot">Synthetic patients. Rules and doses simplified for a hackathon demo. Not for clinical use. The nurse or provider always makes the final decision.</p>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div id="modalRoot"></div>
+
+<script>
+(function(){
+const BASE = 8*60+40;
+let sim = 0, paused = false, selected = 'p1', booted = false;
+let ALERTS = [], seen = {}, acked = {}, overrides = {}, log = [], used = {}, flashIds = {};
+const $ = id => document.getElementById(id);
+const fmt = m => { const t = Math.floor(BASE+m); return String(Math.floor(t/60)%24).padStart(2,'0')+':'+String(t%60).padStart(2,'0'); };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const list = arr => { const n = arr.map(m=>m.name); return n.length<2 ? n[0] : n.slice(0,-1).join(', ')+' and '+n[n.length-1]; };
+
+function makePatients(){
+  return [
+    {id:'p1', bed:'412A', name:'Rosa Martínez', age:72, sex:'F', wt:68, dx:'Heart failure, hypertension', conditions:['HF','HTN'],
+     allergies:[], vit:{sbp:128,dbp:76,hr:78,rr:16,spo2:96},
+     labs:{k:{v:4.6,t:-420}, cr:{v:1.1,t:-420}, glu:{v:132,t:-90}},
+     meds:[
+      {id:'m1', name:'Lisinopril', dose:'10 mg', route:'PO', freq:'Daily', due:'09:00', cls:['ACEi'], hold:{sbp:90}, param:'Hold if SBP < 90', effect:'blood pressure'},
+      {id:'m2', name:'Metoprolol succinate', dose:'25 mg', route:'PO', freq:'Daily', due:'09:00', cls:['BB'], hold:{sbp:90,hr:55}, param:'Hold if SBP < 90 or HR < 55', effect:'blood pressure and heart rate'},
+      {id:'m3', name:'Furosemide', dose:'40 mg', route:'IV', freq:'BID', due:'09:00', cls:['loop']},
+      {id:'m4', name:'Spironolactone', dose:'25 mg', route:'PO', freq:'Daily', due:'09:00', cls:['Ksparing']}
+     ]},
+    {id:'p2', bed:'412B', name:'James Thompson', age:64, sex:'M', wt:78, dx:'Type 2 diabetes, CKD stage 3, cellulitis L leg', conditions:['DM','CKD'],
+     allergies:[{agent:'Penicillin', cls:'penicillin', rxn:'hives'}], vit:{sbp:138,dbp:82,hr:88,rr:18,spo2:97},
+     labs:{k:{v:4.4,t:-400}, cr:{v:1.3,t:-400}, glu:{v:164,t:-60}},
+     meds:[
+      {id:'m1', name:'Metformin', dose:'1000 mg', route:'PO', freq:'BID', due:'09:00', cls:['metformin'], renal:true},
+      {id:'m2', name:'Insulin lispro', dose:'per sliding scale', route:'SC', freq:'AC meals', due:'09:00', cls:['insulin']},
+      {id:'m3', name:'Enoxaparin', dose:'40 mg', route:'SC', freq:'Daily', due:'10:00', cls:['LMWH','anticoag'], renal:true},
+      {id:'m4', name:'Cefazolin', dose:'2 g', route:'IV', freq:'q8h', due:'10:00', cls:['cephalosporin']}
+     ]},
+    {id:'p3', bed:'414A', name:'Ana López', age:58, sex:'F', wt:70, dx:'Atrial fibrillation, anticoagulated', conditions:['AF'],
+     allergies:[{agent:'Codeine', cls:'codeine', rxn:'nausea (intolerance)', intol:true}], vit:{sbp:124,dbp:78,hr:84,rr:16,spo2:98},
+     labs:{k:{v:4.1,t:-380}, cr:{v:0.9,t:-380}, glu:{v:108,t:-380}, inr:{v:2.4,t:-380}},
+     meds:[
+      {id:'m1', name:'Warfarin', dose:'5 mg', route:'PO', freq:'Daily', due:'17:00', cls:['warfarin','anticoag']},
+      {id:'m2', name:'Diltiazem ER', dose:'120 mg', route:'PO', freq:'Daily', due:'09:00', cls:['CCB','CCB-nd'], hold:{sbp:90,hr:55}, param:'Hold if SBP < 90 or HR < 55', effect:'blood pressure and heart rate'},
+      {id:'m3', name:'Atorvastatin', dose:'40 mg', route:'PO', freq:'Nightly', due:'21:00', cls:['statin'], dilt:true}
+     ]},
+    {id:'p4', bed:'414B', name:'Marcus Davis', age:45, sex:'M', wt:88, dx:'Post-op day 1, laparoscopic appendectomy', conditions:['POSTOP'],
+     allergies:[], vit:{sbp:132,dbp:80,hr:92,rr:16,spo2:97},
+     labs:{k:{v:4.0,t:-300}, cr:{v:1.0,t:-300}, glu:{v:118,t:-300}},
+     meds:[
+      {id:'m1', name:'Acetaminophen', dose:'1000 mg', route:'PO', freq:'q6h', due:'09:00', cls:['analgesic'], apap:4000},
+      {id:'m2', name:'Morphine', dose:'2 mg', route:'IV', freq:'q2h PRN pain', due:'PRN', cls:['opioid']},
+      {id:'m3', name:'Ondansetron', dose:'4 mg', route:'IV', freq:'q8h PRN nausea', due:'PRN', cls:['antiemetic','QT'], qt:true},
+      {id:'m4', name:'Enoxaparin', dose:'40 mg', route:'SC', freq:'Daily', due:'10:00', cls:['LMWH','anticoag'], renal:true}
+     ]},
+    {id:'p5', bed:'416A', name:'Grace Kim', age:81, sex:'F', wt:55, dx:'Community-acquired pneumonia', conditions:['PNA'],
+     allergies:[], vit:{sbp:118,dbp:70,hr:86,rr:20,spo2:94},
+     labs:{k:{v:3.9,t:-300}, cr:{v:0.8,t:-300}, glu:{v:112,t:-300}},
+     meds:[
+      {id:'m1', name:'Ceftriaxone', dose:'1 g', route:'IV', freq:'Daily', due:'10:00', cls:['cephalosporin']},
+      {id:'m2', name:'Azithromycin', dose:'500 mg', route:'PO', freq:'Daily', due:'10:00', cls:['macrolide','QT']},
+      {id:'m3', name:'Diphenhydramine', dose:'25 mg', route:'PO', freq:'Nightly PRN sleep', due:'PRN', cls:['antihistamine'], beers:true}
+     ]},
+    {id:'p6', bed:'416B', name:'Luis Herrera', age:37, sex:'M', wt:82, dx:'Asthma exacerbation', conditions:['ASTHMA'],
+     allergies:[{agent:'Sulfa drugs', cls:'sulfonamide', rxn:'rash'}], vit:{sbp:126,dbp:78,hr:102,rr:20,spo2:95},
+     labs:{k:{v:3.7,t:-240}, cr:{v:0.9,t:-240}, glu:{v:148,t:-60}},
+     meds:[
+      {id:'m1', name:'Prednisone', dose:'40 mg', route:'PO', freq:'Daily', due:'09:00', cls:['steroid']},
+      {id:'m2', name:'Albuterol neb', dose:'2.5 mg', route:'INH', freq:'q4h', due:'10:00', cls:['bronchodilator']}
+     ]},
+    {id:'p7', bed:'418A', name:'Tanya Reed', age:24, sex:'F', wt:62, dx:'Pelvic inflammatory disease', conditions:['PID'],
+     allergies:[], vit:{sbp:116,dbp:72,hr:96,rr:18,spo2:98},
+     labs:{k:{v:3.8,t:-200}, cr:{v:0.7,t:-200}, glu:{v:96,t:-200}},
+     meds:[
+      {id:'m1', name:'Ceftriaxone', dose:'1 g', route:'IV', freq:'q24h', due:'10:00', cls:['cephalosporin']},
+      {id:'m2', name:'Doxycycline', dose:'100 mg', route:'PO', freq:'BID', due:'09:00', cls:['tetracycline']},
+      {id:'m3', name:'Metronidazole', dose:'500 mg', route:'PO', freq:'BID', due:'09:00', cls:['nitroimidazole']}
+     ]},
+    {id:'p8', bed:'418B', name:'Priya Shah', age:31, sex:'F', wt:74, dx:'Pregnant, 30 weeks (7 months), gestational hypertension', conditions:['PREG','HTN'],
+     allergies:[], vit:{sbp:146,dbp:94,hr:92,rr:18,spo2:98},
+     labs:{k:{v:4.0,t:-180}, cr:{v:0.6,t:-180}, glu:{v:102,t:-180}},
+     meds:[
+      {id:'m1', name:'Labetalol', dose:'200 mg', route:'PO', freq:'BID', due:'09:00', cls:['BB'], hold:{sbp:100,hr:60}, param:'Hold if SBP < 100 or HR < 60', effect:'blood pressure and heart rate'},
+      {id:'m2', name:'Nifedipine ER', dose:'30 mg', route:'PO', freq:'Daily', due:'09:00', cls:['CCB','ER'], hold:{sbp:100}, param:'Hold if SBP < 100', effect:'blood pressure'},
+      {id:'m3', name:'Prenatal vitamin', dose:'1 tab', route:'PO', freq:'Daily', due:'09:00', cls:['vitamin']}
+     ],
+     tasks:[{id:'t1', name:'Fetal heart rate check', due:35, grace:15, why:'Fetal monitoring every 4 hours is ordered at 30 weeks with high blood pressure.'}]},
+    {id:'p9', bed:'420A', name:'Harold Brennan', age:76, sex:'M', wt:70, dx:"Parkinson's disease, dysphagia, aspiration pneumonia", conditions:['PD','DYSPH','PNA'],
+     allergies:[], vit:{sbp:124,dbp:70,hr:80,rr:20,spo2:94},
+     labs:{k:{v:4.1,t:-240}, cr:{v:1.0,t:-240}, glu:{v:110,t:-240}},
+     meds:[
+      {id:'m1', name:'Carbidopa-levodopa', dose:'25/100 mg', route:'PO', freq:'q4h while awake · crushed in applesauce', due:'09:00', cls:['dopaminergic'],
+       tc:{due:20, grace:30, why:"Late Parkinson's doses can cause stiffness, falls and trouble swallowing within hours. Give within 30 minutes of the scheduled time."}},
+      {id:'m2', name:'Ampicillin-sulbactam', dose:'3 g', route:'IV', freq:'q6h', due:'10:00', cls:['penicillin']}
+     ]},
+    {id:'p10', bed:'420B', name:'Robert Ellis', age:67, sex:'M', wt:80, dx:'Upper GI bleed (peptic ulcer), NPO', conditions:['GIB'],
+     allergies:[], vit:{sbp:108,dbp:64,hr:104,rr:18,spo2:97},
+     labs:{k:{v:4.3,t:-120}, cr:{v:1.2,t:-120}, glu:{v:118,t:-120}, hgb:{v:7.8,t:-120}},
+     meds:[
+      {id:'m1', name:'Pantoprazole', dose:'40 mg', route:'IV', freq:'BID', due:'09:00', cls:['PPI']},
+      {id:'m2', name:'Ondansetron', dose:'4 mg', route:'IV', freq:'q8h PRN nausea', due:'PRN', cls:['antiemetic','QT'], qt:true}
+     ],
+     tasks:[{id:'t1', name:'Hemoglobin recheck (every 6 h)', due:30, grace:15, why:'Hemoglobin is 7.8 after an active bleed. A drop means he may need a transfusion.'}]},
+    {id:'p11', bed:'422A', name:'Daniel Ortiz', age:52, sex:'M', wt:88, dx:'Sepsis, suspected urinary source', conditions:['SEPSIS'],
+     allergies:[], vit:{sbp:98,dbp:58,hr:116,rr:24,spo2:94},
+     labs:{k:{v:4.2,t:-30}, cr:{v:1.6,t:-30}, glu:{v:142,t:-30}, lac:{v:3.2,t:-30}},
+     meds:[
+      {id:'m1', name:'Piperacillin-tazobactam', dose:'4.5 g', route:'IV', freq:'q6h', due:'09:25', cls:['penicillin','antibiotic'],
+       tc:{due:45, grace:0, why:'Sepsis was recognized at 08:25. Guidelines call for the first antibiotic within 1 hour, and each hour of delay raises the risk of death.'}},
+      {id:'m2', name:'Vancomycin', dose:'1750 mg', route:'IV', freq:'Once (loading dose)', due:'09:25', cls:['glycopeptide'], renal:true,
+       tc:{due:45, grace:0, why:'Part of the 1-hour sepsis antibiotic bundle (recognized 08:25).'}},
+      {id:'m3', name:'Acetaminophen', dose:'650 mg', route:'PO', freq:'q6h PRN fever', due:'PRN', cls:['analgesic'], apap:2600}
+     ],
+     tasks:[{id:'t1', name:'Blood cultures x2 (before antibiotics)', due:30, grace:0, why:'Cultures must be drawn before the first antibiotic dose so the lab can identify the bacteria.'},
+            {id:'t2', name:'Repeat lactate', due:105, grace:0, why:'First lactate was 3.2 mmol/L. Guidelines call for a repeat when it is above 2.'}]}
+  ].map(initPatient);
+}
+let PTS = [];
+const byId = id => PTS.find(p => p.id === id);
+const R = v => ({sbp:Math.round(v.sbp), dbp:Math.round(v.dbp), hr:Math.round(v.hr), rr:Math.round(v.rr), spo2:Math.min(100,Math.round(v.spo2))});
+function crcl(p){ let c = ((140-p.age)*p.wt)/(72*p.labs.cr.v); if (p.sex==='F') c *= .85; return Math.round(c); }
+const isActive = m => m.status !== 'given' && m.status !== 'held';
+
+
+/* ---------------- new-medication checker ---------------- */
+const COND = {PREG:'Pregnant', PID:'Pelvic inflammatory disease', PD:"Parkinson's disease", DYSPH:'Dysphagia (trouble swallowing)', GIB:'Active upper GI bleed', SEPSIS:'Sepsis', HF:'Heart failure', HTN:'Hypertension', DM:'Type 2 diabetes', CKD:'Chronic kidney disease', AF:'Atrial fibrillation', ASTHMA:'Asthma', POSTOP:'Post-op', PNA:'Pneumonia'};
+const CLS_LABEL = {ACEi:'ACE inhibitor', tetracycline:'tetracycline antibiotic', BB:'beta-blocker', NSAID:'NSAID', opioid:'opioid', anticoag:'anticoagulant', statin:'statin', benzo:'benzodiazepine', steroid:'steroid', metformin:'metformin', penicillin:'penicillin', sulfonamide:'sulfonamide', codeine:'codeine', 'CCB-nd':'rate-slowing calcium channel blocker'};
+const CAT = [
+  {key:'ibu',   name:'Ibuprofen', dose:'600 mg', route:'PO', freq:'q6h PRN pain', due:'PRN', cls:['NSAID']},
+  {key:'keto',  name:'Ketorolac', dose:'15 mg', route:'IV', freq:'q6h', due:'12:00', cls:['NSAID']},
+  {key:'apap',  name:'Acetaminophen', dose:'650 mg', route:'PO', freq:'q6h PRN pain', due:'PRN', cls:['analgesic'], apap:2600},
+  {key:'tram',  name:'Tramadol', dose:'50 mg', route:'PO', freq:'q6h PRN pain', due:'PRN', cls:['opioid']},
+  {key:'cod',   name:'Codeine/APAP 30/300', dose:'1 tab', route:'PO', freq:'q6h PRN pain', due:'PRN', cls:['opioid','codeine'], apap:1200},
+  {key:'lora',  name:'Lorazepam', dose:'1 mg', route:'IV', freq:'q6h PRN anxiety', due:'PRN', cls:['benzo']},
+  {key:'zolp',  name:'Zolpidem', dose:'5 mg', route:'PO', freq:'Nightly PRN sleep', due:'PRN', cls:['sedative']},
+  {key:'prop',  name:'Propranolol', dose:'20 mg', route:'PO', freq:'BID', due:'12:00', cls:['BB','BB-ns']},
+  {key:'meto',  name:'Metoprolol tartrate', dose:'25 mg', route:'PO', freq:'BID', due:'12:00', cls:['BB']},
+  {key:'vera',  name:'Verapamil', dose:'80 mg', route:'PO', freq:'TID', due:'12:00', cls:['CCB','CCB-nd']},
+  {key:'kcl',   name:'Potassium chloride', dose:'20 mEq', route:'PO', freq:'Daily', due:'12:00', cls:['Ksupp']},
+  {key:'smx',   name:'Trimethoprim-sulfamethoxazole DS', dose:'1 tab', route:'PO', freq:'BID', due:'12:00', cls:['sulfonamide','tmpsmx']},
+  {key:'amox',  name:'Amoxicillin', dose:'500 mg', route:'PO', freq:'TID', due:'12:00', cls:['penicillin']},
+  {key:'cipro', name:'Ciprofloxacin', dose:'500 mg', route:'PO', freq:'BID', due:'12:00', cls:['quinolone','QT']},
+  {key:'clari', name:'Clarithromycin', dose:'500 mg', route:'PO', freq:'BID', due:'12:00', cls:['macrolide-strong','QT']},
+  {key:'fluc',  name:'Fluconazole', dose:'200 mg', route:'PO', freq:'Daily', due:'12:00', cls:['azole','QT']},
+  {key:'asa',   name:'Aspirin', dose:'81 mg', route:'PO', freq:'Daily', due:'12:00', cls:['antiplatelet']},
+  {key:'enox',  name:'Enoxaparin', dose:'40 mg', route:'SC', freq:'Daily', due:'12:00', cls:['LMWH','anticoag']},
+  {key:'metf',  name:'Metformin', dose:'500 mg', route:'PO', freq:'BID', due:'12:00', cls:['metformin']},
+  {key:'glip',  name:'Glipizide', dose:'5 mg', route:'PO', freq:'Daily', due:'12:00', cls:['SU']},
+  {key:'pio',   name:'Pioglitazone', dose:'15 mg', route:'PO', freq:'Daily', due:'12:00', cls:['TZD']},
+  {key:'pred',  name:'Prednisone', dose:'40 mg', route:'PO', freq:'Daily', due:'12:00', cls:['steroid']},
+  {key:'lisi',  name:'Lisinopril', dose:'10 mg', route:'PO', freq:'Daily', due:'12:00', cls:['ACEi']},
+  {key:'nife',  name:'Nifedipine ER', dose:'30 mg', route:'PO', freq:'Daily', due:'12:00', cls:['CCB','ER']},
+  {key:'atorva',name:'Atorvastatin', dose:'40 mg', route:'PO', freq:'Nightly', due:'21:00', cls:['statin']},
+  {key:'doxy',  name:'Doxycycline', dose:'100 mg', route:'PO', freq:'BID', due:'12:00', cls:['tetracycline']},
+  {key:'reglan',name:'Metoclopramide', dose:'10 mg', route:'IV', freq:'q6h PRN nausea', due:'PRN', cls:['dopamine-block']},
+  {key:'haldol',name:'Haloperidol', dose:'2 mg', route:'IV', freq:'q6h PRN agitation', due:'PRN', cls:['dopamine-block','QT']}
+];
+function hash(s){ let h=0; for (let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))|0; return (h>>>0).toString(36); }
+function checkNew(p, d, selfId){
+  const I = [], others = p.meds.filter(m => m.id !== selfId);
+  const has = c => others.filter(m => m.cls.includes(c)), cond = c => p.conditions.includes(c), dc = c => d.cls.includes(c);
+  const c = crcl(p), L = p.labs, v = R(p.vit), first = p.name.split(' ')[0];
+  const add = (sev, type, title, why, action) => I.push({sev, type, title, why, action});
+
+  p.allergies.forEach(a => { if (!dc(a.cls)) return;
+    if (a.intol) add('warn','Intolerance',`Documented ${a.agent.toLowerCase()} intolerance`,`${first} had ${a.rxn.replace(' (intolerance)','')} with ${a.agent.toLowerCase()}. This is an intolerance, not a true allergy.`,'Consider a different pain medication, or pre-treat for nausea.');
+    else add('crit','Allergy',`Allergy: ${d.name} is a ${CLS_LABEL[a.cls]||a.cls}`,`${first} has a documented ${a.agent.toLowerCase()} allergy (${a.rxn}).`,'Do not order. Choose a drug from a different family.');
+  });
+  ['BB','CCB-nd','ACEi','NSAID','opioid','anticoag','statin','benzo','steroid','metformin','tetracycline'].forEach(cl => {
+    if (!dc(cl)) return; const ex = has(cl); if (!ex.length) return;
+    const soft = cl==='opioid' || cl==='anticoag';
+    add(soft?'warn':'crit','Duplicate therapy',`Duplicate ${CLS_LABEL[cl]}: already on ${list(ex)}`,
+      soft ? `${first} already has ${list(ex)} ordered. Two ${CLS_LABEL[cl]}s together ${cl==='opioid'?'add up sedation and can slow breathing':'raise bleeding risk'}, unless this is intentional${cl==='anticoag'?' (for example, bridging)':''}.`
+           : `${first} is already on ${list(ex)}, from the same drug class. Giving both doubles the effect.`,
+      soft ? 'Confirm with the provider that both are intended.' : 'Do not add. Adjust the existing order instead.');
+  });
+  if (d.apap) { const ap = others.filter(m => m.apap), tot = ap.reduce((s,m)=>s+m.apap,0) + d.apap;
+    if (ap.length && tot > 4000) add('crit','Duplicate ingredient','Acetaminophen over the daily max',`${list(ap)} already ${ap.length>1?'contain':'contains'} acetaminophen. Adding this allows up to ${tot.toLocaleString()} mg a day. The max is 4,000 mg.`,'Do not add. Use the existing acetaminophen order.'); }
+  if (dc('NSAID')) {
+    if (has('warfarin').length) add('crit','Drug interaction','Bleeding risk with warfarin',`NSAIDs plus warfarin raise the risk of serious bleeding.${L.inr?` INR is ${L.inr.v}.`:''}`,'Avoid. Consider acetaminophen for pain.');
+    if (cond('HF')) { const tw = has('ACEi').length && has('loop').length;
+      add(tw?'crit':'warn','Condition', tw?'Heart failure + ACE inhibitor + diuretic ("triple whammy")':'Can worsen heart failure',
+        tw ? `${first} has heart failure and takes ${list([...has('ACEi'),...has('loop')])}. Adding an NSAID to an ACE inhibitor and a diuretic is a known cause of acute kidney injury, and NSAIDs cause fluid retention.` : 'NSAIDs cause salt and fluid retention and can trigger a heart failure flare.',
+        'Avoid NSAIDs. Consider acetaminophen.'); }
+    if (cond('CKD') || c < 60) add(c<30?'crit':'warn','Kidney function',`Kidney function: CrCl ${c} mL/min`,`NSAIDs reduce blood flow to the kidneys${cond('CKD')?', and '+first+' has chronic kidney disease':''}.`,'Avoid, or use the lowest dose for the shortest time.');
+    if (cond('ASTHMA')) add('warn','Condition','Asthma: NSAIDs can trigger bronchospasm','Some people with asthma react to NSAIDs.','Ask whether the patient has taken NSAIDs safely before.');
+    if (p.age >= 65) add('warn','Age',`Age ${p.age}: stomach bleeding risk (Beers list)`,'NSAIDs raise the risk of stomach bleeding in older adults.','Use the lowest dose for the shortest time, or choose acetaminophen.');
+  }
+  if (dc('BB')) {
+    if (cond('ASTHMA')) add(dc('BB-ns')?'crit':'warn','Condition', dc('BB-ns')?'Contraindicated in asthma':'Use caution in asthma',
+      dc('BB-ns') ? `${d.name} also blocks beta receptors in the lungs and can cause severe bronchospasm.` : `${d.name} is cardioselective, but it can still tighten airways at higher doses.`,
+      dc('BB-ns') ? 'Do not order. If a beta-blocker is needed, ask about a cardioselective one.' : 'Use the lowest dose and monitor breathing.');
+    const nd = has('CCB-nd'); if (nd.length) add('warn','Drug interaction',`Slow heart rate with ${list(nd)}`,`Beta-blockers and ${list(nd)} both slow the heart. Together they can cause bradycardia or heart block.`,'Check heart rate and ECG, and confirm with the provider.');
+    if (v.hr < 60) add('warn','Vitals',`Heart rate is ${v.hr}`,'A beta-blocker would slow it further.','Recheck heart rate before the first dose.');
+  }
+  if (dc('CCB-nd')) {
+    const bb = has('BB'); if (bb.length) add('crit','Drug interaction',`Heart block risk with ${list(bb)}`,`${d.name} plus ${list(bb)} can dangerously slow heart rate and conduction.`,'Avoid this combination.');
+    if (cond('HF')) add('crit','Condition','Can worsen heart failure',`${d.name} weakens heart contraction and is avoided in heart failure with reduced ejection fraction.`,'Choose a different drug.');
+  }
+  if (dc('tmpsmx')) {
+    if (has('warfarin').length) add('crit','Drug interaction','Raises INR with warfarin','This antibiotic blocks warfarin breakdown. INR can rise quickly and cause bleeding.','Choose a different antibiotic, or lower warfarin and check INR closely.');
+    const kk = [...has('ACEi'),...has('ARB'),...has('Ksparing')];
+    if (kk.length) add(has('Ksparing').length?'crit':'warn','Drug interaction','High potassium risk',`Trimethoprim raises potassium, and so ${kk.length>1?'do':'does'} ${list(kk)}. Current K+ is ${L.k.v} mmol/L.`,'Choose a different antibiotic, or monitor potassium closely.');
+    if (c < 30) add('warn','Kidney function',`Dose adjustment: CrCl ${c} mL/min`,'This antibiotic is cleared by the kidneys.','Reduce the dose by half.');
+  }
+  if (dc('azole')) {
+    if (has('warfarin').length) add('crit','Drug interaction','Raises INR with warfarin','Fluconazole strongly blocks warfarin breakdown. INR can double within days.','Lower the warfarin dose and recheck INR in 3 days, or choose another antifungal.');
+    if (has('statin').length) add('warn','Drug interaction',`Raises ${list(has('statin'))} levels`,'Higher statin levels raise the risk of muscle damage.','Watch for muscle pain; consider holding the statin.');
+  }
+  if (dc('macrolide-strong')) {
+    if (has('statin').length) add('warn','Drug interaction',`Raises ${list(has('statin'))} levels`,'Clarithromycin sharply raises statin levels, with a risk of muscle breakdown (rhabdomyolysis).','Hold the statin during the antibiotic course.');
+    if (has('warfarin').length) add('warn','Drug interaction','Can raise INR with warfarin','Clarithromycin slows warfarin breakdown.','Check INR within a few days.');
+    if (has('CCB-nd').length) add('warn','Drug interaction',`Raises ${list(has('CCB-nd'))} levels`,'Can cause low blood pressure and slow heart rate.','Monitor BP and heart rate.');
+  }
+  if (dc('QT')) { const q = has('QT'); if (q.length) add('warn','Drug interaction','QT prolongation risk',`${d.name} and ${list(q)} both prolong the QT interval, which can trigger a dangerous heart rhythm.`,'Get a baseline ECG and check potassium and magnesium.'); }
+  if (dc('quinolone')) {
+    if (has('warfarin').length) add('warn','Drug interaction','Can raise INR with warfarin','Ciprofloxacin can increase warfarin effect.','Check INR within a few days.');
+    if (p.age >= 65) add('warn','Age',`Age ${p.age}: tendon and confusion risk`,'Fluoroquinolones carry an FDA boxed warning for tendon rupture, and older adults are at higher risk.','Consider another antibiotic if one fits.');
+  }
+  if (dc('benzo') || dc('sedative')) {
+    const op = has('opioid'); if (op.length) add(dc('benzo')?'crit':'warn','Drug interaction','Breathing risk with opioids',`${d.name} plus ${list(op)} can cause deep sedation and slowed breathing.${dc('benzo')?' The FDA has a boxed warning for this combination.':''}`,'Avoid, or use the lowest doses with continuous SpO2 monitoring.');
+    if (p.age >= 65) add('warn','Age',`Age ${p.age}: falls and confusion (Beers list)`,`${d.name} raises the risk of falls, delirium and fractures in older adults.`,'Try non-drug sleep or anxiety measures first.');
+    if (v.spo2 < 92) add('warn','Vitals',`SpO2 is ${v.spo2}%`,'A sedative could lower it further.','Assess breathing before giving.');
+  }
+  if (dc('opioid')) { const bz = has('benzo'); if (bz.length) add('crit','Drug interaction',`Breathing risk with ${list(bz)}`,'Opioids plus benzodiazepines can stop breathing. The FDA has a boxed warning for this combination.','Avoid, or use the lowest doses with continuous SpO2 monitoring.'); }
+  if (dc('Ksupp')) {
+    const kk = [...has('ACEi'),...has('ARB'),...has('Ksparing')];
+    if (L.k.v > 5.0) add('crit','Lab',`Potassium is already ${L.k.v}`,'Adding potassium could push it to a dangerous level.','Do not order.');
+    else if (kk.length) add(kk.length>=2?'crit':'warn','Drug interaction','High potassium risk',`${list(kk)} already ${kk.length>1?'raise':'raises'} potassium. Current K+ is ${L.k.v} mmol/L.`,'Confirm the need with a repeat potassium first.');
+  }
+  if (dc('TZD')) {
+    if (cond('HF')) add('crit','Condition','Contraindicated in heart failure','Pioglitazone causes fluid retention and has an FDA boxed warning for heart failure.','Choose a different diabetes medication.');
+    if (has('insulin').length) add('warn','Drug interaction','Fluid retention with insulin','Pioglitazone with insulin raises the risk of swelling and fluid overload.','Monitor weight and swelling.');
+  }
+  if (dc('SU')) {
+    if (has('insulin').length) add('warn','Drug interaction','Low blood sugar risk with insulin',`Glipizide and ${list(has('insulin'))} both lower blood sugar.`,'Confirm the combination and increase fingerstick checks.');
+    if (c < 50) add('warn','Kidney function',`Kidney function: CrCl ${c} mL/min`,'Lower kidney function raises the risk of low blood sugar.','Start at the lowest dose.');
+    if (L.glu.v < 100) add('warn','Lab',`Glucose is ${L.glu.v} mg/dL`,'Blood sugar is already on the low side.','Recheck glucose before ordering.');
+  }
+  if (dc('metformin')) {
+    if (c < 30) add('crit','Kidney function',`Contraindicated: CrCl ${c} mL/min`,'Metformin can build up and cause lactic acidosis when kidney function is below 30.','Choose a different diabetes medication.');
+    else if (c < 45) add('warn','Kidney function',`Dose limit: CrCl ${c} mL/min`,'Metformin needs a lower maximum dose at this kidney function.','Keep the total dose at or below 1,000 mg a day.');
+  }
+  if (dc('antiplatelet') && has('anticoag').length) add('warn','Drug interaction',`Bleeding risk with ${list(has('anticoag'))}`,'Aspirin plus an anticoagulant raises bleeding risk.','Confirm there is a clear reason for both.');
+  if (dc('LMWH') && c < 30) add('warn','Kidney function',`Dose adjustment: CrCl ${c} mL/min`,'Enoxaparin builds up when kidney function is below 30.','Use 30 mg daily for prevention.');
+  if (cond('PREG')) {
+    if (dc('ACEi')) add('crit','Pregnancy','Contraindicated in pregnancy',"ACE inhibitors can damage the baby's kidneys and cause low amniotic fluid, especially in the 2nd and 3rd trimesters.",'Do not order. Labetalol or nifedipine are preferred in pregnancy.');
+    if (dc('NSAID')) add('crit','Pregnancy','Avoid after 20 weeks of pregnancy','NSAIDs can lower amniotic fluid and, in the 3rd trimester, can close a vital fetal blood vessel (the ductus arteriosus) too early.','Use acetaminophen instead.');
+    if (dc('tetracycline')) add('crit','Pregnancy','Avoid in pregnancy',"Tetracyclines can stain the baby's teeth and affect bone growth.",'Choose a different antibiotic.');
+    if (dc('anticoag') && d.key!=='enox') add('crit','Pregnancy','Avoid in pregnancy','This anticoagulant can cause birth defects.','Enoxaparin is the usual choice in pregnancy.');
+    if (dc('quinolone')) add('warn','Pregnancy','Generally avoided in pregnancy','Safer antibiotic options are usually available.','Confirm with the provider.');
+    if (dc('azole')) add('warn','Pregnancy','Fluconazole in pregnancy','Higher or repeated doses have been linked to birth defects.','Consider a topical antifungal.');
+    if (dc('tmpsmx')) add('warn','Pregnancy','Late pregnancy','Sulfonamides close to delivery can raise the newborn’s bilirubin.','Choose a different antibiotic if possible.');
+    if (dc('statin')) add('warn','Pregnancy','Usually stopped in pregnancy','Cholesterol drugs are generally paused during pregnancy.','Confirm with the provider.');
+  }
+  if (cond('PD') && dc('dopamine-block')) add('crit','Condition',"Worsens Parkinson's disease",`${d.name} blocks dopamine, the chemical that Parkinson's medication replaces. It can cause severe stiffness, freezing and swallowing problems.`,'Do not order. For nausea, ondansetron is a safer choice.');
+  if (cond('GIB')) {
+    if (dc('NSAID') || dc('antiplatelet')) add('crit','Condition','Active GI bleed',`${d.name} irritates the stomach lining and slows clotting. It can make the bleeding worse.`,'Do not order.');
+    if (dc('anticoag')) add('crit','Condition','Active GI bleed','Anticoagulants are contraindicated while the patient is actively bleeding.','Do not order. For clot prevention, use compression devices.');
+    if (dc('steroid')) add('warn','Condition','Raises ulcer bleeding risk','Steroids slow ulcer healing and raise bleeding risk.','Confirm the need with the provider.');
+  }
+  if (cond('DYSPH') && dc('ER') && d.route==='PO') add('warn','Condition','Dysphagia: extended-release tablet',`${first} has trouble swallowing and gets meds crushed. Crushing ${d.name} releases the whole dose at once.`,'Ask pharmacy for an immediate-release or liquid form.');
+  if (dc('steroid') && cond('DM')) add('warn','Condition','Raises blood sugar in diabetes','Steroids raise glucose, often for several days.','Increase fingerstick checks; insulin may need adjusting.');
+  return I.sort((a,b) => sevRank(a.sev) - sevRank(b.sev));
+}
+let ck = {key:'', ovr:false};
+function renderCheck(p){
+  const first = p.name.split(' ')[0];
+  setHTML('d-check', `<h3>Check a new medication <span>before it's ordered</span></h3>
+    <label class="ckl" for="ckDrug">Vital compares it with ${first}'s current medications, conditions, allergies, labs and vitals.</label>
+    <select id="ckDrug" data-pid="${p.id}"><option value="">Choose a medication…</option>${CAT.map(d=>`<option value="${d.key}">${d.name} ${d.dose} ${d.route} ${d.freq}</option>`).join('')}</select>
+    <div id="d-check-res"></div>`);
+  const sel = $('ckDrug'); if (sel.value !== ck.key) sel.value = ck.key;
+  if (!ck.key) { setHTML('d-check-res', ''); return; }
+  const d = CAT.find(x => x.key === ck.key), I = checkNew(p, d), c = crcl(p), v = R(p.vit), L = p.labs;
+  const nc = I.filter(i=>i.sev==='crit').length, nw = I.filter(i=>i.sev==='warn').length;
+  const cls = nc ? 'crit' : nw ? 'warn' : 'ok';
+  const head = nc ? 'Not compatible' : nw ? 'Use with caution' : 'Compatible';
+  const sub = nc ? `${nc} critical issue${nc>1?'s':''}${nw?` and ${nw} warning${nw>1?'s':''}`:''} for ${first}.` : nw ? `${nw} thing${nw>1?'s':''} to review before ordering.` : `No problems found for ${first}.`;
+  const checked = `Checked against ${p.meds.length} medications · ${p.conditions.length} conditions · ${p.allergies.length ? p.allergies.map(a=>a.agent).join(', ')+' allergy' : 'no known allergies'} · K+ ${L.k.v}, CrCl ${c}, glucose ${L.glu.v}${L.inr?`, INR ${L.inr.v}`:''} · BP ${v.sbp}/${v.dbp}, HR ${v.hr}, SpO2 ${v.spo2}%`;
+  const cards = I.map(i => `<article class="acard ${i.sev}"><div class="ah"><span class="at">${esc(i.title)}</span><span class="chip ${i.sev}">${esc(i.type)}</span></div><p>${esc(i.why)}</p><div class="act"><b>Suggested:</b> ${esc(i.action)}</div></article>`).join('');
+  const btns = nc
+    ? (ck.ovr
+      ? `<div class="ovr" style="width:100%"><label for="ckReason">Reason for ordering anyway</label><select id="ckReason"><option value="">Choose a reason</option><option>Benefit outweighs risk, discussed with pharmacy</option><option>Allergy history reviewed, tolerated before</option><option>Will monitor closely</option></select><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" data-act="ckCancel">Don't order</button><button class="btn danger" data-act="ckAddOvr">Confirm order</button></div></div>`
+      : `<button class="btn" data-act="ckShowOvr">Order anyway…</button><button class="btn primary" data-act="ckCancel">Don't order</button>`)
+    : `<button class="btn" data-act="ckCancel">Cancel</button><button class="btn primary" data-act="ckAdd">Add order</button>`;
+  setHTML('d-check-res', `<div class="verdict ${cls}"><b>${head}: ${esc(d.name)} ${esc(d.dose)} ${d.route}</b><span>${sub}</span></div>
+    <p class="ckmeta mono">${esc(checked)}</p>${cards}<div class="ckbtns">${btns}</div>`);
+}
+function orderFromCheck(reason){
+  const p = byId(selected), d = CAT.find(x => x.key === ck.key);
+  addMed(p, {name:d.name, dose:d.dose, route:d.route, freq:d.freq, due:d.due, cls:d.cls.slice(), apap:d.apap, catKey:d.key});
+  addLog(`${p.bed} ${p.name} · New order: ${d.name} ${d.dose}${reason ? `. Ordered despite Vital warning: "${reason}"` : '. Passed Vital check.'}`, reason ? 'warn' : 'ok');
+  ck = {key:'', ovr:false}; runRules(); render();
+}
+
+/* ---------------- rules engine ---------------- */
+function evaluate(p){
+  const A = [], v = R(p.vit), L = p.labs, meds = p.meds, now = fmt(sim), first = p.name.split(' ')[0];
+  const add = o => A.push(Object.assign({pid:p.id}, o));
+  const cls = c => meds.filter(m => m.cls.includes(c));
+
+  // Hold parameters from the order
+  meds.forEach(m => {
+    if (!m.hold) return;
+    const r = [];
+    if (m.hold.sbp && v.sbp < m.hold.sbp) r.push(`systolic BP is ${v.sbp} (below ${m.hold.sbp})`);
+    if (m.hold.hr && v.hr < m.hold.hr) r.push(`heart rate is ${v.hr} (below ${m.hold.hr})`);
+    if (r.length) add({id:`hold:${p.id}:${m.id}`, sev:'crit', meds:[m.id], trigger:'Vital sign change',
+      title:`Hold ${m.name}: below ordered parameter`,
+      why:`${first}'s ${r.join(' and ')}. The order says "${m.param}." ${m.name} lowers ${m.effect} and would push them lower.`,
+      data:[`BP ${v.sbp}/${v.dbp} mmHg · HR ${v.hr} · bedside monitor · ${now}`, `Order: ${m.name} ${m.dose} ${m.route} ${m.freq} · ${m.param}`],
+      action:'Hold this dose. Recheck vitals in 15 minutes and notify the provider.'});
+  });
+
+  // BP trend (before it crosses the threshold)
+  const win = p.hist.sbp.slice(-14), mx = Math.max(...win), drop = mx - v.sbp;
+  if (drop >= 22 && v.sbp >= 90) {
+    const due = meds.filter(m => isActive(m) && m.due !== 'PRN' && m.cls.some(c => ['ACEi','BB','CCB','loop'].includes(c)));
+    if (due.length) add({id:`trend:${p.id}`, sev:'warn', meds:due.map(m=>m.id), trigger:'Vital sign trend',
+      title:'Blood pressure falling fast',
+      why:`Systolic BP dropped from ${mx} to ${v.sbp} in the last few minutes. It is still above 90, but ${list(due)} ${due.length>1?'are':'is'} due at ${due[0].due}.`,
+      data:[`SBP ${mx} → ${v.sbp} mmHg · last 7 min · bedside monitor`],
+      action:'Recheck BP right before giving any blood-pressure medication.'});
+  }
+
+  // Potassium
+  const kMeds = meds.filter(m => m.cls.some(c => ['ACEi','ARB','Ksparing'].includes(c)));
+  const k = L.k.v;
+  if (kMeds.length) {
+    const data = [`K+ ${k} mmol/L · lab result · ${fmt(L.k.t)}` + (L.k.prev!=null ? ` (was ${L.k.prev})` : ''), `Normal range 3.5–5.0 mmol/L`];
+    if (k > 5.5) add({id:`k:${p.id}`, sev:'crit', meds:kMeds.map(m=>m.id), trigger:'New lab result',
+      title:`High potassium: hold ${list(kMeds)}`,
+      why:`Potassium is ${k} mmol/L. ${list(kMeds)} both raise potassium. At this level the risk of dangerous heart rhythms goes up.`,
+      data, action:'Hold both. Repeat the potassium, get an ECG, and notify the provider.'});
+    else if (k > 5.0) add({id:`k5:${p.id}`, sev:'warn', meds:kMeds.map(m=>m.id), trigger:'New lab result',
+      title:'Potassium above normal', why:`Potassium is ${k} mmol/L and ${list(kMeds)} can raise it further.`, data,
+      action:'Review with the provider before giving.'});
+    else if (kMeds.length >= 2) add({id:`kinfo:${p.id}`, sev:'info', meds:[], trigger:'Order check',
+      title:`${list(kMeds)}: potassium can rise`, why:`Known combination. Potassium is ${k}, within range. Daily labs are ordered.`, data:[], action:'No action needed now.'});
+  }
+
+  // Kidney function
+  const c = crcl(p), cr = L.cr;
+  const aki = cr.prev!=null && cr.v - cr.prev >= 0.3;
+  const crData = [`Creatinine ${cr.v} mg/dL · lab result · ${fmt(cr.t)}` + (cr.prev!=null ? ` (was ${cr.prev})` : ''),
+                  `Est. CrCl ${c} mL/min (Cockcroft-Gault, ${p.wt} kg, age ${p.age})`].concat(aki ? [`Rise of ${(cr.v-cr.prev).toFixed(1)} mg/dL meets the acute kidney injury flag (≥ 0.3)`] : []);
+  meds.forEach(m => {
+    if (!m.renal) return;
+    if (m.cls.includes('metformin') && c < 30) add({id:`renal:${p.id}:${m.id}`, sev:'crit', meds:[m.id], trigger:'New lab result',
+      title:'Metformin contraindicated at current kidney function',
+      why:`Creatinine went up and estimated CrCl is now ${c} mL/min. Metformin should not be used below 30. It can build up and cause lactic acidosis.`,
+      data:crData, action:'Hold metformin and ask the provider to change diabetes therapy.'});
+    else if (m.cls.includes('metformin') && c < 45) add({id:`renal45:${p.id}:${m.id}`, sev:'warn', meds:[m.id], trigger:'New lab result',
+      title:'Metformin: review dose for kidney function', why:`Estimated CrCl is ${c} mL/min.`, data:crData, action:'Ask the provider whether to reduce the dose.'});
+    if (m.cls.includes('LMWH') && c < 30) add({id:`renal:${p.id}:${m.id}`, sev:'warn', meds:[m.id], trigger:'New lab result',
+      title:'Enoxaparin dose needs kidney adjustment',
+      why:`Estimated CrCl is ${c} mL/min. For prevention doses below 30 mL/min, the usual dose is 30 mg daily, not 40 mg. Higher levels raise bleeding risk.`,
+      data:crData, action:'Ask the provider or pharmacist to adjust the dose before giving.'});
+  });
+
+  // Glucose
+  const g = L.glu.v, ins = meds.filter(m => m.cls.includes('insulin'));
+  if (ins.length && g < 70) add({id:`glu:${p.id}`, sev:'crit', meds:ins.map(m=>m.id), trigger:'New point-of-care result',
+    title:'Low blood sugar: hold insulin',
+    why:`Fingerstick glucose is ${g} mg/dL. ${list(ins)} is due at ${ins[0].due} and would lower it further.`,
+    data:[`Glucose ${g} mg/dL · fingerstick · ${fmt(L.glu.t)}`, `Hypoglycemia threshold < 70 mg/dL`],
+    action:'Hold insulin. Follow the hypoglycemia protocol (15 g fast-acting carbs, recheck in 15 min) and notify the provider.'});
+
+  // Warfarin / INR
+  const war = cls('warfarin');
+  if (war.length && L.inr) {
+    const i = L.inr.v, d = [`INR ${i} · lab result · ${fmt(L.inr.t)}` + (L.inr.prev!=null ? ` (was ${L.inr.prev})` : ''), 'Target 2.0–3.0 for atrial fibrillation'];
+    if (i > 4) add({id:`inr:${p.id}`, sev:'crit', meds:war.map(m=>m.id), trigger:'New lab result',
+      title:'INR too high: hold warfarin', why:`INR is ${i}, well above the 2.0–3.0 target. Bleeding risk is high.`, data:d,
+      action:"Hold tonight's warfarin, check for signs of bleeding, and notify the provider."});
+    else if (i > 3) add({id:`inr3:${p.id}`, sev:'warn', meds:war.map(m=>m.id), trigger:'New lab result',
+      title:'INR above target', why:`INR is ${i}.`, data:d, action:'Review the warfarin dose with the provider.'});
+    const ns = cls('NSAID').filter(m => !m.catKey);
+    if (ns.length) add({id:`nsaid:${p.id}`, sev: i > 4 ? 'crit' : 'warn', meds:ns.map(m=>m.id), trigger:'New order',
+      title:`Bleeding risk: ${list(ns)} with warfarin`,
+      why:`${list(ns)} together with warfarin raises the risk of bleeding, especially stomach bleeding. INR is ${i}.`,
+      data:[`New order: ${ns.map(m=>`${m.name} ${m.dose} ${m.route} ${m.freq}`).join(', ')}`, `Active: Warfarin ${war[0].dose} daily`],
+      action:'Hold ibuprofen and ask the provider about acetaminophen instead.'});
+  }
+
+  // Allergies
+  meds.forEach(m => p.allergies.forEach(a => {
+    if (!m.catKey && !a.intol && m.cls.includes(a.cls)) add({id:`allergy:${p.id}:${m.id}`, sev:'crit', meds:[m.id], trigger:'New order',
+      title:`Allergy: ${m.name} is a ${a.cls}`,
+      why:`${first} has a documented ${a.agent.toLowerCase()} allergy (${a.rxn}). ${m.name} belongs to the same drug family.`,
+      data:[`Allergy list: ${a.agent} · ${a.rxn} · EHR`, `New order: ${m.name} ${m.dose} ${m.route} ${m.freq}`],
+      action:'Do not give. Ask the provider for a non-penicillin alternative.'});
+  }));
+
+  // Duplicate ingredient: acetaminophen
+  const ap = meds.filter(m => m.apap && !m.catKey), tot = ap.reduce((s,m)=>s+m.apap, 0);
+  if (ap.length > 1 && tot > 4000) {
+    const flagged = ap.filter(m => m.isNew);
+    add({id:`apap:${p.id}`, sev:'crit', meds:(flagged.length?flagged:ap).map(m=>m.id), trigger:'New order',
+      title:'Duplicate acetaminophen: over the daily max',
+      why:`Two orders contain acetaminophen: ${ap.map(m=>`${m.name} (up to ${m.apap.toLocaleString()} mg/day)`).join(' and ')}. Together that is up to ${tot.toLocaleString()} mg a day. The max is 4,000 mg. Too much can cause liver injury.`,
+      data:ap.map(m=>`${m.name} ${m.dose} ${m.route} ${m.freq}`),
+      action:'Ask the provider to change the new order or stop the scheduled acetaminophen.'});
+  }
+
+  // Orders placed through the new-medication checker keep being re-checked
+  meds.filter(m => m.catKey && isActive(m)).forEach(m => {
+    const d = CAT.find(x => x.key === m.catKey);
+    checkNew(p, d, m.id).forEach(i => add({id:`new:${p.id}:${m.id}:${hash(i.title)}`, sev:i.sev, meds:[m.id], trigger:'New order',
+      title:`${m.name}: ${i.title}`, why:i.why, data:[`${i.type} check · ordered ${fmt(m.orderedAt)}`], action:i.action}));
+  });
+
+  // Opioids + breathing
+  const op = cls('opioid');
+  if (op.length && (v.rr < 12 || v.spo2 < 90)) add({id:`resp:${p.id}`, sev:'crit', meds:op.map(m=>m.id), trigger:'Vital sign change',
+    title:'Breathing is slowing: hold opioids',
+    why:`Respiratory rate is ${v.rr}/min and SpO2 is ${v.spo2}%. ${list(op)} can slow breathing further.`,
+    data:[`RR ${v.rr}/min · SpO2 ${v.spo2}% · bedside monitor · ${now}`, `Opioid orders: ${op.map(m=>m.name).join(', ')}`],
+    action:'Hold opioids. Check sedation, stimulate the patient, apply oxygen, follow the naloxone protocol if needed, and notify the provider.'});
+
+  // Hemoglobin / lactate
+  if (L.hgb && L.hgb.v < 7) add({id:`hgb:${p.id}`, sev:'crit', meds:[], trigger:'New lab result', title:'Hemoglobin below transfusion threshold',
+    why:`Hemoglobin is ${L.hgb.v} g/dL${L.hgb.prev!=null?` (was ${L.hgb.prev})`:''}. With an active GI bleed, transfusion is usually considered below 7.`,
+    data:[`Hgb ${L.hgb.v} g/dL · lab result · ${fmt(L.hgb.t)}`, `HR ${v.hr} · BP ${v.sbp}/${v.dbp}`], action:'Notify the provider now, confirm type and crossmatch, and check for signs of ongoing bleeding.'});
+  if (L.lac && L.lac.v >= 4) add({id:`lac:${p.id}`, sev:'crit', meds:[], trigger:'New lab result', title:'Lactate 4 or higher: septic shock risk',
+    why:`Lactate is ${L.lac.v} mmol/L.`, data:[`Lactate ${L.lac.v} mmol/L · ${fmt(L.lac.t)}`], action:'Start the 30 mL/kg fluid bolus and notify the provider.'});
+
+  // Time-critical meds and timed care tasks
+  const tcItems = meds.filter(m => m.tc && isActive(m)).map(m => ({kind:'med', id:m.id, name:m.name, due:m.tc.due, grace:m.tc.grace, why:m.tc.why}))
+    .concat((p.tasks||[]).filter(t => !t.done).map(t => ({kind:'task', id:t.id, name:t.name, due:t.due, grace:t.grace, why:t.why})));
+  tcItems.forEach(x => {
+    const left = x.due - sim, base = {meds: x.kind==='med' ? [x.id] : [], task: x.kind==='task' ? x.id : null, timing:true, trigger:'Time-critical'};
+    if (left <= -x.grace) add(Object.assign({id:`tc:${p.id}:${x.id}:crit`, sev:'crit', title:`Late: ${x.name}`,
+      why:`${x.name} was due at ${fmt(x.due)} and is now ${Math.max(1,Math.floor(-left))} min late. ${x.why}`,
+      data:[`Due ${fmt(x.due)}${x.grace?` · ${x.grace}-min window`:''} · now ${fmt(sim)}`],
+      action: x.kind==='med' ? 'Give it now, or notify the provider if it cannot be given.' : 'Complete it now and document, or notify the provider.'}, base));
+    else if (left <= 15) add(Object.assign({id:`tc:${p.id}:${x.id}:warn`, sev:'warn', title: left > 0 ? `Due soon: ${x.name}` : `Overdue: ${x.name}`,
+      why: left > 0 ? `Due at ${fmt(x.due)}, in ${Math.ceil(left)} min. ${x.why}` : `Was due at ${fmt(x.due)}. Becomes critical at ${fmt(x.due + x.grace)}. ${x.why}`,
+      data:[`Due ${fmt(x.due)} · now ${fmt(sim)}`], action: x.kind==='med' ? 'Give on time.' : 'Complete on time.'}, base));
+  });
+
+  // Low-priority checks (held back)
+  if (cls('ACEi').length && cls('loop').length) add({id:`i1:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Lisinopril + furosemide: additive BP lowering', why:'Common, intended combination. Vitals are monitored.', data:[], action:''});
+  meds.filter(m=>m.beers && p.age>=65).forEach(m => add({id:`beers:${p.id}:${m.id}`, sev:'info', meds:[], trigger:'Order check', title:`${m.name} in a patient over 65 (Beers list)`, why:'May cause confusion or falls. Already a PRN with fall precautions.', data:[], action:''}));
+  if (cls('steroid').length) add({id:`st:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Prednisone can raise glucose', why:`Glucose is ${g} mg/dL. Fingerstick checks are ordered.`, data:[], action:''});
+  if (meds.some(m=>m.dilt) && cls('CCB').length) add({id:`dil:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Diltiazem can raise atorvastatin levels', why:'Dose is within the usual limit. Monitor for muscle pain.', data:[], action:''});
+  if (meds.some(m=>m.qt)) add({id:`qt:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Ondansetron: low QT risk at this dose', why:'No other QT-prolonging drugs active.', data:[], action:''});
+  if (cls('tetracycline').length && p.sex==='F' && !p.conditions.includes('PREG')) add({id:`dx:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Doxycycline: pregnancy test negative on admission', why:'Take upright with a full glass of water.', data:[], action:''});
+  if (p.conditions.includes('PREG') && cls('BB').length) add({id:`pr:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Labetalol + nifedipine: preferred in pregnancy', why:'Both are first-line for high blood pressure in pregnancy.', data:[], action:''});
+  if (p.conditions.includes('DYSPH')) add({id:`dy:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Dysphagia: oral meds crushed per swallow evaluation', why:'Check each new oral order can be crushed.', data:[], action:''});
+  if (p.conditions.includes('GIB')) add({id:`gi:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'NPO: all medications given IV', why:'NSAIDs, aspirin and anticoagulants will be blocked for this patient.', data:[], action:''});
+  if (cls('glycopeptide').length) add({id:`va:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Vancomycin: infuse over at least 90 minutes', why:`Est. CrCl ${c} mL/min. Pharmacy will dose follow-up by levels.`, data:[], action:''});
+  if (cls('macrolide').length) add({id:`az:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Azithromycin: QT prolongation (rare)', why:'No other risk factors found.', data:[], action:''});
+  if (cls('LMWH').length && c >= 30) add({id:`lm:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Enoxaparin: kidney function OK for current dose', why:`Est. CrCl ${c} mL/min.`, data:[], action:''});
+  if (cls('cephalosporin').length && p.allergies.some(a=>a.cls==='penicillin')) add({id:`ceph:${p.id}`, sev:'info', meds:[], trigger:'Order check', title:'Cefazolin with penicillin allergy', why:'Low cross-reactivity; tolerated previous doses without reaction.', data:[], action:''});
+  return A;
+}
+
+function resolved(a){
+  if (overrides[a.id]) return true;
+  if ((a.sev==='warn' || !a.meds.length) && acked[a.id]) return true;
+  if (!a.meds.length) return false;
+  const p = byId(a.pid);
+  return a.meds.every(id => { const m = p.meds.find(x=>x.id===id); return !m || !isActive(m); });
+}
+function runRules(){
+  const all = PTS.flatMap(evaluate);
+  all.forEach(a => {
+    if (seen[a.id] == null) {
+      seen[a.id] = sim;
+      if (booted && a.sev==='crit') { toast(a); flashIds[a.id] = Date.now(); addLog(`${byId(a.pid).bed} ${byId(a.pid).name} · ${a.title}`, 'crit'); }
+      else if (booted && a.sev==='warn') addLog(`${byId(a.pid).bed} ${byId(a.pid).name} · ${a.title}`, 'warn');
+    }
+  });
+  ALERTS = all;
+  const live = new Set(all.map(a=>a.id));
+  for (const id in seen) if (!live.has(id)) { delete seen[id]; delete overrides[id]; delete acked[id]; }
+}
+const activeAlerts = () => ALERTS.filter(a => a.sev!=='info' && !resolved(a));
+const alertsForMed = (pid, mid) => activeAlerts().filter(a => a.pid===pid && a.meds.includes(mid) && !a.timing);
+const sevRank = s => ({crit:0, warn:1, info:2}[s]);
+
+/* ---------------- simulation ---------------- */
+const STEP = {sbp:6, dbp:4, hr:4, rr:1.6, spo2:1.3};
+const NOISE = {sbp:3, dbp:2, hr:3, rr:.8, spo2:.7};
+function tick(){
+  sim += 0.5;
+  PTS.forEach(p => {
+    for (const k in p.vit) {
+      const d = p.target[k] - p.vit[k];
+      p.vit[k] += Math.max(-STEP[k], Math.min(STEP[k], d)) + (Math.abs(d) < 2 ? (Math.random()-.5)*NOISE[k] : 0);
+      if (Math.abs(p.vit[k] - p.target[k]) > 4 && Math.abs(d) < 2) p.vit[k] = p.target[k];
+      if (k==='spo2') p.vit[k] = Math.min(100, p.vit[k]);
+      p.hist[k].push(Math.round(p.vit[k])); if (p.hist[k].length > 30) p.hist[k].shift();
+    }
+  });
+  runRules(); render();
+}
+function setLab(p, key, val){ const L = p.labs[key]; L.prev = L.v; L.v = val; L.t = sim; }
+function addMed(p, m){ m.id = 'n' + (p.meds.length+1); m.status = 'due'; m.isNew = true; m.orderedAt = sim; p.meds.push(m); }
+
+const SCEN = [
+  {key:'bp',   pid:'p1', vit:['sbp','dbp','hr'], label:'Blood pressure drops',   run:p=>{ p.target.sbp=82; p.target.dbp=46; p.target.hr=52; }, log:'Monitor: BP trending down'},
+  {key:'k',    pid:'p1', lab:'k', label:'Potassium result: 5.8',  run:p=>setLab(p,'k',5.8), log:'Lab resulted: K+ 5.8 mmol/L'},
+  {key:'cr',   pid:'p2', lab:'cr', label:'Creatinine rises to 2.8',run:p=>setLab(p,'cr',2.8), log:'Lab resulted: creatinine 2.8 mg/dL'},
+  {key:'glu',  pid:'p2', lab:'glu', label:'Fingerstick glucose: 58',run:p=>setLab(p,'glu',58), log:'POC glucose 58 mg/dL'},
+  {key:'amox', pid:'p2', label:'Amoxicillin-clav ordered',run:p=>addMed(p,{name:'Amoxicillin-clavulanate', dose:'875 mg', route:'PO', freq:'BID', due:'10:00', cls:['penicillin']}), log:'New order: amoxicillin-clavulanate'},
+  {key:'norco',pid:'p4', label:'Norco ordered',          run:p=>addMed(p,{name:'Hydrocodone/APAP 5/325', dose:'1 tab', route:'PO', freq:'q4h PRN pain', due:'PRN', cls:['opioid'], apap:1950}), log:'New order: hydrocodone/acetaminophen'},
+  {key:'resp', pid:'p4', vit:['rr','spo2','hr'], label:'Breathing slows',        run:p=>{ p.target.rr=9; p.target.spo2=88; p.target.hr=64; }, log:'Monitor: RR and SpO2 trending down'},
+  {key:'inr',  pid:'p3', lab:'inr', label:'INR result: 4.8',        run:p=>setLab(p,'inr',4.8), log:'Lab resulted: INR 4.8'},
+  {key:'hgb',  pid:'p10', lab:'hgb', label:'Hemoglobin drops to 6.6', run:p=>setLab(p,'hgb',6.6), log:'Lab resulted: hemoglobin 6.6 g/dL'},
+  {key:'nsaid',pid:'p3', label:'Ibuprofen ordered',      run:p=>addMed(p,{name:'Ibuprofen', dose:'600 mg', route:'PO', freq:'q6h PRN pain', due:'PRN', cls:['NSAID']}), log:'New order: ibuprofen'}
+];
+
+/* ---------------- rendering ---------------- */
+function spark(arr, lo, hi, thr, color){
+  const W=120, H=30, pad=3, n=arr.length;
+  const y = v => pad + (1 - (Math.max(lo,Math.min(hi,v)) - lo)/(hi-lo)) * (H-2*pad);
+  const x = i => (i/(n-1))*W;
+  const pts = arr.map((v,i)=>`${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const area = `M0,${H} L${pts.split(' ').join(' L')} L${W},${H} Z`;
+  const t = thr!=null ? `<line x1="0" x2="${W}" y1="${y(thr)}" y2="${y(thr)}" stroke="var(--crit)" stroke-width="1" stroke-dasharray="3 3" opacity=".6"/>` : '';
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><path d="${area}" fill="${color}" opacity=".12"/>${t}<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.6" vector-effect="non-scaling-stroke"/><circle cx="${x(n-1)}" cy="${y(arr[n-1])}" r="2.6" fill="${color}"/></svg>`;
+}
+function worst(pid){
+  const a = activeAlerts().filter(x=>x.pid===pid);
+  const c = a.filter(x=>x.sev==='crit').length, w = a.filter(x=>x.sev==='warn').length;
+  if (c) return `<span class="chip crit"><span class="dot"></span>${c} critical</span>`;
+  if (w) return `<span class="chip warn">${w} warning${w>1?'s':''}</span>`;
+  return `<span class="chip ok">Stable</span>`;
+}
+function renderHeader(){
+  $('hdrCount').textContent = PTS.length;
+  const a = activeAlerts(), c = a.filter(x=>x.sev==='crit').length, w = a.filter(x=>x.sev==='warn').length;
+  const info = ALERTS.filter(x=>x.sev==='info').length;
+  setHTML('kpis', `<div class="kpi crit"><b>${c}</b><span>critical</span></div><div class="kpi warn"><b>${w}</b><span>warnings</span></div><div class="kpi info" title="A typical system would show all of these"><b>${info}</b><span>low-priority held back</span></div>`);
+  $('clock').textContent = fmt(sim);
+  $('live').className = 'live' + (paused ? ' off' : '');
+  $('pauseBtn').textContent = paused ? 'Resume feed' : 'Pause feed';
+  $('ptcount').textContent = PTS.length + ' assigned';
+  setHTML('scen', SCEN.filter(s => byId(s.pid)).map(s => { const p = byId(s.pid); return `<button data-act="scen" data-k="${s.key}" class="${used[s.key]?'used':''}" title="${used[s.key]?'Click to undo':'Click to trigger'}"><b>${s.label}</b><span>${used[s.key]?'↺ Click to undo':`${p.bed} · ${p.name}`}</span></button>`; }).join(''));
+}
+function renderList(){
+  const sorted = PTS.slice().sort((a,b) => a.bed.localeCompare(b.bed));
+  setHTML('plist', sorted.length ? sorted.map(p => `<button class="pt ${p.id===selected?'sel':''}" data-act="sel" data-pid="${p.id}"><span class="bed">${p.bed}</span><span class="nm">${esc(p.name)}${worst(p.id)}</span><span class="dx">${p.age}${p.sex} · ${esc(p.dx)}</span></button>`).join('') : '<div class="empty">No patients assigned.<br>Tap + Admit to add one.</div>');
+  setHTML('dischList', discharged.length ? `<details class="held"><summary>Discharged today (${discharged.length})</summary><div class="log">${discharged.map(d=>`<div><span class="mono">${fmt(d.at)}</span><span>${d.bed} · ${esc(d.name)}</span></div>`).join('')}</div></details>` : '');
+}
+function alertCard(a, opts){
+  const p = byId(a.pid), fresh = flashIds[a.id] && Date.now() - flashIds[a.id] < 2500;
+  const full = opts && opts.full;
+  const btns = [];
+  if (!full) btns.push(`<button class="btn" data-act="sel" data-pid="${p.id}">Open patient</button>`);
+  if (full && a.sev==='crit' && a.meds.length) btns.push(`<button class="btn danger" data-act="holdAlert" data-aid="${a.id}">Hold ${a.meds.length>1?'doses':'dose'}</button>`);
+  if (a.task) btns.push(`<button class="btn primary" data-act="taskDone" data-pid="${p.id}" data-tid="${a.task}">Mark done</button>`);
+  else if (a.sev==='warn' || !a.meds.length) btns.push(`<button class="btn" data-act="ack" data-aid="${a.id}">Acknowledge</button>`);
+  return `<article class="acard ${a.sev} ${fresh&&a.sev==='crit'?'new-crit':''}">
+    <div class="ah"><span class="at">${full?'':`<span class="mono" style="color:var(--muted);font-weight:600">${p.bed}</span> · `}${esc(a.title)}</span><span class="chip ${a.sev}">${a.sev==='crit'?'Critical':a.sev==='warn'?'Warning':'Low'}</span></div>
+    ${full ? `<p>${esc(a.why)}</p>${a.data.length?`<ul>${a.data.map(d=>`<li>${esc(d)}</li>`).join('')}</ul>`:''}${a.action?`<div class="act"><b>Suggested:</b> ${esc(a.action)}</div>`:''}` : `<p style="color:var(--muted)">${esc(p.name)} · ${esc(a.why.split('. ')[0])}.</p>`}
+    <div class="row"><span class="trig">${a.trigger} · ${fmt(seen[a.id]||0)}</span><span style="display:flex;gap:6px">${btns.join('')}</span></div>
+  </article>`;
+}
+function renderDetail(){
+  if (!byId(selected)) { $('detail').innerHTML = '<section class="panel empty" style="padding:40px 16px"><b>No patient selected</b>Admit a patient to start monitoring.</section>'; return; }
+  const p = byId(selected), v = R(p.vit), c = crcl(p);
+  const bpS = v.sbp<90?'crit':(Math.max(...p.hist.sbp.slice(-14))-v.sbp>=22?'warn':'');
+  const hrS = v.hr<55?'crit':v.hr>120?'warn':'';
+  const rrS = v.rr<12?'crit':v.rr>24?'warn':'';
+  const spS = v.spo2<90?'crit':v.spo2<93?'warn':'';
+  const col = s => s==='crit'?'var(--crit)':s==='warn'?'var(--warn)':'var(--accent)';
+  const tile = (lbl, val, unit, s, arr, lo, hi, thr) => `<div class="vt ${s}"><span class="lbl">${lbl}<span>${s==='crit'?'LOW':s==='warn'?'WATCH':''}</span></span><span class="val">${val}<small>${unit}</small></span>${spark(arr, lo, hi, thr, col(s))}</div>`;
+
+  const labRow = (name, L, unit, lo, hi, ref, extra) => {
+    if (!L) return '';
+    const out = L.v < lo || L.v > hi, isNew = sim - L.t < 8;
+    return `<tr class="${out?'flag-crit':''}"><td>${name}${isNew?'<span class="new">NEW</span>':''}${extra?`<span class="sub">${extra}</span>`:''}</td><td class="num ${out?'hi':''}">${L.v} <span style="color:var(--muted)">${unit}</span></td><td class="num" style="color:var(--muted)">${L.prev!=null?L.prev:'—'}</td><td class="num" style="color:var(--muted)">${ref}</td><td class="num" style="color:var(--muted)">${L.t<0?'Earlier':fmt(L.t)}</td></tr>`;
+  };
+
+  const pa = activeAlerts().filter(a=>a.pid===p.id).sort((a,b)=>sevRank(a.sev)-sevRank(b.sev));
+  const medRows = p.meds.map(m => {
+    const al = alertsForMed(p.id, m.id), s = al.some(a=>a.sev==='crit') ? 'crit' : al.length ? 'warn' : '';
+    let chip;
+    if (m.status==='given') chip = `<span class="chip ok" ${m.cosign?`title="Double-checked by ${m.cosign}"`:''}>Given ${fmt(m.at)}${m.cosign?' · 2 RN':''}</span>`;
+    else if (m.status==='held') chip = `<span class="chip neutral">Held ${fmt(m.at)}</span>`;
+    else if (s==='crit') chip = `<span class="chip crit"><span class="dot"></span>Hold</span>`;
+    else if (m.tc && tcState(m.tc.due, m.tc.grace, false).cls==='crit') chip = `<span class="chip crit"><span class="dot"></span>Late</span>`;
+    else if (m.tc && sim >= m.tc.due - 15) chip = `<span class="chip warn">Due now</span>`;
+    else if (s==='warn') chip = `<span class="chip warn">Review</span>`;
+    else chip = `<span class="chip ok">Clear</span>`;
+    const dcb = m.isNew && isActive(m) ? `<button class="btn" data-act="dc" data-pid="${p.id}" data-mid="${m.id}" title="Discontinue this order">D/C</button> ` : '';
+    const btn = dcb + (isActive(m) ? `<button class="btn ${s==='crit'?'':'primary'}" data-act="give" data-pid="${p.id}" data-mid="${m.id}">${m.due==='PRN'?'Give PRN':'Scan &amp; give'}</button>` : '');
+    return `<tr class="${s&&isActive(m)?'flag-'+s:''}"><td class="num">${m.due}</td><td><button class="mname" data-act="info" data-pid="${p.id}" data-mid="${m.id}" title="Drug info">${esc(m.name)}<span class="i" aria-hidden="true">ⓘ</span></button>${m.isNew?'<span class="new">NEW ORDER</span>':''}${isHighAlert(m)?'<span class="ha" title="High-alert medication: needs an independent double-check">HIGH-ALERT</span>':''}<span class="sub">${esc(m.dose)} · ${m.route} · ${esc(m.freq)}${m.param?' · '+m.param:''}</span>${m.tc?tcLine(m.tc, !isActive(m)):''}</td><td>${chip}</td><td style="text-align:right;white-space:nowrap">${btn}</td></tr>`;
+  }).join('');
+
+  if (!$('d-vitals') || !$('d-head')) $('detail').innerHTML = '<section class="panel phead" id="d-head"></section><div id="d-alerts"></div><section class="panel section" id="d-vitals"></section><section class="panel section" id="d-meds"></section><div id="d-tasks"></div><section class="panel section ck" id="d-check"></section><section class="panel section" id="d-labs"></section>';
+  setHTML('d-head', `
+    <div class="phead-top">
+      <div style="display:grid;gap:4px"><h2>${esc(p.name)}</h2>
+        <div class="meta"><span>Bed <b class="mono">${p.bed}</b></span><span><b>${p.age}</b> y · ${p.sex==='F'?'Female':'Male'}</span><span><b>${p.wt}</b> kg</span><span>Est. CrCl <b class="mono">${c}</b> mL/min</span></div>
+      </div>
+      <div class="phbtns">${worst(p.id)}<button class="btn sm" data-act="editPt" data-pid="${p.id}">Edit</button><button class="btn sm" data-act="discharge" data-pid="${p.id}">Discharge</button></div>
+    </div>
+    <div class="meta"><span>${esc(p.dx)}</span></div>
+    <div class="allergy"><span style="color:var(--muted);font-weight:600">Conditions:</span>${p.conditions.length || (p.otherConds||[]).length ? p.conditions.map(c=>`<span class="chip neutral">${COND[c]}</span>`).join('') + (p.otherConds||[]).map(c=>`<span class="chip neutral">${esc(c)}</span>`).join('') : '<span class="chip neutral">None recorded</span>'}<button class="linkbtn" data-act="editPt" data-pid="${p.id}">Edit</button></div>
+    <div class="allergy"><span style="color:var(--muted);font-weight:600">Allergies:</span>${p.allergies.length ? p.allergies.map(a=>`<span class="chip ${a.intol?'warn':'crit'}">${esc(a.agent)} · ${esc(a.rxn)}</span>`).join('') : '<span class="chip neutral">No known drug allergies</span>'}</div>`);
+  setHTML('d-alerts', pa.length ? `<section class="panel section"><h3>Active alerts <span>${pa.length}</span></h3>${pa.map(a=>alertCard(a,{full:true})).join('')}</section>` : '');
+  setHTML('d-vitals', `
+    <h3>Live vitals <span>bedside monitor · updates every few seconds</span></h3>
+    <div class="vitals">
+      ${tile('Blood pressure', `${v.sbp}/${v.dbp}`, 'mmHg', bpS, p.hist.sbp, 60, 170, 90)}
+      ${tile('Heart rate', v.hr, 'bpm', hrS, p.hist.hr, 40, 140, 55)}
+      ${tile('Resp. rate', v.rr, '/min', rrS, p.hist.rr, 4, 30, 12)}
+      ${tile('SpO2', v.spo2, '%', spS, p.hist.spo2, 80, 100, 90)}
+    </div>`);
+  setHTML('d-meds', `
+    <h3>Medications due <span>re-checked on every change</span></h3>
+    <div class="tbl-wrap"><table><thead><tr><th>Due</th><th>Order</th><th>Status</th><th></th></tr></thead><tbody>${medRows || '<tr><td colspan="4" class="empty">No medications ordered yet. Use "Check a new medication" below to add one safely.</td></tr>'}</tbody></table></div>`);
+  renderTasks(p);
+  renderCheck(p);
+  setHTML('d-labs', `
+    <h3>Labs</h3>
+    <div class="tbl-wrap"><table><thead><tr><th>Test</th><th>Result</th><th>Previous</th><th>Range</th><th>Time</th></tr></thead><tbody>
+      ${labRow('Potassium', p.labs.k, 'mmol/L', 3.5, 5.0, '3.5–5.0')}
+      ${labRow('Creatinine', p.labs.cr, 'mg/dL', 0.6, 1.3, '0.6–1.2', `Est. CrCl ${c} mL/min`)}
+      ${labRow('Glucose', p.labs.glu, 'mg/dL', 70, 180, '70–180')}
+      ${labRow('INR', p.labs.inr, '', 2.0, 3.0, '2.0–3.0 (on warfarin)')}
+      ${labRow('Hemoglobin', p.labs.hgb, 'g/dL', p.sex==='F'?12:13.5, p.sex==='F'?15.5:17.5, p.sex==='F'?'12.0–15.5':'13.5–17.5')}
+      ${labRow('Lactate', p.labs.lac, 'mmol/L', 0, 2.0, '< 2.0')}
+    </tbody></table></div>`);
+}
+function renderFeed(){
+  const a = activeAlerts().sort((x,y)=>sevRank(x.sev)-sevRank(y.sev) || (seen[y.id]-seen[x.id]));
+  const info = ALERTS.filter(x=>x.sev==='info');
+  const open = document.querySelector('details.held') && document.querySelector('details.held').open;
+  setHTML('feed', (a.length ? `<div class="feed">${a.map(x=>alertCard(x)).join('')}</div>` : `<div class="empty"><b>No active alerts</b>All due medications pass every check.</div>`)
+    + `<details class="held" ${open?'open':''}><summary>${info.length} low-priority checks held back</summary><div class="feed">${info.map(x=>alertCard(x)).join('')}</div></details>`);
+  setHTML('log', log.slice().reverse().slice(0,14).map(l => `<div><span class="mono">${l.t}</span><span class="k-${l.k}">${(i => i>0 ? `<b class="lp">${esc(l.text.slice(0,i))}</b> · ${esc(l.text.slice(i+3))}` : esc(l.text))(l.text.indexOf(' · '))}</span></div>`).join(''));
+}
+function setHTML(id, h){ const el = $(id); if (el._h !== h) { el._h = h; el.innerHTML = h; } }
+function render(){ renderHeader(); renderList(); renderDetail(); renderFeed(); }
+
+function addLog(text, k){ log.push({t:fmt(sim), text, k:k||''}); }
+function toast(a){
+  const p = byId(a.pid), el = document.createElement('div');
+  el.className = 'toast'; el.dataset.act = 'sel'; el.dataset.pid = p.id; el.tabIndex = 0; el.setAttribute('role','button');
+  el.innerHTML = `<span class="eyebrow">Vital · Critical · ${p.bed}</span><b>${esc(a.title)}</b><span>${esc(p.name)} · ${esc(a.trigger)}</span><button class="tx" data-act="closeToast" aria-label="Dismiss notification">×</button>`;
+  $('toasts').prepend(el);
+  setTimeout(() => el.remove(), 12000);
+}
+
+
+/* ---------------- high-alert double-check ---------------- */
+const NURSES = ['RN Maria Chen', 'RN David Okafor', 'RN Sofia Reyes (charge)'];
+const isHighAlert = m => m.cls.some(c => ['insulin','anticoag','opioid'].includes(c)) || (m.cls.includes('Ksupp') && m.route==='IV');
+const haWhy = m => m.cls.includes('insulin') ? 'Insulin' : m.cls.includes('anticoag') ? 'Anticoagulant' : m.cls.includes('opioid') ? 'Opioid' : 'IV potassium';
+function scale(g){ return g<=150?0 : g<=200?2 : g<=250?4 : g<=300?6 : g<=350?8 : 10; }
+function expectedDose(p, m){
+  if (m.cls.includes('insulin')) { const g = p.labs.glu.v, n = scale(g);
+    return {n, unit:'units', calc:`Glucose ${g} mg/dL at ${p.labs.glu.t<0?'last check':fmt(p.labs.glu.t)} → sliding scale ${g<=150?'≤ 150 = 0':g<=200?'151–200 = 2':g<=250?'201–250 = 4':g<=300?'251–300 = 6':g<=350?'301–350 = 8':'> 350 = 10 (call provider)'} units`}; }
+  const mm = /^([\d.]+)\s*(.*)$/.exec(m.dose); return {n: mm ? parseFloat(mm[1]) : NaN, unit: mm ? mm[2] : '', calc: `Ordered dose: ${m.dose} ${m.route}`};
+}
+let dcState = null;
+function administer(p, m, afterOverride){
+  if (isHighAlert(m)) { openDC(p, m, afterOverride); return; }
+  m.status='given'; m.at=sim;
+  addLog(`${p.bed} ${p.name} · Gave ${m.name} ${m.dose}.${afterOverride?' (after override)':' All checks passed.'}`, afterOverride?'warn':'ok'); runRules(); render();
+}
+function openDC(p, m, afterOverride){
+  const e = expectedDose(p, m);
+  dcState = {pid:p.id, mid:m.id, e, afterOverride}; modal = {dc:true};
+  const checks = ['Patient identity matches the wristband (name + date of birth)', `Drug matches the order: ${m.name}`, `Route: ${m.route}${m.route==='IV'?' · line checked and patent':''}`, `Time: ${m.due==='PRN'?'PRN · last dose and reason checked':'due '+m.due}`,
+    m.cls.includes('insulin') ? 'Latest glucose reviewed and meal tray confirmed' : m.cls.includes('anticoag') ? 'Latest INR / kidney function reviewed, no signs of bleeding' : m.cls.includes('opioid') ? 'Sedation level, respiratory rate and SpO2 reviewed' : 'Latest potassium reviewed'];
+  $('modalRoot').innerHTML = `<div class="overlay" data-act="closeBg"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="dct">
+    <div class="modal-h dc"><span class="eyebrow">Vital · High-alert medication · ${haWhy(m)}</span><h2 id="dct">Independent double-check: ${esc(m.name)} · ${p.bed} ${esc(p.name)}</h2></div>
+    <div class="modal-b">
+      <p style="margin:0">High-alert drugs cause the most harm when there's a mistake. A second nurse must verify this dose on their own before it can be given.</p>
+      <div class="dcgrid">
+        <span>Order</span><b>${esc(m.name)} ${esc(m.dose)} · ${m.route} · ${esc(m.freq)}</b>
+        <span>Patient</span><b>${esc(p.name)} · ${p.age}${p.sex} · ${p.wt} kg · ${p.allergies.length?p.allergies.map(a=>a.agent+' allergy').join(', '):'No known allergies'}</b>
+        <span>Vitals / labs</span><b class="mono" style="font-weight:500">BP ${R(p.vit).sbp}/${R(p.vit).dbp} · RR ${R(p.vit).rr} · SpO2 ${R(p.vit).spo2}% · Glucose ${p.labs.glu.v}${p.labs.inr?' · INR '+p.labs.inr.v:''} · CrCl ${crcl(p)}</b>
+      </div>
+      <fieldset class="dccheck"><legend>Second nurse verifies</legend>
+        ${checks.map((c,i)=>`<label><input type="checkbox" id="dcc${i}"> ${esc(c)}</label>`).join('')}
+      </fieldset>
+      <div class="ovr">
+        <label for="dcNurse">Second nurse</label>
+        <select id="dcNurse"><option value="">Choose who is double-checking</option>${NURSES.map(n=>`<option>${n}</option>`).join('')}</select>
+        <label for="dcDose">Dose calculated by the second nurse (without looking at yours)</label>
+        <div class="dcdose"><input id="dcDose" type="number" step="any" inputmode="decimal" placeholder="Enter dose"><span>${esc(e.unit)}</span></div>
+        ${m.cls.includes('insulin')?`<details class="dcsc"><summary>Sliding scale for this order</summary><span class="mono">≤150: 0 · 151–200: 2 · 201–250: 4 · 251–300: 6 · 301–350: 8 · >350: 10 units + call provider</span></details>`:''}
+      </div>
+      <p class="dcerr" id="dcErr" hidden></p>
+    </div>
+    <div class="modal-f"><button class="btn" data-act="closeModal">Cancel</button><button class="btn primary" data-act="dcConfirm">Co-sign and give</button></div>
+  </div></div>`;
+  $('dcc0').focus();
+}
+function confirmDC(){
+  const {pid, mid, e, afterOverride} = dcState, p = byId(pid), m = p.meds.find(x=>x.id===mid), err = $('dcErr');
+  const show = t => { err.textContent = t; err.hidden = false; };
+  const boxes = [...document.querySelectorAll('.dccheck input')];
+  if (boxes.some(b => !b.checked)) return show('Check every item on the list before co-signing.');
+  const nurse = $('dcNurse').value; if (!nurse) return show('Choose the second nurse who is double-checking.');
+  const raw = $('dcDose').value; if (raw === '') return show('The second nurse must enter the dose they calculated.');
+  const val = parseFloat(raw);
+  if (Math.abs(val - e.n) > 1e-6) {
+    addLog(`${p.bed} ${p.name} · Double-check caught a mismatch on ${m.name}: second nurse got ${val} ${e.unit}, calculated dose is ${e.n} ${e.unit}. Not given.`, 'crit');
+    render();
+    return show(`Doses don't match. ${nurse} entered ${val} ${e.unit}, but the calculated dose is ${e.n} ${e.unit}. ${e.calc}. Stop and recalculate together before giving.`);
+  }
+  m.status='given'; m.at=sim; m.cosign = nurse;
+  addLog(`${p.bed} ${p.name} · Gave ${m.name} ${e.n} ${e.unit}${afterOverride?' after override':''}. Double-checked by ${nurse}.`, afterOverride?'warn':'ok');
+  closeModal(); runRules(); render();
+}
+
+
+/* ---------------- time-critical + drug info ---------------- */
+function tcState(due, grace, done){
+  const left = due - sim;
+  if (done) return {cls:'done', text:'Done'};
+  if (left <= -grace) return {cls:'crit', text:`${Math.max(1,Math.floor(-left))} min late`};
+  if (left <= 0) return {cls:'warn', text:`${Math.floor(-left)} min late · critical in ${Math.ceil(grace+left)} min`};
+  if (left <= 15) return {cls:'warn', text:`Due in ${Math.ceil(left)} min`};
+  return {cls:'ok', text:`${Math.ceil(left)} min left`};
+}
+function tcLine(tc, done){ const st = tcState(tc.due, tc.grace, done); return `<span class="tcl ${st.cls}">⏱ Time-critical · due by ${fmt(tc.due + tc.grace)}${done ? '' : ' · ' + st.text}</span>`; }
+function renderTasks(p){
+  const items = p.meds.filter(m => m.tc).map(m => ({kind:'med', m, name:`${m.name} ${m.dose} ${m.route}`, due:m.tc.due, grace:m.tc.grace, why:m.tc.why, done:!isActive(m), at:m.at, held:m.status==='held'}))
+    .concat((p.tasks||[]).map(t => ({kind:'task', t, name:t.name, due:t.due, grace:t.grace, why:t.why, done:t.done, at:t.at})));
+  if (!items.length) { setHTML('d-tasks', ''); return; }
+  const rows = items.sort((a,b) => (a.done-b.done) || (a.due-b.due)).map(x => {
+    const st = tcState(x.due, x.grace, x.done), left = x.due - sim;
+    const pct = x.done ? 100 : Math.max(0, Math.min(100, 100 - (left / 60) * 100));
+    const col = st.cls==='crit' ? 'var(--crit)' : st.cls==='warn' ? 'var(--warn)' : st.cls==='done' ? 'var(--muted)' : 'var(--accent)';
+    const chip = x.done ? `<span class="chip ${x.held?'neutral':'ok'}">${x.held?'Held':'Done'} ${fmt(x.at)}</span>` : `<span class="chip ${st.cls==='ok'?'info':st.cls}">${st.cls==='crit'?'<span class="dot"></span>':''}${st.text}</span>`;
+    const act = x.done ? '' : x.kind==='task' ? `<button class="btn primary" data-act="taskDone" data-pid="${p.id}" data-tid="${x.t.id}">Mark done</button>` : `<button class="btn primary" data-act="give" data-pid="${p.id}" data-mid="${x.m.id}">Scan &amp; give</button>`;
+    return `<div class="task ${st.cls}"><div><b>${esc(x.name)}</b> <span class="mono" style="color:var(--muted);font-size:12px">· ${x.kind==='med'?'medication':'care task'} · due ${fmt(x.due)}${x.grace?` (+${x.grace} min window)`:''}</span><p>${esc(x.why)}</p></div><div class="tr">${chip}${act}</div><div class="bar"><i style="width:${pct}%;background:${col}"></i></div></div>`;
+  }).join('');
+  setHTML('d-tasks', `<section class="panel section"><h3>Time-critical <span>counts down on its own · escalates if late</span></h3><div class="tasks">${rows}</div></section>`);
+}
+
+const DRUG_INFO = {
+  'lisinopril':['ACE inhibitor','High blood pressure, heart failure','Low BP, high potassium, dry cough, face or tongue swelling (angioedema)','Check BP and potassium before giving. Not for use in pregnancy.'],
+  'metoprolol':['Beta-blocker (heart-selective)','Blood pressure, heart failure, heart rate control','Slow heart rate, low BP, fatigue','Check heart rate and BP before giving. Do not stop suddenly.'],
+  'furosemide':['Loop diuretic','Fluid overload, heart failure','Low potassium, dehydration, low BP','Daily weight, intake and output, potassium.'],
+  'spironolactone':['Potassium-sparing diuretic','Heart failure','High potassium','Check potassium and kidney function.'],
+  'metformin':['Biguanide','Type 2 diabetes','Stomach upset; rare lactic acidosis','Hold before IV contrast and when kidney function is below 30.'],
+  'insulin':['Rapid-acting insulin · high-alert','High blood sugar','Low blood sugar','Check glucose, give within 15 min of a meal, independent double-check.'],
+  'enoxaparin':['Low-molecular-weight heparin · high-alert','Preventing blood clots','Bleeding, low platelets','Check platelets and kidney function. Do not expel the air bubble.'],
+  'cefazolin':['Cephalosporin antibiotic (1st gen)','Skin and soft tissue infections','Rash, diarrhea','Low cross-reactivity with penicillin allergy.'],
+  'warfarin':['Vitamin K antagonist · high-alert','Stroke prevention in atrial fibrillation','Bleeding','Check INR. Many drug and food (vitamin K) interactions.'],
+  'diltiazem':['Calcium channel blocker (rate-slowing)','Heart rate control, blood pressure','Slow heart rate, low BP','Check heart rate and BP. Do not crush ER tablets.'],
+  'atorvastatin':['Statin','High cholesterol','Muscle pain, liver problems','Watch for interactions with azole antifungals and some antibiotics.'],
+  'acetaminophen':['Analgesic / fever reducer','Pain, fever','Liver injury above 4 g a day','Count every source, including combination pills.'],
+  'morphine':['Opioid · high-alert','Severe pain','Slowed breathing, sedation, constipation','Check sedation level, RR and SpO2 before and after. Naloxone at the bedside.'],
+  'ondansetron':['5-HT3 antiemetic','Nausea and vomiting','QT prolongation, headache, constipation','Safe antiemetic choice in Parkinson’s disease.'],
+  'ceftriaxone':['Cephalosporin antibiotic (3rd gen)','Pneumonia, PID, other serious infections','Rash, diarrhea','Give on schedule to keep levels steady.'],
+  'azithromycin':['Macrolide antibiotic','Pneumonia','QT prolongation, stomach upset','Check for other QT-prolonging drugs.'],
+  'diphenhydramine':['First-generation antihistamine','Allergy, sleep','Sedation, confusion, falls in older adults','On the Beers list for patients 65+.'],
+  'prednisone':['Corticosteroid','Inflammation, asthma flares','High blood sugar, mood changes, infection risk','Give with food. Check glucose in diabetes.'],
+  'albuterol':['Short-acting bronchodilator','Wheezing, bronchospasm','Fast heart rate, tremor, low potassium','Check lung sounds and heart rate after.'],
+  'doxycycline':['Tetracycline antibiotic','PID, some STIs, pneumonia','Esophageal irritation, sun sensitivity','Take upright with a full glass of water. Avoid in pregnancy.'],
+  'metronidazole':['Nitroimidazole antibiotic','PID, anaerobic infections','Metallic taste, nausea','No alcohol during and 3 days after.'],
+  'labetalol':['Alpha/beta-blocker','High blood pressure in pregnancy','Low BP, slow heart rate, dizziness','Check BP and heart rate before giving.'],
+  'nifedipine':['Calcium channel blocker (dihydropyridine)','High blood pressure, including pregnancy','Headache, flushing, low BP','Do not crush the ER tablet.'],
+  'prenatal':['Vitamin and mineral supplement','Pregnancy','Constipation, nausea (iron)','Separate from antacids.'],
+  'carbidopa':['Dopamine precursor · time-critical','Parkinson’s disease','Nausea, low BP when standing, involuntary movements','Give within 30 min of the scheduled time. Late doses cause stiffness and swallowing problems.'],
+  'ampicillin':['Penicillin + beta-lactamase inhibitor','Aspiration pneumonia, mixed infections','Allergy, rash, diarrhea','Check penicillin allergy first.'],
+  'pantoprazole':['Proton pump inhibitor','Bleeding stomach ulcers','Headache, diarrhea','IV push over at least 2 minutes.'],
+  'piperacillin':['Penicillin + beta-lactamase inhibitor','Sepsis, serious infections','Allergy, diarrhea, kidney effects','Draw blood cultures first. First dose within 1 hour in sepsis.'],
+  'vancomycin':['Glycopeptide antibiotic','Sepsis, MRSA','Kidney injury, flushing if infused too fast','Infuse slowly (at least 60 min per gram). Dosing guided by blood levels.'],
+  'amoxicillin':['Penicillin antibiotic','Ear, sinus, skin infections','Allergic reactions, diarrhea','Check penicillin allergy first.'],
+  'hydrocodone':['Opioid + acetaminophen · high-alert','Moderate to severe pain','Sedation, slowed breathing, liver injury from acetaminophen','Count total daily acetaminophen.'],
+  'ibuprofen':['NSAID','Pain, fever, inflammation','Stomach bleeding, kidney injury, higher BP','Avoid with warfarin, kidney disease, heart failure, GI bleed and late pregnancy.'],
+  'ketorolac':['NSAID (IV)','Short-term moderate to severe pain','Stomach bleeding, kidney injury','Maximum 5 days of use.'],
+  'tramadol':['Weak opioid · high-alert','Moderate pain','Seizures, serotonin syndrome, sedation','Avoid with other opioids and benzodiazepines.'],
+  'codeine':['Opioid + acetaminophen · high-alert','Mild to moderate pain','Nausea, sedation; effect varies by person','Count total acetaminophen.'],
+  'lorazepam':['Benzodiazepine','Anxiety, seizures','Sedation, slowed breathing, falls','Never combine with opioids without close monitoring.'],
+  'zolpidem':['Sedative-hypnotic','Short-term insomnia','Falls, confusion, sleepwalking','Avoid in older adults when possible.'],
+  'propranolol':['Beta-blocker (non-selective)','Blood pressure, tremor, migraine','Bronchospasm, slow heart rate','Contraindicated in asthma.'],
+  'verapamil':['Calcium channel blocker (rate-slowing)','Heart rate control, blood pressure','Heart block, constipation','Avoid with beta-blockers and in heart failure.'],
+  'potassium':['Electrolyte replacement (IV = high-alert)','Low potassium','High potassium, stomach irritation','Check potassium first. Never give IV push.'],
+  'trimethoprim':['Sulfonamide antibiotic','Urinary and skin infections','High potassium, raises INR, rash','Check sulfa allergy first.'],
+  'ciprofloxacin':['Fluoroquinolone antibiotic','Urinary and other infections','Tendon rupture, QT, confusion','Boxed warning for tendon damage.'],
+  'clarithromycin':['Macrolide antibiotic','Respiratory infections, H. pylori','QT prolongation, many drug interactions','Strongly raises statin levels.'],
+  'fluconazole':['Azole antifungal','Yeast infections','QT prolongation, liver effects','Strongly raises warfarin effect.'],
+  'aspirin':['Antiplatelet','Heart attack and stroke prevention','Bleeding, stomach ulcers','Avoid in active GI bleeding.'],
+  'glipizide':['Sulfonylurea','Type 2 diabetes','Low blood sugar','Higher risk with kidney disease and with insulin.'],
+  'pioglitazone':['Thiazolidinedione','Type 2 diabetes','Fluid retention, weight gain','Boxed warning: avoid in heart failure.'],
+  'metoclopramide':['Dopamine-blocking antiemetic','Nausea, slow stomach emptying','Muscle spasms, restlessness','Contraindicated in Parkinson’s disease.'],
+  'haloperidol':['Antipsychotic','Agitation, delirium','Muscle stiffness, QT prolongation','Avoid in Parkinson’s disease.']
+};
+function infoFor(name){ const n = name.toLowerCase(); const k = Object.keys(DRUG_INFO).find(k => n.startsWith(k)); return k ? DRUG_INFO[k] : null; }
+function openInfo(pid, mid){
+  const p = byId(pid), m = p.meds.find(x => x.id === mid), inf = infoFor(m.name), first = p.name.split(' ')[0];
+  const al = activeAlerts().filter(a => a.pid===pid && a.meds.includes(mid));
+  const now = [];
+  if (m.param) now.push(`Order parameter: ${m.param}. Current BP ${R(p.vit).sbp}/${R(p.vit).dbp}, HR ${R(p.vit).hr}.`);
+  if (isHighAlert(m)) now.push('High-alert medication: needs an independent double-check before giving.');
+  if (m.tc) now.push(`Time-critical: due by ${fmt(m.tc.due + m.tc.grace)} (${tcState(m.tc.due, m.tc.grace, !isActive(m)).text}).`);
+  if (m.renal || m.cls.includes('LMWH') || m.cls.includes('metformin')) now.push(`Cleared by the kidneys. Est. CrCl ${crcl(p)} mL/min.`);
+  al.forEach(a => now.push(`${a.sev==='crit'?'Critical':'Warning'}: ${a.title}`));
+  if (!al.length) now.push('No active Vital alerts for this medication.');
+  modal = {info:true};
+  $('modalRoot').innerHTML = `<div class="overlay" data-act="closeBg"><div class="modal info" role="dialog" aria-modal="true" aria-labelledby="inft">
+    <div class="modal-h inf"><span class="eyebrow">Vital · Drug info</span><h2 id="inft">${esc(m.name)} ${esc(m.dose)} ${m.route} · ${esc(m.freq)}</h2></div>
+    <div class="modal-b">
+      ${inf ? `<dl><dt>Class</dt><dd>${esc(inf[0])}</dd><dt>Used for</dt><dd>${esc(inf[1])}</dd><dt>Watch for</dt><dd>${esc(inf[2])}</dd><dt>Nursing</dt><dd>${esc(inf[3])}</dd></dl>` : '<p>No reference entry for this drug in the demo.</p>'}
+      <div><h3 style="margin:0 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">For ${esc(first)} right now</h3><ul>${now.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+      <p class="decide">Reference summary for the demo. In the full build this comes from the hospital's drug database.</p>
+    </div>
+    <div class="modal-f"><button class="btn primary" data-act="closeModal">Close</button></div>
+  </div></div>`;
+  const b = document.querySelector('.modal.info [data-act="closeModal"]'); b && b.focus();
+}
+
+
+/* ---------------- admit / edit / discharge ---------------- */
+const ALLERGENS = [
+  {agent:'Penicillin', cls:'penicillin'}, {agent:'Sulfa drugs', cls:'sulfonamide'}, {agent:'Codeine', cls:'codeine'},
+  {agent:'NSAIDs (ibuprofen, naproxen)', cls:'NSAID'}, {agent:'Aspirin', cls:'antiplatelet'}, {agent:'Cephalosporins', cls:'cephalosporin'},
+  {agent:'Morphine / opioids', cls:'opioid'}, {agent:'Tetracyclines', cls:'tetracycline'}, {agent:'Statins', cls:'statin'},
+  {agent:'Fluoroquinolones', cls:'quinolone'}, {agent:'Latex', cls:'latex'}, {agent:'Other', cls:'other'}
+];
+const BED_POOL = []; for (let r=410; r<=430; r+=2) ['A','B'].forEach(x => BED_POOL.push(r+x));
+let discharged = [], nextId = 100;
+function randomBed(exceptPid){ const used = new Set(PTS.filter(p=>p.id!==exceptPid).map(p=>p.bed)); const free = BED_POOL.filter(b=>!used.has(b)); return free.length ? free[Math.floor(Math.random()*free.length)] : ''; }
+function initPatient(p){
+  p.target = Object.assign({}, p.vit); p.base = Object.assign({}, p.vit);
+  p.hist = {sbp:[],dbp:[],hr:[],rr:[],spo2:[]};
+  for (let i=0;i<24;i++) for (const k in p.hist) p.hist[k].push(Math.round(p.vit[k] + (Math.random()-.5)*(k==='spo2'?1:k==='rr'?1:4)));
+  p.meds.forEach(m => { m.status = 'due'; m.at = null; });
+  (p.tasks||[]).forEach(t => { t.done = false; t.at = null; });
+  return p;
+}
+function allergyRow(a){
+  const agentKnown = a && ALLERGENS.some(x => x.agent===a.agent);
+  return `<div class="algrow">
+    <select class="alg-agent" aria-label="Allergen">${ALLERGENS.map(x=>`<option ${a && (a.agent===x.agent || (!agentKnown && x.agent==='Other'))?'selected':''}>${x.agent}</option>`).join('')}</select>
+    <input class="alg-other" type="text" placeholder="Allergen name" aria-label="Other allergen" value="${a && !agentKnown ? esc(a.agent) : ''}" ${a && !agentKnown ? '' : 'hidden'}>
+    <input class="alg-rxn" type="text" placeholder="Reaction (e.g. hives)" aria-label="Reaction" value="${a ? esc(a.rxn.replace(' (intolerance)','')) : ''}">
+    <select class="alg-type" aria-label="Type"><option value="allergy">Allergy</option><option value="intol" ${a && a.intol ? 'selected':''}>Intolerance</option></select>
+    <button type="button" class="btn icon" data-act="rmAllergy" aria-label="Remove allergy">×</button>
+  </div>`;
+}
+function openPtForm(mode, pid){
+  const p = mode==='edit' ? byId(pid) : null;
+  modal = {form:true, mode, pid};
+  const v = (k, d) => p ? esc(p[k]) : d;
+  $('modalRoot').innerHTML = `<div class="overlay" data-act="closeBg"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="pft">
+    <div class="modal-h inf"><span class="eyebrow">Vital · ${mode==='edit'?'Edit patient':'Admit patient'}</span><h2 id="pft">${mode==='edit'?esc(p.name):'New patient'}</h2></div>
+    <form id="ptForm" class="modal-b pform" novalidate>
+      <label class="full">Full name<input id="fName" type="text" autocomplete="off" value="${v('name','')}" placeholder="e.g. Carmen Díaz"></label>
+      <label>Age<input id="fAge" type="number" min="0" max="120" value="${v('age','')}" placeholder="years"></label>
+      <label>Gender<select id="fSex"><option value="F" ${p&&p.sex==='F'?'selected':''}>Female</option><option value="M" ${p&&p.sex==='M'?'selected':''}>Male</option></select></label>
+      <label>Weight (kg)<input id="fWt" type="number" min="1" max="400" step="0.1" value="${v('wt','70')}"></label>
+      <label>Bed<span class="bedrow"><input id="fBed" type="text" maxlength="4" value="${p ? p.bed : randomBed()}"><button type="button" class="btn" data-act="randBed" title="Assign a random free bed">Random</button></span></label>
+      <label class="full">Reason for admission<input id="fDx" type="text" value="${v('dx','')}" placeholder="e.g. Community-acquired pneumonia"></label>
+      <fieldset class="full conds"><legend>Conditions Vital should check against</legend>
+        ${Object.keys(COND).map(k=>`<label><input type="checkbox" value="${k}" ${p && p.conditions.includes(k)?'checked':''}> ${COND[k]}</label>`).join('')}
+        <label class="full" style="grid-column:1/-1">Other conditions (comma-separated)<input id="fOther" type="text" value="${p && p.otherConds ? esc(p.otherConds.join(', ')) : ''}" placeholder="e.g. COPD, hypothyroidism"></label>
+      </fieldset>
+      <fieldset class="full algs"><legend>Allergies</legend>
+        <div id="algList">${p ? p.allergies.map(allergyRow).join('') : ''}</div>
+        <p class="algnone" id="algNone">No known drug allergies.</p>
+        <button type="button" class="btn" data-act="addAllergy">+ Add allergy</button>
+      </fieldset>
+      <p class="dcerr full" id="pfErr" hidden></p>
+    </form>
+    <div class="modal-f"><button class="btn" data-act="closeModal">Cancel</button><button class="btn primary" data-act="ptSave">${mode==='edit'?'Save changes':'Admit patient'}</button></div>
+  </div></div>`;
+  syncAlgNone(); $('fName').focus();
+}
+function syncAlgNone(){ const n = $('algNone'); if (n) n.hidden = !!document.querySelector('#algList .algrow'); }
+function savePtForm(){
+  const err = $('pfErr'), show = t => { err.textContent = t; err.hidden = false; };
+  const name = $('fName').value.trim(), age = parseInt($('fAge').value, 10), sex = $('fSex').value, wt = parseFloat($('fWt').value);
+  const bed = $('fBed').value.trim().toUpperCase(), dx = $('fDx').value.trim();
+  if (!name) return show('Enter the patient’s name.');
+  if (!(age >= 0 && age <= 120)) return show('Enter an age between 0 and 120.');
+  if (!(wt > 0 && wt < 400)) return show('Enter a weight in kg. Vital uses it for kidney function and dosing.');
+  if (!/^\d{3}[A-D]$/.test(bed)) return show('Bed must be a room number and letter, like 412A.');
+  const clash = PTS.find(p => p.bed===bed && p.id!==modal.pid); if (clash) return show(`Bed ${bed} is taken by ${clash.name}. Choose another bed or tap Random.`);
+  const conditions = [...document.querySelectorAll('.conds input:checked')].map(i => i.value);
+  const otherConds = $('fOther').value.split(',').map(x => x.trim()).filter(Boolean);
+  const allergies = [];
+  for (const row of document.querySelectorAll('#algList .algrow')) {
+    const sel = row.querySelector('.alg-agent').value, other = row.querySelector('.alg-other').value.trim(), rxn = row.querySelector('.alg-rxn').value.trim(), intol = row.querySelector('.alg-type').value==='intol';
+    const def = ALLERGENS.find(x => x.agent===sel), agent = sel==='Other' ? other : sel;
+    if (!agent) return show('Enter the name of the allergen, or remove that row.');
+    allergies.push({agent, cls: sel==='Other' ? 'other' : def.cls, rxn: (rxn || 'reaction not recorded') + (intol ? ' (intolerance)' : ''), intol});
+  }
+  if (modal.mode==='edit') {
+    const p = byId(modal.pid), changes = [];
+    if (p.name!==name) changes.push('name'); if (p.age!==age) changes.push('age'); if (p.sex!==sex) changes.push('gender'); if (p.wt!==wt) changes.push('weight');
+    if (p.bed!==bed) changes.push(`bed ${p.bed} → ${bed}`); if (JSON.stringify(p.allergies)!==JSON.stringify(allergies)) changes.push('allergies'); if (p.dx!==dx) changes.push('diagnosis'); if (p.conditions.join()!==conditions.join() || (p.otherConds||[]).join()!==otherConds.join()) changes.push('conditions');
+    Object.assign(p, {name, age, sex, wt, bed, dx: dx || p.dx, conditions, otherConds, allergies});
+    addLog(`${p.bed} ${p.name} · Patient info updated${changes.length?': '+changes.join(', '):''}. Vital re-checked all medications.`);
+  } else {
+    const p = initPatient({id:'p'+(nextId++), bed, name, age, sex, wt, dx: dx || 'Admitted', conditions, otherConds, allergies,
+      vit:{sbp:124,dbp:76,hr:80,rr:16,spo2:97}, labs:{k:{v:4.2,t:sim}, cr:{v:0.9,t:sim}, glu:{v:110,t:sim}}, meds:[], tasks:[], isNewPt:true});
+    PTS.push(p); selected = p.id; ck = {key:'', ovr:false};
+    addLog(`${p.bed} ${p.name} · Admitted${allergies.length?` · allergies: ${allergies.map(a=>a.agent).join(', ')}`:' · no known drug allergies'}`, 'ok');
+  }
+  closeModal(); runRules(); render();
+}
+function openDischarge(pid){
+  const p = byId(pid), pending = p.meds.filter(isActive).length, al = activeAlerts().filter(a=>a.pid===pid).length;
+  modal = {discharge:true, pid};
+  $('modalRoot').innerHTML = `<div class="overlay" data-act="closeBg"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="dst">
+    <div class="modal-h inf"><span class="eyebrow">Vital · Discharge</span><h2 id="dst">Discharge ${esc(p.name)} from ${p.bed}?</h2></div>
+    <div class="modal-b">
+      <p style="margin:0">Vital stops monitoring this patient and bed ${p.bed} becomes free.</p>
+      ${al || pending ? `<div class="verdict warn"><b>Before you discharge</b><span>${al?`${al} active alert${al>1?'s':''}. `:''}${pending?`${pending} medication${pending>1?'s':''} not yet given or held today.`:''}</span></div>` : `<div class="verdict ok"><b>Ready</b><span>No active alerts or pending medications.</span></div>`}
+    </div>
+    <div class="modal-f"><button class="btn" data-act="closeModal">Cancel</button><button class="btn primary" data-act="confirmDischarge">Discharge patient</button></div>
+  </div></div>`;
+  document.querySelector('[data-act="confirmDischarge"]').focus();
+}
+function doDischarge(){
+  const p = byId(modal.pid);
+  PTS = PTS.filter(x => x !== p);
+  discharged.unshift({name:p.name, bed:p.bed, at:sim});
+  addLog(`${p.bed} ${p.name} · Discharged. Bed ${p.bed} is now free.`, 'ok');
+  if (selected === p.id) { selected = PTS.length ? PTS[0].id : null; ck = {key:'', ovr:false}; }
+  closeModal(); runRules(); render();
+}
+
+/* ---------------- modal ---------------- */
+let modal = null;
+function openModal(pid, mid){
+  const p = byId(pid), m = p.meds.find(x=>x.id===mid), al = alertsForMed(pid, mid).sort((a,b)=>sevRank(a.sev)-sevRank(b.sev));
+  modal = {pid, mid, al};
+  const s = al[0].sev;
+  $('modalRoot').innerHTML = `<div class="overlay" data-act="closeBg"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+    <div class="modal-h ${s}"><span class="eyebrow">${s==='crit'?'Vital · stop and check before giving':'Vital · review before giving'}</span><h2 id="mt">${esc(m.name)} ${esc(m.dose)} ${m.route} · ${p.bed} ${esc(p.name)}</h2></div>
+    <div class="modal-b">
+      ${al.map(a=>`<div class="acard ${a.sev}"><div class="ah"><span class="at">${esc(a.title)}</span><span class="chip ${a.sev}">${a.sev==='crit'?'Critical':'Warning'}</span></div><p>${esc(a.why)}</p>${a.data.length?`<ul>${a.data.map(d=>`<li>${esc(d)}</li>`).join('')}</ul>`:''}<div class="act"><b>Suggested:</b> ${esc(a.action)}</div></div>`).join('')}
+      <div class="ovr" id="ovr" hidden>
+        <label for="ovrReason">Reason for giving anyway</label>
+        <select id="ovrReason"><option value="">Choose a reason</option><option>Provider aware and ordered to give</option><option>Rechecked value is within range</option><option>Parameter does not apply (documented)</option><option>Other</option></select>
+        <label for="ovrNote">Note</label>
+        <textarea id="ovrNote" placeholder="Required for Other. Example: Dr. Patel notified at 09:05, said give."></textarea>
+      </div>
+      <p class="decide">Vital is a second check. You make the call, and your decision is logged.</p>
+    </div>
+    <div class="modal-f" id="mf">
+      <button class="btn" data-act="closeModal">Cancel</button>
+      <button class="btn" data-act="showOvr">Give anyway…</button>
+      <button class="btn ${s==='crit'?'danger':'primary'}" data-act="modalHold">Hold dose</button>
+    </div></div></div>`;
+  const hb = document.querySelector('[data-act="modalHold"]'); hb && hb.focus();
+}
+function closeModal(){ modal = null; dcState = null; $('modalRoot').innerHTML = ''; }
+
+/* ---------------- events ---------------- */
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-act]'); if (!t) return;
+  const act = t.dataset.act;
+  if (act==='closeBg' && e.target !== t) return;
+  if (act==='closeToast'){ t.closest('.toast').remove(); }
+  else if (act==='sel'){ if (selected !== t.dataset.pid) ck = {key:'', ovr:false}; selected = t.dataset.pid; render(); if (window.innerWidth < 760) $('detail').scrollIntoView({behavior:'smooth'}); }
+  else if (act==='scen'){
+    const s = SCEN.find(x=>x.key===t.dataset.k), p = byId(s.pid);
+    selected = s.pid;
+    if (used[s.key]) {
+      const u = used[s.key];
+      if (s.lab) p.labs[s.lab] = u.lab;
+      if (s.vit) s.vit.forEach(k => p.target[k] = p.base[k]);
+      if (u.newMed) p.meds = p.meds.filter(m => m.id !== u.newMed);
+      p.meds.forEach(m => { if (!isActive(m) && m.at >= u.at) { m.status = 'due'; m.at = null; } });
+      delete used[s.key]; addLog(`${p.bed} ${p.name} · Undid: ${s.label}`);
+    } else {
+      const u = {at: sim, lab: s.lab ? JSON.parse(JSON.stringify(p.labs[s.lab])) : null, n: p.meds.length};
+      s.run(p);
+      u.newMed = p.meds.length > u.n ? p.meds[p.meds.length-1].id : null;
+      used[s.key] = u; addLog(`${p.bed} ${p.name} · ${s.log}`);
+    }
+    runRules(); render();
+  }
+  else if (act==='give'){
+    const p = byId(t.dataset.pid), m = p.meds.find(x=>x.id===t.dataset.mid);
+    if (alertsForMed(p.id, m.id).length) openModal(p.id, m.id);
+    else administer(p, m, false);
+  }
+  else if (act==='holdAlert'){
+    const a = ALERTS.find(x=>x.id===t.dataset.aid), p = byId(a.pid);
+    a.meds.forEach(id => { const m = p.meds.find(x=>x.id===id); if (isActive(m)) { m.status='held'; m.at=sim; } });
+    addLog(`${p.bed} ${p.name} · Held ${a.meds.map(id=>p.meds.find(x=>x.id===id).name).join(', ')}. Reason: ${a.title}`, 'ok'); runRules(); render();
+  }
+  else if (act==='ack'){ acked[t.dataset.aid] = true; const a = ALERTS.find(x=>x.id===t.dataset.aid); addLog(`${byId(a.pid).bed} ${byId(a.pid).name} · Acknowledged: ${a.title}`); render(); }
+  else if (act==='pause'){ paused = !paused; render(); }
+  else if (act==='skip'){ sim += 14.5; addLog('Clock moved forward 15 min (demo)'); tick(); }
+  else if (act==='taskDone'){ const p = byId(t.dataset.pid), tk = p.tasks.find(x=>x.id===t.dataset.tid); tk.done = true; tk.at = sim; addLog(`${p.bed} ${p.name} · Done: ${tk.name}${sim > tk.due + tk.grace ? ` (${Math.floor(sim-tk.due)} min late)` : ''}`, sim > tk.due + tk.grace ? 'warn' : 'ok'); runRules(); render(); }
+  else if (act==='admit'){ openPtForm('add'); }
+  else if (act==='editPt'){ openPtForm('edit', t.dataset.pid); }
+  else if (act==='randBed'){ $('fBed').value = randomBed(modal.pid); }
+  else if (act==='addAllergy'){ $('algList').insertAdjacentHTML('beforeend', allergyRow(null)); syncAlgNone(); const rows = document.querySelectorAll('#algList .algrow'); rows[rows.length-1].querySelector('select').focus(); }
+  else if (act==='rmAllergy'){ t.closest('.algrow').remove(); syncAlgNone(); }
+  else if (act==='ptSave'){ savePtForm(); }
+  else if (act==='discharge'){ openDischarge(t.dataset.pid); }
+  else if (act==='confirmDischarge'){ doDischarge(); }
+  else if (act==='info'){ openInfo(t.dataset.pid, t.dataset.mid); }
+  else if (act==='ckCancel'){ ck = {key:'', ovr:false}; render(); }
+  else if (act==='ckShowOvr'){ ck.ovr = true; render(); $('ckReason') && $('ckReason').focus(); }
+  else if (act==='ckAdd'){ orderFromCheck(''); }
+  else if (act==='ckAddOvr'){ const r = $('ckReason').value; if (!r) { $('ckReason').style.borderColor='var(--crit)'; $('ckReason').focus(); return; } orderFromCheck(r); }
+  else if (act==='dc'){ const p = byId(t.dataset.pid), m = p.meds.find(x=>x.id===t.dataset.mid); p.meds = p.meds.filter(x=>x!==m); for (const k in used) if (used[k].newMed===m.id && SCEN.find(s=>s.key===k).pid===p.id) delete used[k]; addLog(`${p.bed} ${p.name} · Discontinued ${m.name}`); runRules(); render(); }
+  else if (act==='reset'){ ck = {key:'', ovr:false}; discharged = []; PTS = makePatients(); sim = 0; seen = {}; acked = {}; overrides = {}; used = {}; flashIds = {}; log = []; selected = 'p1'; booted = false; addLog(`Shift started. Monitoring ${PTS.length} patients.`); runRules(); booted = true; closeModal(); $('toasts').innerHTML=''; render(); }
+  else if (act==='closeModal' || act==='closeBg'){ closeModal(); }
+  else if (act==='showOvr'){
+    $('ovr').hidden = false; t.remove();
+    const f = $('mf'); const b = document.createElement('button'); b.className='btn'; b.dataset.act='confirmOvr'; b.textContent='Confirm and give'; f.insertBefore(b, f.lastElementChild);
+    $('ovrReason').focus();
+  }
+  else if (act==='confirmOvr'){
+    const r = $('ovrReason').value, n = $('ovrNote').value.trim();
+    if (!r || (r==='Other' && !n)) { $('ovrReason').style.borderColor='var(--crit)'; $('ovrReason').focus(); return; }
+    const p = byId(modal.pid), m = p.meds.find(x=>x.id===modal.mid);
+    modal.al.forEach(a => overrides[a.id] = r);
+    addLog(`${p.bed} ${p.name} · Override on ${m.name}: "${r}${n?' — '+n:''}"`, 'warn'); closeModal(); administer(p, m, true);
+  }
+  else if (act==='dcConfirm'){ confirmDC(); }
+  else if (act==='modalHold'){
+    const p = byId(modal.pid), m = p.meds.find(x=>x.id===modal.mid);
+    m.status='held'; m.at=sim; addLog(`${p.bed} ${p.name} · Held ${m.name}. Reason: ${modal.al[0].title}`, 'ok'); closeModal(); runRules(); render();
+  }
+});
+document.addEventListener('change', e => {
+  if (e.target.id==='ckDrug') { ck = {key:e.target.value, ovr:false}; render(); }
+  if (e.target.classList.contains('alg-agent')) { const o = e.target.parentNode.querySelector('.alg-other'); o.hidden = e.target.value!=='Other'; if (!o.hidden) o.focus(); }
+});
+document.addEventListener('input', e => { if (e.target.closest && e.target.closest('#ptForm') && $('pfErr')) $('pfErr').hidden = true; });
+document.addEventListener('submit', e => { if (e.target.id==='ptForm') { e.preventDefault(); savePtForm(); } });
+document.addEventListener('keydown', e => { if (e.key==='Escape' && modal) closeModal(); });
+
+PTS = makePatients();
+addLog(`Shift started. Monitoring ${PTS.length} patients.`);
+runRules(); booted = true; render();
+setInterval(() => { if (!paused) tick(); }, 2000);
+})();
+</script>
+</body></html>
