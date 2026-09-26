@@ -34,11 +34,20 @@ A medication that was safe when it was ordered at 8 am can be dangerous at 2 pm:
 ## Repository
 
 ```
-frontend/   React + TypeScript app (runs today with a built-in mock backend) → see frontend/README.md
-backend/    FastAPI service to build next (API contract + plan)            → see backend/README.md
-demo/       vitalhealth-demo.html: the single-file demo, open it in any browser
+START_HERE.md   ← teammates: read this first (setup + your part)
+frontend/       React + TypeScript app (finished; runs with a built-in mock backend)
+backend/
+  app/          FastAPI server            (Person 1)  — skeleton running, routes to build
+  vital/        Vital rules engine         (Person 2)  — models, helpers, parity tests ready
+  vital_ai/     AI explanations, SBAR      (Person 3)  — template versions working
+  fixtures/     Shared test data exported from the frontend
+demo/           vitalhealth-demo.html: the single-file demo, open it in any browser
 NEXT_STEPS.md   Follow-up checklist split across the team
 ```
+
+## Team
+
+Three people, each working independently in their own folder and branch. **New to the repo? Open [START_HERE.md](START_HERE.md).**
 
 ## Quick start
 

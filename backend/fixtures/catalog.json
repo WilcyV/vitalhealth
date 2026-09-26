@@ -1,0 +1,481 @@
+[
+  {
+    "key": "ibu",
+    "group": "pain",
+    "name": "Ibuprofen",
+    "dose": "600 mg",
+    "route": "PO",
+    "freq": "q6h PRN pain",
+    "due": "PRN",
+    "cls": [
+      "NSAID"
+    ]
+  },
+  {
+    "key": "keto",
+    "group": "pain",
+    "name": "Ketorolac",
+    "dose": "15 mg",
+    "route": "IV",
+    "freq": "q6h",
+    "due": "12:00",
+    "cls": [
+      "NSAID"
+    ]
+  },
+  {
+    "key": "apap",
+    "group": "pain",
+    "name": "Acetaminophen",
+    "dose": "650 mg",
+    "route": "PO",
+    "freq": "q6h PRN pain",
+    "due": "PRN",
+    "cls": [
+      "analgesic"
+    ],
+    "apap": 2600
+  },
+  {
+    "key": "tram",
+    "group": "pain",
+    "name": "Tramadol",
+    "tall": "TraMADol",
+    "lasa": "traz",
+    "purpose": "opioid pain medicine",
+    "dose": "50 mg",
+    "route": "PO",
+    "freq": "q6h PRN pain",
+    "due": "PRN",
+    "cls": [
+      "opioid"
+    ]
+  },
+  {
+    "key": "cod",
+    "group": "pain",
+    "name": "Codeine/APAP 30/300",
+    "dose": "1 tab",
+    "route": "PO",
+    "freq": "q6h PRN pain",
+    "due": "PRN",
+    "cls": [
+      "opioid",
+      "codeine"
+    ],
+    "apap": 1200
+  },
+  {
+    "key": "lora",
+    "group": "sleep-anxiety",
+    "name": "Lorazepam",
+    "dose": "1 mg",
+    "route": "IV",
+    "freq": "q6h PRN anxiety",
+    "due": "PRN",
+    "cls": [
+      "benzo"
+    ]
+  },
+  {
+    "key": "zolp",
+    "group": "sleep-anxiety",
+    "name": "Zolpidem",
+    "dose": "5 mg",
+    "route": "PO",
+    "freq": "Nightly PRN sleep",
+    "due": "PRN",
+    "cls": [
+      "sedative"
+    ]
+  },
+  {
+    "key": "prop",
+    "group": "rate-bp",
+    "name": "Propranolol",
+    "dose": "20 mg",
+    "route": "PO",
+    "freq": "BID",
+    "due": "12:00",
+    "cls": [
+      "BB",
+      "BB-ns"
+    ]
+  },
+  {
+    "key": "meto",
+    "group": "rate-bp",
+    "name": "Metoprolol tartrate",
+    "dose": "25 mg",
+    "route": "PO",
+    "freq": "BID",
+    "due": "12:00",
+    "cls": [
+      "BB"
+    ]
+  },
+  {
+    "key": "vera",
+    "group": "rate-bp",
+    "name": "Verapamil",
+    "dose": "80 mg",
+    "route": "PO",
+    "freq": "TID",
+    "due": "12:00",
+    "cls": [
+      "CCB",
+      "CCB-nd"
+    ]
+  },
+  {
+    "key": "kcl",
+    "group": "potassium",
+    "name": "Potassium chloride",
+    "dose": "20 mEq",
+    "route": "PO",
+    "freq": "Daily",
+    "due": "12:00",
+    "cls": [
+      "Ksupp"
+    ]
+  },
+  {
+    "key": "smx",
+    "group": "antibiotic",
+    "name": "Trimethoprim-sulfamethoxazole DS",
+    "dose": "1 tab",
+    "route": "PO",
+    "freq": "BID",
+    "due": "12:00",
+    "cls": [
+      "sulfonamide",
+      "tmpsmx"
+    ]
+  },
+  {
+    "key": "amox",
+    "group": "antibiotic",
+    "name": "Amoxicillin",
+    "dose": "500 mg",
+    "route": "PO",
+    "freq": "TID",
+    "due": "12:00",
+    "cls": [
+      "penicillin"
+    ]
+  },
+  {
+    "key": "cipro",
+    "group": "antibiotic",
+    "name": "Ciprofloxacin",
+    "dose": "500 mg",
+    "route": "PO",
+    "freq": "BID",
+    "due": "12:00",
+    "cls": [
+      "quinolone",
+      "QT"
+    ]
+  },
+  {
+    "key": "clari",
+    "group": "antibiotic",
+    "name": "Clarithromycin",
+    "dose": "500 mg",
+    "route": "PO",
+    "freq": "BID",
+    "due": "12:00",
+    "cls": [
+      "macrolide-strong",
+      "QT"
+    ]
+  },
+  {
+    "key": "fluc",
+    "group": "antifungal",
+    "name": "Fluconazole",
+    "dose": "200 mg",
+    "route": "PO",
+    "freq": "Daily",
+    "due": "12:00",
+    "cls": [
+      "azole",
+      "QT"
+    ]
+  },
+  {
+    "key": "asa",
+    "group": "antiplatelet",
+    "name": "Aspirin",
+    "dose": "81 mg",
+    "route": "PO",
+    "freq": "Daily",
+    "due": "12:00",
+    "cls": [
+      "antiplatelet"
+    ]
+  },
+  {
+    "key": "enox",
+    "group": "anticoag",
+    "name": "Enoxaparin",
+    "dose": "40 mg",
+    "route": "SC",
+    "freq": "Daily",
+    "due": "12:00",
+    "cls": [
+      "LMWH",
+      "anticoag"
+    ]
+  },
+  {
+    "key": "metf",
+    "group": "diabetes",
+    "name": "Metformin",
+    "tall": "MetFORMIN",
+    "lasa": "metro",
+    "purpose": "diabetes medicine",
+    "dose": "500 mg",
+    "route": "PO",
+    "freq": "BID",
+    "due": "12:00",
+    "cls": [
+      "metformin"
+    ]
+  },
+  {
+    "key": "glip",
+    "group": "diabetes",
+    "name": "Glipizide",
+    "dose": "5 mg",
+    "route": "PO",
+    "freq": "Daily",
+    "due": "12:00",
+    "cls": [
+      "SU"
+    ]
+  },
+  {
+    "key": "pio",
+    "group": "diabetes",
+    "name": "Pioglitazone",
+    "dose": "15 mg",
+    "route": "PO",
+    "freq": "Daily",
+    "due": "12:00",
+    "cls": [
+      "TZD"
+    ]
+  },
+  {
+    "key": "pred",
+    "group": "steroid",
+    "name": "Prednisone",
+    "dose": "40 mg",
+    "route": "PO",
+    "freq": "Daily",
+    "due": "12:00",
+    "cls": [
+      "steroid"
+    ]
+  },
+  {
+    "key": "lisi",
+    "group": "bp",
+    "name": "Lisinopril",
+    "dose": "10 mg",
+    "route": "PO",
+    "freq": "Daily",
+    "due": "12:00",
+    "cls": [
+      "ACEi"
+    ]
+  },
+  {
+    "key": "nife",
+    "group": "bp",
+    "name": "Nifedipine ER",
+    "dose": "30 mg",
+    "route": "PO",
+    "freq": "Daily",
+    "due": "12:00",
+    "cls": [
+      "CCB",
+      "ER"
+    ]
+  },
+  {
+    "key": "atorva",
+    "group": "statin",
+    "name": "Atorvastatin",
+    "dose": "40 mg",
+    "route": "PO",
+    "freq": "Nightly",
+    "due": "21:00",
+    "cls": [
+      "statin"
+    ]
+  },
+  {
+    "key": "doxy",
+    "group": "antibiotic",
+    "name": "Doxycycline",
+    "dose": "100 mg",
+    "route": "PO",
+    "freq": "BID",
+    "due": "12:00",
+    "cls": [
+      "tetracycline"
+    ]
+  },
+  {
+    "key": "reglan",
+    "group": "nausea",
+    "name": "Metoclopramide",
+    "dose": "10 mg",
+    "route": "IV",
+    "freq": "q6h PRN nausea",
+    "due": "PRN",
+    "cls": [
+      "dopamine-block"
+    ]
+  },
+  {
+    "key": "haldol",
+    "group": "agitation",
+    "name": "Haloperidol",
+    "dose": "2 mg",
+    "route": "IV",
+    "freq": "q6h PRN agitation",
+    "due": "PRN",
+    "cls": [
+      "dopamine-block",
+      "QT"
+    ]
+  },
+  {
+    "key": "ondan",
+    "group": "nausea",
+    "name": "Ondansetron",
+    "dose": "4 mg",
+    "route": "IV",
+    "freq": "q8h PRN nausea",
+    "due": "PRN",
+    "cls": [
+      "antiemetic",
+      "QT"
+    ]
+  },
+  {
+    "key": "labe",
+    "group": "bp",
+    "name": "Labetalol",
+    "dose": "100 mg",
+    "route": "PO",
+    "freq": "BID",
+    "due": "12:00",
+    "cls": [
+      "BB"
+    ]
+  },
+  {
+    "key": "hydral",
+    "group": "bp",
+    "name": "Hydralazine",
+    "tall": "HydrALAZINE",
+    "lasa": "hydroxy",
+    "purpose": "blood pressure medicine",
+    "dose": "10 mg",
+    "route": "IV",
+    "freq": "q6h PRN SBP > 160",
+    "due": "PRN",
+    "cls": [
+      "vasodilator"
+    ]
+  },
+  {
+    "key": "hydroxy",
+    "group": "sleep-anxiety",
+    "name": "Hydroxyzine",
+    "tall": "HydrOXYzine",
+    "lasa": "hydral",
+    "purpose": "antihistamine for anxiety or itching",
+    "dose": "25 mg",
+    "route": "PO",
+    "freq": "q6h PRN anxiety",
+    "due": "PRN",
+    "cls": [
+      "antihistamine",
+      "sedating",
+      "QT"
+    ]
+  },
+  {
+    "key": "traz",
+    "group": "sleep-anxiety",
+    "name": "Trazodone",
+    "tall": "TraZODone",
+    "lasa": "tram",
+    "purpose": "antidepressant used for sleep",
+    "dose": "50 mg",
+    "route": "PO",
+    "freq": "Nightly PRN sleep",
+    "due": "PRN",
+    "cls": [
+      "sedating",
+      "QT"
+    ]
+  },
+  {
+    "key": "metro",
+    "group": "antibiotic",
+    "name": "Metronidazole",
+    "tall": "MetroNIDAZOLE",
+    "lasa": "metf",
+    "purpose": "antibiotic",
+    "dose": "500 mg",
+    "route": "PO",
+    "freq": "BID",
+    "due": "12:00",
+    "cls": [
+      "nitroimidazole"
+    ]
+  },
+  {
+    "key": "cephx",
+    "group": "antibiotic",
+    "name": "Cephalexin",
+    "dose": "500 mg",
+    "route": "PO",
+    "freq": "QID",
+    "due": "12:00",
+    "cls": [
+      "cephalosporin"
+    ]
+  },
+  {
+    "key": "quet",
+    "group": "agitation",
+    "name": "Quetiapine",
+    "dose": "12.5 mg",
+    "route": "PO",
+    "freq": "Nightly PRN agitation",
+    "due": "PRN",
+    "cls": [
+      "antipsychotic",
+      "QT"
+    ]
+  },
+  {
+    "key": "melat",
+    "group": "sleep-anxiety",
+    "name": "Melatonin",
+    "dose": "3 mg",
+    "route": "PO",
+    "freq": "Nightly PRN sleep",
+    "due": "PRN",
+    "cls": [
+      "supplement"
+    ]
+  }
+]

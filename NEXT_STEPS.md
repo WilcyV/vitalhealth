@@ -1,6 +1,6 @@
 # VitalHealth — follow-up checklist (team of 3)
 
-The frontend is complete, including the polish items: login + roles, loading/error states, charge-nurse unit view, safer alternatives, look-alike name warnings, accessibility/phone pass and UI tests. Remaining work is split across three people.
+The frontend is complete, including the polish items: login + roles, loading/error states, charge-nurse unit view, safer alternatives, look-alike name warnings, accessibility/phone pass and UI tests. Remaining work is split across three people. Each part has a starter kit in `backend/` — see [START_HERE.md](START_HERE.md).
 
 ## Everyone, before the demo
 - [ ] Clone the repo, `cd frontend && npm install && npm run dev`, sign in as each role and click through every flow (see README → Quick start).

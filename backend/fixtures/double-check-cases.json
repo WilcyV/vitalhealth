@@ -1,0 +1,47 @@
+[
+  {
+    "patient": "p2",
+    "med": "m2",
+    "expected": {
+      "n": 2,
+      "unit": "units",
+      "calc": "Glucose 164 mg/dL at last check → sliding scale 151–200 = 2 units"
+    }
+  },
+  {
+    "patient": "p2",
+    "med": "m3",
+    "expected": {
+      "n": 40,
+      "unit": "mg",
+      "calc": "Ordered dose: 40 mg SC"
+    }
+  },
+  {
+    "patient": "p3",
+    "med": "m1",
+    "expected": {
+      "n": 5,
+      "unit": "mg",
+      "calc": "Ordered dose: 5 mg PO"
+    }
+  },
+  {
+    "patient": "p4",
+    "med": "m2",
+    "expected": {
+      "n": 2,
+      "unit": "mg",
+      "calc": "Ordered dose: 2 mg IV"
+    }
+  },
+  {
+    "patient": "p4",
+    "med": "m4",
+    "expected": {
+      "n": 40,
+      "unit": "mg",
+      "calc": "Ordered dose: 40 mg SC"
+    }
+  }
+]

@@ -1,0 +1,893 @@
+[
+  {
+    "id": "p1",
+    "bed": "412A",
+    "name": "Rosa Martínez",
+    "age": 72,
+    "sex": "F",
+    "wt": 68,
+    "dx": "Heart failure, hypertension",
+    "conditions": [
+      "HF",
+      "HTN"
+    ],
+    "allergies": [],
+    "vit": {
+      "sbp": 128,
+      "dbp": 76,
+      "hr": 78,
+      "rr": 16,
+      "spo2": 96
+    },
+    "labs": {
+      "k": {
+        "v": 4.6,
+        "t": -420
+      },
+      "cr": {
+        "v": 1.1,
+        "t": -420
+      },
+      "glu": {
+        "v": 132,
+        "t": -90
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Lisinopril",
+        "dose": "10 mg",
+        "route": "PO",
+        "freq": "Daily",
+        "due": "09:00",
+        "cls": [
+          "ACEi"
+        ],
+        "hold": {
+          "sbp": 90
+        },
+        "param": "Hold if SBP < 90",
+        "effect": "blood pressure"
+      },
+      {
+        "id": "m2",
+        "name": "Metoprolol succinate",
+        "dose": "25 mg",
+        "route": "PO",
+        "freq": "Daily",
+        "due": "09:00",
+        "cls": [
+          "BB"
+        ],
+        "hold": {
+          "sbp": 90,
+          "hr": 55
+        },
+        "param": "Hold if SBP < 90 or HR < 55",
+        "effect": "blood pressure and heart rate"
+      },
+      {
+        "id": "m3",
+        "name": "Furosemide",
+        "dose": "40 mg",
+        "route": "IV",
+        "freq": "BID",
+        "due": "09:00",
+        "cls": [
+          "loop"
+        ]
+      },
+      {
+        "id": "m4",
+        "name": "Spironolactone",
+        "dose": "25 mg",
+        "route": "PO",
+        "freq": "Daily",
+        "due": "09:00",
+        "cls": [
+          "Ksparing"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p2",
+    "bed": "412B",
+    "name": "James Thompson",
+    "age": 64,
+    "sex": "M",
+    "wt": 78,
+    "dx": "Type 2 diabetes, CKD stage 3, cellulitis L leg",
+    "conditions": [
+      "DM",
+      "CKD"
+    ],
+    "allergies": [
+      {
+        "agent": "Penicillin",
+        "cls": "penicillin",
+        "rxn": "hives"
+      }
+    ],
+    "vit": {
+      "sbp": 138,
+      "dbp": 82,
+      "hr": 88,
+      "rr": 18,
+      "spo2": 97
+    },
+    "labs": {
+      "k": {
+        "v": 4.4,
+        "t": -400
+      },
+      "cr": {
+        "v": 1.3,
+        "t": -400
+      },
+      "glu": {
+        "v": 164,
+        "t": -60
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Metformin",
+        "dose": "1000 mg",
+        "route": "PO",
+        "freq": "BID",
+        "due": "09:00",
+        "cls": [
+          "metformin"
+        ],
+        "renal": true
+      },
+      {
+        "id": "m2",
+        "name": "Insulin lispro",
+        "dose": "per sliding scale",
+        "route": "SC",
+        "freq": "AC meals",
+        "due": "09:00",
+        "cls": [
+          "insulin"
+        ]
+      },
+      {
+        "id": "m3",
+        "name": "Enoxaparin",
+        "dose": "40 mg",
+        "route": "SC",
+        "freq": "Daily",
+        "due": "10:00",
+        "cls": [
+          "LMWH",
+          "anticoag"
+        ],
+        "renal": true
+      },
+      {
+        "id": "m4",
+        "name": "Cefazolin",
+        "dose": "2 g",
+        "route": "IV",
+        "freq": "q8h",
+        "due": "10:00",
+        "cls": [
+          "cephalosporin"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p3",
+    "bed": "414A",
+    "name": "Ana López",
+    "age": 58,
+    "sex": "F",
+    "wt": 70,
+    "dx": "Atrial fibrillation, anticoagulated",
+    "conditions": [
+      "AF"
+    ],
+    "allergies": [
+      {
+        "agent": "Codeine",
+        "cls": "codeine",
+        "rxn": "nausea (intolerance)",
+        "intol": true
+      }
+    ],
+    "vit": {
+      "sbp": 124,
+      "dbp": 78,
+      "hr": 84,
+      "rr": 16,
+      "spo2": 98
+    },
+    "labs": {
+      "k": {
+        "v": 4.1,
+        "t": -380
+      },
+      "cr": {
+        "v": 0.9,
+        "t": -380
+      },
+      "glu": {
+        "v": 108,
+        "t": -380
+      },
+      "inr": {
+        "v": 2.4,
+        "t": -380
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Warfarin",
+        "dose": "5 mg",
+        "route": "PO",
+        "freq": "Daily",
+        "due": "17:00",
+        "cls": [
+          "warfarin",
+          "anticoag"
+        ]
+      },
+      {
+        "id": "m2",
+        "name": "Diltiazem ER",
+        "dose": "120 mg",
+        "route": "PO",
+        "freq": "Daily",
+        "due": "09:00",
+        "cls": [
+          "CCB",
+          "CCB-nd"
+        ],
+        "hold": {
+          "sbp": 90,
+          "hr": 55
+        },
+        "param": "Hold if SBP < 90 or HR < 55",
+        "effect": "blood pressure and heart rate"
+      },
+      {
+        "id": "m3",
+        "name": "Atorvastatin",
+        "dose": "40 mg",
+        "route": "PO",
+        "freq": "Nightly",
+        "due": "21:00",
+        "cls": [
+          "statin"
+        ],
+        "dilt": true
+      }
+    ]
+  },
+  {
+    "id": "p4",
+    "bed": "414B",
+    "name": "Marcus Davis",
+    "age": 45,
+    "sex": "M",
+    "wt": 88,
+    "dx": "Post-op day 1, laparoscopic appendectomy",
+    "conditions": [
+      "POSTOP"
+    ],
+    "allergies": [],
+    "vit": {
+      "sbp": 132,
+      "dbp": 80,
+      "hr": 92,
+      "rr": 16,
+      "spo2": 97
+    },
+    "labs": {
+      "k": {
+        "v": 4,
+        "t": -300
+      },
+      "cr": {
+        "v": 1,
+        "t": -300
+      },
+      "glu": {
+        "v": 118,
+        "t": -300
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Acetaminophen",
+        "dose": "1000 mg",
+        "route": "PO",
+        "freq": "q6h",
+        "due": "09:00",
+        "cls": [
+          "analgesic"
+        ],
+        "apap": 4000
+      },
+      {
+        "id": "m2",
+        "name": "Morphine",
+        "dose": "2 mg",
+        "route": "IV",
+        "freq": "q2h PRN pain",
+        "due": "PRN",
+        "cls": [
+          "opioid"
+        ]
+      },
+      {
+        "id": "m3",
+        "name": "Ondansetron",
+        "dose": "4 mg",
+        "route": "IV",
+        "freq": "q8h PRN nausea",
+        "due": "PRN",
+        "cls": [
+          "antiemetic",
+          "QT"
+        ],
+        "qt": true
+      },
+      {
+        "id": "m4",
+        "name": "Enoxaparin",
+        "dose": "40 mg",
+        "route": "SC",
+        "freq": "Daily",
+        "due": "10:00",
+        "cls": [
+          "LMWH",
+          "anticoag"
+        ],
+        "renal": true
+      }
+    ]
+  },
+  {
+    "id": "p5",
+    "bed": "416A",
+    "name": "Grace Kim",
+    "age": 81,
+    "sex": "F",
+    "wt": 55,
+    "dx": "Community-acquired pneumonia",
+    "conditions": [
+      "PNA"
+    ],
+    "allergies": [],
+    "vit": {
+      "sbp": 118,
+      "dbp": 70,
+      "hr": 86,
+      "rr": 20,
+      "spo2": 94
+    },
+    "labs": {
+      "k": {
+        "v": 3.9,
+        "t": -300
+      },
+      "cr": {
+        "v": 0.8,
+        "t": -300
+      },
+      "glu": {
+        "v": 112,
+        "t": -300
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Ceftriaxone",
+        "dose": "1 g",
+        "route": "IV",
+        "freq": "Daily",
+        "due": "10:00",
+        "cls": [
+          "cephalosporin"
+        ]
+      },
+      {
+        "id": "m2",
+        "name": "Azithromycin",
+        "dose": "500 mg",
+        "route": "PO",
+        "freq": "Daily",
+        "due": "10:00",
+        "cls": [
+          "macrolide",
+          "QT"
+        ]
+      },
+      {
+        "id": "m3",
+        "name": "Diphenhydramine",
+        "dose": "25 mg",
+        "route": "PO",
+        "freq": "Nightly PRN sleep",
+        "due": "PRN",
+        "cls": [
+          "antihistamine"
+        ],
+        "beers": true
+      }
+    ]
+  },
+  {
+    "id": "p6",
+    "bed": "416B",
+    "name": "Luis Herrera",
+    "age": 37,
+    "sex": "M",
+    "wt": 82,
+    "dx": "Asthma exacerbation",
+    "conditions": [
+      "ASTHMA"
+    ],
+    "allergies": [
+      {
+        "agent": "Sulfa drugs",
+        "cls": "sulfonamide",
+        "rxn": "rash"
+      }
+    ],
+    "vit": {
+      "sbp": 126,
+      "dbp": 78,
+      "hr": 102,
+      "rr": 20,
+      "spo2": 95
+    },
+    "labs": {
+      "k": {
+        "v": 3.7,
+        "t": -240
+      },
+      "cr": {
+        "v": 0.9,
+        "t": -240
+      },
+      "glu": {
+        "v": 148,
+        "t": -60
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Prednisone",
+        "dose": "40 mg",
+        "route": "PO",
+        "freq": "Daily",
+        "due": "09:00",
+        "cls": [
+          "steroid"
+        ]
+      },
+      {
+        "id": "m2",
+        "name": "Albuterol neb",
+        "dose": "2.5 mg",
+        "route": "INH",
+        "freq": "q4h",
+        "due": "10:00",
+        "cls": [
+          "bronchodilator"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p7",
+    "bed": "418A",
+    "name": "Tanya Reed",
+    "age": 24,
+    "sex": "F",
+    "wt": 62,
+    "dx": "Pelvic inflammatory disease",
+    "conditions": [
+      "PID"
+    ],
+    "allergies": [],
+    "vit": {
+      "sbp": 116,
+      "dbp": 72,
+      "hr": 96,
+      "rr": 18,
+      "spo2": 98
+    },
+    "labs": {
+      "k": {
+        "v": 3.8,
+        "t": -200
+      },
+      "cr": {
+        "v": 0.7,
+        "t": -200
+      },
+      "glu": {
+        "v": 96,
+        "t": -200
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Ceftriaxone",
+        "dose": "1 g",
+        "route": "IV",
+        "freq": "q24h",
+        "due": "10:00",
+        "cls": [
+          "cephalosporin"
+        ]
+      },
+      {
+        "id": "m2",
+        "name": "Doxycycline",
+        "dose": "100 mg",
+        "route": "PO",
+        "freq": "BID",
+        "due": "09:00",
+        "cls": [
+          "tetracycline"
+        ]
+      },
+      {
+        "id": "m3",
+        "name": "Metronidazole",
+        "dose": "500 mg",
+        "route": "PO",
+        "freq": "BID",
+        "due": "09:00",
+        "cls": [
+          "nitroimidazole"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p8",
+    "bed": "418B",
+    "name": "Priya Shah",
+    "age": 31,
+    "sex": "F",
+    "wt": 74,
+    "dx": "Pregnant, 30 weeks (7 months), gestational hypertension",
+    "conditions": [
+      "PREG",
+      "HTN"
+    ],
+    "allergies": [],
+    "vit": {
+      "sbp": 146,
+      "dbp": 94,
+      "hr": 92,
+      "rr": 18,
+      "spo2": 98
+    },
+    "labs": {
+      "k": {
+        "v": 4,
+        "t": -180
+      },
+      "cr": {
+        "v": 0.6,
+        "t": -180
+      },
+      "glu": {
+        "v": 102,
+        "t": -180
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Labetalol",
+        "dose": "200 mg",
+        "route": "PO",
+        "freq": "BID",
+        "due": "09:00",
+        "cls": [
+          "BB"
+        ],
+        "hold": {
+          "sbp": 100,
+          "hr": 60
+        },
+        "param": "Hold if SBP < 100 or HR < 60",
+        "effect": "blood pressure and heart rate"
+      },
+      {
+        "id": "m2",
+        "name": "Nifedipine ER",
+        "dose": "30 mg",
+        "route": "PO",
+        "freq": "Daily",
+        "due": "09:00",
+        "cls": [
+          "CCB",
+          "ER"
+        ],
+        "hold": {
+          "sbp": 100
+        },
+        "param": "Hold if SBP < 100",
+        "effect": "blood pressure"
+      },
+      {
+        "id": "m3",
+        "name": "Prenatal vitamin",
+        "dose": "1 tab",
+        "route": "PO",
+        "freq": "Daily",
+        "due": "09:00",
+        "cls": [
+          "vitamin"
+        ]
+      }
+    ],
+    "tasks": [
+      {
+        "id": "t1",
+        "name": "Fetal heart rate check",
+        "due": 35,
+        "grace": 15,
+        "why": "Fetal monitoring every 4 hours is ordered at 30 weeks with high blood pressure."
+      }
+    ]
+  },
+  {
+    "id": "p9",
+    "bed": "420A",
+    "name": "Harold Brennan",
+    "age": 76,
+    "sex": "M",
+    "wt": 70,
+    "dx": "Parkinson's disease, dysphagia, aspiration pneumonia",
+    "conditions": [
+      "PD",
+      "DYSPH",
+      "PNA"
+    ],
+    "allergies": [],
+    "vit": {
+      "sbp": 124,
+      "dbp": 70,
+      "hr": 80,
+      "rr": 20,
+      "spo2": 94
+    },
+    "labs": {
+      "k": {
+        "v": 4.1,
+        "t": -240
+      },
+      "cr": {
+        "v": 1,
+        "t": -240
+      },
+      "glu": {
+        "v": 110,
+        "t": -240
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Carbidopa-levodopa",
+        "dose": "25/100 mg",
+        "route": "PO",
+        "freq": "q4h while awake · crushed in applesauce",
+        "due": "09:00",
+        "cls": [
+          "dopaminergic"
+        ],
+        "tc": {
+          "due": 20,
+          "grace": 30,
+          "why": "Late Parkinson's doses can cause stiffness, falls and trouble swallowing within hours. Give within 30 minutes of the scheduled time."
+        }
+      },
+      {
+        "id": "m2",
+        "name": "Ampicillin-sulbactam",
+        "dose": "3 g",
+        "route": "IV",
+        "freq": "q6h",
+        "due": "10:00",
+        "cls": [
+          "penicillin"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "p10",
+    "bed": "420B",
+    "name": "Robert Ellis",
+    "age": 67,
+    "sex": "M",
+    "wt": 80,
+    "dx": "Upper GI bleed (peptic ulcer), NPO",
+    "conditions": [
+      "GIB"
+    ],
+    "allergies": [],
+    "vit": {
+      "sbp": 108,
+      "dbp": 64,
+      "hr": 104,
+      "rr": 18,
+      "spo2": 97
+    },
+    "labs": {
+      "k": {
+        "v": 4.3,
+        "t": -120
+      },
+      "cr": {
+        "v": 1.2,
+        "t": -120
+      },
+      "glu": {
+        "v": 118,
+        "t": -120
+      },
+      "hgb": {
+        "v": 7.8,
+        "t": -120
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Pantoprazole",
+        "dose": "40 mg",
+        "route": "IV",
+        "freq": "BID",
+        "due": "09:00",
+        "cls": [
+          "PPI"
+        ]
+      },
+      {
+        "id": "m2",
+        "name": "Ondansetron",
+        "dose": "4 mg",
+        "route": "IV",
+        "freq": "q8h PRN nausea",
+        "due": "PRN",
+        "cls": [
+          "antiemetic",
+          "QT"
+        ],
+        "qt": true
+      }
+    ],
+    "tasks": [
+      {
+        "id": "t1",
+        "name": "Hemoglobin recheck (every 6 h)",
+        "due": 30,
+        "grace": 15,
+        "why": "Hemoglobin is 7.8 after an active bleed. A drop means he may need a transfusion."
+      }
+    ]
+  },
+  {
+    "id": "p11",
+    "bed": "422A",
+    "name": "Daniel Ortiz",
+    "age": 52,
+    "sex": "M",
+    "wt": 88,
+    "dx": "Sepsis, suspected urinary source",
+    "conditions": [
+      "SEPSIS"
+    ],
+    "allergies": [],
+    "vit": {
+      "sbp": 98,
+      "dbp": 58,
+      "hr": 116,
+      "rr": 24,
+      "spo2": 94
+    },
+    "labs": {
+      "k": {
+        "v": 4.2,
+        "t": -30
+      },
+      "cr": {
+        "v": 1.6,
+        "t": -30
+      },
+      "glu": {
+        "v": 142,
+        "t": -30
+      },
+      "lac": {
+        "v": 3.2,
+        "t": -30
+      }
+    },
+    "meds": [
+      {
+        "id": "m1",
+        "name": "Piperacillin-tazobactam",
+        "dose": "4.5 g",
+        "route": "IV",
+        "freq": "q6h",
+        "due": "09:25",
+        "cls": [
+          "penicillin",
+          "antibiotic"
+        ],
+        "tc": {
+          "due": 45,
+          "grace": 0,
+          "why": "Sepsis was recognized at 08:25. Guidelines call for the first antibiotic within 1 hour, and each hour of delay raises the risk of death."
+        }
+      },
+      {
+        "id": "m2",
+        "name": "Vancomycin",
+        "dose": "1750 mg",
+        "route": "IV",
+        "freq": "Once (loading dose)",
+        "due": "09:25",
+        "cls": [
+          "glycopeptide"
+        ],
+        "renal": true,
+        "tc": {
+          "due": 45,
+          "grace": 0,
+          "why": "Part of the 1-hour sepsis antibiotic bundle (recognized 08:25)."
+        }
+      },
+      {
+        "id": "m3",
+        "name": "Acetaminophen",
+        "dose": "650 mg",
+        "route": "PO",
+        "freq": "q6h PRN fever",
+        "due": "PRN",
+        "cls": [
+          "analgesic"
+        ],
+        "apap": 2600
+      }
+    ],
+    "tasks": [
+      {
+        "id": "t1",
+        "name": "Blood cultures x2 (before antibiotics)",
+        "due": 30,
+        "grace": 0,
+        "why": "Cultures must be drawn before the first antibiotic dose so the lab can identify the bacteria."
+      },
+      {
+        "id": "t2",
+        "name": "Repeat lactate",
+        "due": 105,
+        "grace": 0,
+        "why": "First lactate was 3.2 mmol/L. Guidelines call for a repeat when it is above 2."
+      }
+    ]
+  }
+]

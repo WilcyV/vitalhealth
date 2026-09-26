@@ -1,0 +1,44 @@
+[
+  {
+    "username": "jrivera",
+    "name": "RN Jamie Rivera",
+    "role": "nurse",
+    "title": "Registered nurse",
+    "pin": "1234"
+  },
+  {
+    "username": "mchen",
+    "name": "RN Maria Chen",
+    "role": "nurse",
+    "title": "Registered nurse",
+    "pin": "1234"
+  },
+  {
+    "username": "dokafor",
+    "name": "RN David Okafor",
+    "role": "nurse",
+    "title": "Registered nurse",
+    "pin": "1234"
+  },
+  {
+    "username": "sreyes",
+    "name": "RN Sofia Reyes",
+    "role": "charge",
+    "title": "Charge nurse",
+    "pin": "1234"
+  },
+  {
+    "username": "akim",
+    "name": "Alex Kim, PharmD",
+    "role": "pharmacist",
+    "title": "Clinical pharmacist",
+    "pin": "1234"
+  },
+  {
+    "username": "spatel",
+    "name": "Dr. Samuel Patel",
+    "role": "provider",
+    "title": "Hospitalist (MD)",
+    "pin": "1234"
+  }
+]

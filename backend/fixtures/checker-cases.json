@@ -1,0 +1,2838 @@
+[
+  {
+    "patient": "p1",
+    "drug": "ibu",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Heart failure + ACE inhibitor + diuretic (\"triple whammy\")"
+      },
+      {
+        "sev": "warn",
+        "type": "Kidney function",
+        "title": "Kidney function: CrCl 50 mL/min"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 72: stomach bleeding risk (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "keto",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Heart failure + ACE inhibitor + diuretic (\"triple whammy\")"
+      },
+      {
+        "sev": "warn",
+        "type": "Kidney function",
+        "title": "Kidney function: CrCl 50 mL/min"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 72: stomach bleeding risk (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "apap",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "tram",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "cod",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "lora",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 72: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "zolp",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 72: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "prop",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate beta-blocker: already on Metoprolol succinate"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "meto",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate beta-blocker: already on Metoprolol succinate"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "vera",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Drug interaction",
+        "title": "Heart block risk with Metoprolol succinate"
+      },
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Can worsen heart failure"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "kcl",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Drug interaction",
+        "title": "High potassium risk"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "smx",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Drug interaction",
+        "title": "High potassium risk"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "amox",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "cipro",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 72: tendon and confusion risk"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "clari",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "fluc",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "asa",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "enox",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "metf",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "glip",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "pio",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Contraindicated in heart failure"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "pred",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "lisi",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate ACE inhibitor: already on Lisinopril"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "nife",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "atorva",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "doxy",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "reglan",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "haldol",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "ondan",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "labe",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate beta-blocker: already on Metoprolol succinate"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "hydral",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "hydroxy",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 72: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "traz",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 72: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p1",
+    "drug": "metro",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "quet",
+    "issues": []
+  },
+  {
+    "patient": "p1",
+    "drug": "melat",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "ibu",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Kidney function",
+        "title": "Kidney function: CrCl 63 mL/min"
+      }
+    ]
+  },
+  {
+    "patient": "p2",
+    "drug": "keto",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Kidney function",
+        "title": "Kidney function: CrCl 63 mL/min"
+      }
+    ]
+  },
+  {
+    "patient": "p2",
+    "drug": "apap",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "tram",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "cod",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "lora",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "zolp",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "prop",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "meto",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "vera",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "kcl",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "smx",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "amox",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Allergy",
+        "title": "Allergy: Amoxicillin is a penicillin"
+      }
+    ]
+  },
+  {
+    "patient": "p2",
+    "drug": "cipro",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "clari",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "fluc",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "asa",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Bleeding risk with Enoxaparin"
+      }
+    ]
+  },
+  {
+    "patient": "p2",
+    "drug": "enox",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Duplicate therapy",
+        "title": "Duplicate anticoagulant: already on Enoxaparin"
+      }
+    ]
+  },
+  {
+    "patient": "p2",
+    "drug": "metf",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate metformin: already on Metformin"
+      }
+    ]
+  },
+  {
+    "patient": "p2",
+    "drug": "glip",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Low blood sugar risk with insulin"
+      }
+    ]
+  },
+  {
+    "patient": "p2",
+    "drug": "pio",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Fluid retention with insulin"
+      }
+    ]
+  },
+  {
+    "patient": "p2",
+    "drug": "pred",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Condition",
+        "title": "Raises blood sugar in diabetes"
+      }
+    ]
+  },
+  {
+    "patient": "p2",
+    "drug": "lisi",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "nife",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "atorva",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "doxy",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "reglan",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "haldol",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "ondan",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "labe",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "hydral",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "hydroxy",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "traz",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "metro",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "quet",
+    "issues": []
+  },
+  {
+    "patient": "p2",
+    "drug": "melat",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "ibu",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Drug interaction",
+        "title": "Bleeding risk with warfarin"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "keto",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Drug interaction",
+        "title": "Bleeding risk with warfarin"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "apap",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "tram",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "cod",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Intolerance",
+        "title": "Documented codeine intolerance"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "lora",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "zolp",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "prop",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Slow heart rate with Diltiazem ER"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "meto",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Slow heart rate with Diltiazem ER"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "vera",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate rate-slowing calcium channel blocker: already on Diltiazem ER"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "kcl",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "smx",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Drug interaction",
+        "title": "Raises INR with warfarin"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "amox",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "cipro",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Can raise INR with warfarin"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "clari",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Raises Atorvastatin levels"
+      },
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Can raise INR with warfarin"
+      },
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Raises Diltiazem ER levels"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "fluc",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Drug interaction",
+        "title": "Raises INR with warfarin"
+      },
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Raises Atorvastatin levels"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "asa",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Bleeding risk with Warfarin"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "enox",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Duplicate therapy",
+        "title": "Duplicate anticoagulant: already on Warfarin"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "metf",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "glip",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "pio",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "pred",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "lisi",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "nife",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "atorva",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate statin: already on Atorvastatin"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "doxy",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "reglan",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "haldol",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "ondan",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "labe",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Slow heart rate with Diltiazem ER"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "hydral",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "hydroxy",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "traz",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "metro",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Drug interaction",
+        "title": "Raises INR with warfarin"
+      }
+    ]
+  },
+  {
+    "patient": "p3",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "quet",
+    "issues": []
+  },
+  {
+    "patient": "p3",
+    "drug": "melat",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "ibu",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "keto",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "apap",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate ingredient",
+        "title": "Acetaminophen over the daily max"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "tram",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Duplicate therapy",
+        "title": "Duplicate opioid: already on Morphine"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "cod",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate ingredient",
+        "title": "Acetaminophen over the daily max"
+      },
+      {
+        "sev": "warn",
+        "type": "Duplicate therapy",
+        "title": "Duplicate opioid: already on Morphine"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "lora",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Drug interaction",
+        "title": "Breathing risk with opioids"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "zolp",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Breathing risk with opioids"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "prop",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "meto",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "vera",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "kcl",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "smx",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "amox",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "cipro",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "clari",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "fluc",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "asa",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Bleeding risk with Enoxaparin"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "enox",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Duplicate therapy",
+        "title": "Duplicate anticoagulant: already on Enoxaparin"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "metf",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "glip",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "pio",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "pred",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "lisi",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "nife",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "atorva",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "doxy",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "reglan",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "haldol",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "ondan",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "labe",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "hydral",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "hydroxy",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      },
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Breathing risk with opioids"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "traz",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      },
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "Breathing risk with opioids"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "metro",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p4",
+    "drug": "quet",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p4",
+    "drug": "melat",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "ibu",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Kidney function",
+        "title": "Kidney function: CrCl 48 mL/min"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 81: stomach bleeding risk (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "keto",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Kidney function",
+        "title": "Kidney function: CrCl 48 mL/min"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 81: stomach bleeding risk (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "apap",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "tram",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "cod",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "lora",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 81: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "zolp",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 81: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "prop",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "meto",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "vera",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "kcl",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "smx",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "amox",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "cipro",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 81: tendon and confusion risk"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "clari",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "fluc",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "asa",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "enox",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "metf",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "glip",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Kidney function",
+        "title": "Kidney function: CrCl 48 mL/min"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "pio",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "pred",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "lisi",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "nife",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "atorva",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "doxy",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "reglan",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "haldol",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "ondan",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "labe",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "hydral",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "hydroxy",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 81: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "traz",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 81: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "metro",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p5",
+    "drug": "quet",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p5",
+    "drug": "melat",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "ibu",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Condition",
+        "title": "Asthma: NSAIDs can trigger bronchospasm"
+      }
+    ]
+  },
+  {
+    "patient": "p6",
+    "drug": "keto",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Condition",
+        "title": "Asthma: NSAIDs can trigger bronchospasm"
+      }
+    ]
+  },
+  {
+    "patient": "p6",
+    "drug": "apap",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "tram",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "cod",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "lora",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "zolp",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "prop",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Contraindicated in asthma"
+      }
+    ]
+  },
+  {
+    "patient": "p6",
+    "drug": "meto",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Condition",
+        "title": "Use caution in asthma"
+      }
+    ]
+  },
+  {
+    "patient": "p6",
+    "drug": "vera",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "kcl",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "smx",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Allergy",
+        "title": "Allergy: Trimethoprim-sulfamethoxazole DS is a sulfonamide"
+      }
+    ]
+  },
+  {
+    "patient": "p6",
+    "drug": "amox",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "cipro",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "clari",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "fluc",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "asa",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "enox",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "metf",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "glip",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "pio",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "pred",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate steroid: already on Prednisone"
+      }
+    ]
+  },
+  {
+    "patient": "p6",
+    "drug": "lisi",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "nife",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "atorva",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "doxy",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "reglan",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "haldol",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "ondan",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "labe",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Condition",
+        "title": "Use caution in asthma"
+      }
+    ]
+  },
+  {
+    "patient": "p6",
+    "drug": "hydral",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "hydroxy",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "traz",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "metro",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "quet",
+    "issues": []
+  },
+  {
+    "patient": "p6",
+    "drug": "melat",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "ibu",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "keto",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "apap",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "tram",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "cod",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "lora",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "zolp",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "prop",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "meto",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "vera",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "kcl",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "smx",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "amox",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "cipro",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "clari",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "fluc",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "asa",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "enox",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "metf",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "glip",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Lab",
+        "title": "Glucose is 96 mg/dL"
+      }
+    ]
+  },
+  {
+    "patient": "p7",
+    "drug": "pio",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "pred",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "lisi",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "nife",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "atorva",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "doxy",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate tetracycline antibiotic: already on Doxycycline"
+      }
+    ]
+  },
+  {
+    "patient": "p7",
+    "drug": "reglan",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "haldol",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "ondan",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "labe",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "hydral",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "hydroxy",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "traz",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "metro",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "quet",
+    "issues": []
+  },
+  {
+    "patient": "p7",
+    "drug": "melat",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "ibu",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Pregnancy",
+        "title": "Avoid after 20 weeks of pregnancy"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "keto",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Pregnancy",
+        "title": "Avoid after 20 weeks of pregnancy"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "apap",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "tram",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "cod",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "lora",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "zolp",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "prop",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate beta-blocker: already on Labetalol"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "meto",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate beta-blocker: already on Labetalol"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "vera",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Drug interaction",
+        "title": "Heart block risk with Labetalol"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "kcl",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "smx",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Pregnancy",
+        "title": "Late pregnancy"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "amox",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "cipro",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Pregnancy",
+        "title": "Generally avoided in pregnancy"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "clari",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "fluc",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Pregnancy",
+        "title": "Fluconazole in pregnancy"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "asa",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "enox",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "metf",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "glip",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "pio",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "pred",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "lisi",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Pregnancy",
+        "title": "Contraindicated in pregnancy"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "nife",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "atorva",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Pregnancy",
+        "title": "Usually stopped in pregnancy"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "doxy",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Pregnancy",
+        "title": "Avoid in pregnancy"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "reglan",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "haldol",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "ondan",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "labe",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate therapy",
+        "title": "Duplicate beta-blocker: already on Labetalol"
+      }
+    ]
+  },
+  {
+    "patient": "p8",
+    "drug": "hydral",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "hydroxy",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "traz",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "metro",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "quet",
+    "issues": []
+  },
+  {
+    "patient": "p8",
+    "drug": "melat",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "ibu",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 76: stomach bleeding risk (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p9",
+    "drug": "keto",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 76: stomach bleeding risk (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p9",
+    "drug": "apap",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "tram",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "cod",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "lora",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 76: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p9",
+    "drug": "zolp",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 76: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p9",
+    "drug": "prop",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "meto",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "vera",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "kcl",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "smx",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "amox",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "cipro",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 76: tendon and confusion risk"
+      }
+    ]
+  },
+  {
+    "patient": "p9",
+    "drug": "clari",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "fluc",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "asa",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "enox",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "metf",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "glip",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "pio",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "pred",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "lisi",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "nife",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Condition",
+        "title": "Dysphagia: extended-release tablet"
+      }
+    ]
+  },
+  {
+    "patient": "p9",
+    "drug": "atorva",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "doxy",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "reglan",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Worsens Parkinson's disease"
+      }
+    ]
+  },
+  {
+    "patient": "p9",
+    "drug": "haldol",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Worsens Parkinson's disease"
+      }
+    ]
+  },
+  {
+    "patient": "p9",
+    "drug": "ondan",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "labe",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "hydral",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "hydroxy",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 76: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p9",
+    "drug": "traz",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 76: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p9",
+    "drug": "metro",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "quet",
+    "issues": []
+  },
+  {
+    "patient": "p9",
+    "drug": "melat",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "ibu",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Active GI bleed"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 67: stomach bleeding risk (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "keto",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Active GI bleed"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 67: stomach bleeding risk (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "apap",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "tram",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "cod",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "lora",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 67: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "zolp",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 67: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "prop",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "meto",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "vera",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "kcl",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "smx",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "amox",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "cipro",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 67: tendon and confusion risk"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "clari",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "fluc",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "asa",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Active GI bleed"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "enox",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Condition",
+        "title": "Active GI bleed"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "metf",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "glip",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "pio",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "pred",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Condition",
+        "title": "Raises ulcer bleeding risk"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "lisi",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "nife",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "atorva",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "doxy",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "reglan",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "haldol",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "ondan",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "labe",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "hydral",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Vitals",
+        "title": "Blood pressure is 108/64"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "hydroxy",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 67: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "traz",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      },
+      {
+        "sev": "warn",
+        "type": "Age",
+        "title": "Age 67: falls and confusion (Beers list)"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "metro",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p10",
+    "drug": "quet",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Drug interaction",
+        "title": "QT prolongation risk"
+      }
+    ]
+  },
+  {
+    "patient": "p10",
+    "drug": "melat",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "ibu",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "keto",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "apap",
+    "issues": [
+      {
+        "sev": "crit",
+        "type": "Duplicate ingredient",
+        "title": "Acetaminophen over the daily max"
+      }
+    ]
+  },
+  {
+    "patient": "p11",
+    "drug": "tram",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "cod",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "lora",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "zolp",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "prop",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "meto",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "vera",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "kcl",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "smx",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "amox",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "cipro",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "clari",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "fluc",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "asa",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "enox",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "metf",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "glip",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "pio",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "pred",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "lisi",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "nife",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "atorva",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "doxy",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "reglan",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "haldol",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "ondan",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "labe",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "hydral",
+    "issues": [
+      {
+        "sev": "warn",
+        "type": "Vitals",
+        "title": "Blood pressure is 98/58"
+      }
+    ]
+  },
+  {
+    "patient": "p11",
+    "drug": "hydroxy",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "traz",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "metro",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "cephx",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "quet",
+    "issues": []
+  },
+  {
+    "patient": "p11",
+    "drug": "melat",
+    "issues": []
+  }
+]

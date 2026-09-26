@@ -1,0 +1,332 @@
+{
+  "hydralazine": {
+    "cls": "Vasodilator",
+    "use": "Severe high blood pressure",
+    "watch": "Low BP, fast heart rate, headache",
+    "nursing": "Check BP before and 15–30 min after. Look-alike: hydrOXYzine."
+  },
+  "hydroxyzine": {
+    "cls": "First-generation antihistamine",
+    "use": "Anxiety, itching",
+    "watch": "Sedation, confusion in older adults, QT prolongation",
+    "nursing": "Beers list for 65+. Look-alike: hydrALAZINE."
+  },
+  "trazodone": {
+    "cls": "Antidepressant (sedating)",
+    "use": "Sleep",
+    "watch": "Drowsiness, low BP when standing, QT prolongation",
+    "nursing": "Fall precautions. Sound-alike: traMADol."
+  },
+  "cephalexin": {
+    "cls": "Cephalosporin antibiotic (1st gen)",
+    "use": "Skin and urinary infections",
+    "watch": "Rash, diarrhea",
+    "nursing": "Low cross-reactivity with penicillin allergy."
+  },
+  "quetiapine": {
+    "cls": "Atypical antipsychotic",
+    "use": "Agitation, delirium (low dose)",
+    "watch": "Sedation, low BP, QT prolongation",
+    "nursing": "Preferred over haloperidol in Parkinson’s disease."
+  },
+  "melatonin": {
+    "cls": "Sleep supplement",
+    "use": "Trouble sleeping",
+    "watch": "Morning drowsiness",
+    "nursing": "Safer first choice for sleep in older adults."
+  },
+  "lisinopril": {
+    "cls": "ACE inhibitor",
+    "use": "High blood pressure, heart failure",
+    "watch": "Low BP, high potassium, dry cough, face or tongue swelling (angioedema)",
+    "nursing": "Check BP and potassium before giving. Not for use in pregnancy."
+  },
+  "metoprolol": {
+    "cls": "Beta-blocker (heart-selective)",
+    "use": "Blood pressure, heart failure, heart rate control",
+    "watch": "Slow heart rate, low BP, fatigue",
+    "nursing": "Check heart rate and BP before giving. Do not stop suddenly."
+  },
+  "furosemide": {
+    "cls": "Loop diuretic",
+    "use": "Fluid overload, heart failure",
+    "watch": "Low potassium, dehydration, low BP",
+    "nursing": "Daily weight, intake and output, potassium."
+  },
+  "spironolactone": {
+    "cls": "Potassium-sparing diuretic",
+    "use": "Heart failure",
+    "watch": "High potassium",
+    "nursing": "Check potassium and kidney function."
+  },
+  "metformin": {
+    "cls": "Biguanide",
+    "use": "Type 2 diabetes",
+    "watch": "Stomach upset; rare lactic acidosis",
+    "nursing": "Hold before IV contrast and when kidney function is below 30."
+  },
+  "insulin": {
+    "cls": "Rapid-acting insulin · high-alert",
+    "use": "High blood sugar",
+    "watch": "Low blood sugar",
+    "nursing": "Check glucose, give within 15 min of a meal, independent double-check."
+  },
+  "enoxaparin": {
+    "cls": "Low-molecular-weight heparin · high-alert",
+    "use": "Preventing blood clots",
+    "watch": "Bleeding, low platelets",
+    "nursing": "Check platelets and kidney function. Do not expel the air bubble."
+  },
+  "cefazolin": {
+    "cls": "Cephalosporin antibiotic (1st gen)",
+    "use": "Skin and soft tissue infections",
+    "watch": "Rash, diarrhea",
+    "nursing": "Low cross-reactivity with penicillin allergy."
+  },
+  "warfarin": {
+    "cls": "Vitamin K antagonist · high-alert",
+    "use": "Stroke prevention in atrial fibrillation",
+    "watch": "Bleeding",
+    "nursing": "Check INR. Many drug and food (vitamin K) interactions."
+  },
+  "diltiazem": {
+    "cls": "Calcium channel blocker (rate-slowing)",
+    "use": "Heart rate control, blood pressure",
+    "watch": "Slow heart rate, low BP",
+    "nursing": "Check heart rate and BP. Do not crush ER tablets."
+  },
+  "atorvastatin": {
+    "cls": "Statin",
+    "use": "High cholesterol",
+    "watch": "Muscle pain, liver problems",
+    "nursing": "Watch for interactions with azole antifungals and some antibiotics."
+  },
+  "acetaminophen": {
+    "cls": "Analgesic / fever reducer",
+    "use": "Pain, fever",
+    "watch": "Liver injury above 4 g a day",
+    "nursing": "Count every source, including combination pills."
+  },
+  "morphine": {
+    "cls": "Opioid · high-alert",
+    "use": "Severe pain",
+    "watch": "Slowed breathing, sedation, constipation",
+    "nursing": "Check sedation level, RR and SpO2 before and after. Naloxone at the bedside."
+  },
+  "ondansetron": {
+    "cls": "5-HT3 antiemetic",
+    "use": "Nausea and vomiting",
+    "watch": "QT prolongation, headache, constipation",
+    "nursing": "Safe antiemetic choice in Parkinson’s disease."
+  },
+  "ceftriaxone": {
+    "cls": "Cephalosporin antibiotic (3rd gen)",
+    "use": "Pneumonia, PID, other serious infections",
+    "watch": "Rash, diarrhea",
+    "nursing": "Give on schedule to keep levels steady."
+  },
+  "azithromycin": {
+    "cls": "Macrolide antibiotic",
+    "use": "Pneumonia",
+    "watch": "QT prolongation, stomach upset",
+    "nursing": "Check for other QT-prolonging drugs."
+  },
+  "diphenhydramine": {
+    "cls": "First-generation antihistamine",
+    "use": "Allergy, sleep",
+    "watch": "Sedation, confusion, falls in older adults",
+    "nursing": "On the Beers list for patients 65+."
+  },
+  "prednisone": {
+    "cls": "Corticosteroid",
+    "use": "Inflammation, asthma flares",
+    "watch": "High blood sugar, mood changes, infection risk",
+    "nursing": "Give with food. Check glucose in diabetes."
+  },
+  "albuterol": {
+    "cls": "Short-acting bronchodilator",
+    "use": "Wheezing, bronchospasm",
+    "watch": "Fast heart rate, tremor, low potassium",
+    "nursing": "Check lung sounds and heart rate after."
+  },
+  "doxycycline": {
+    "cls": "Tetracycline antibiotic",
+    "use": "PID, some STIs, pneumonia",
+    "watch": "Esophageal irritation, sun sensitivity",
+    "nursing": "Take upright with a full glass of water. Avoid in pregnancy."
+  },
+  "metronidazole": {
+    "cls": "Nitroimidazole antibiotic",
+    "use": "PID, anaerobic infections",
+    "watch": "Metallic taste, nausea",
+    "nursing": "No alcohol during and 3 days after."
+  },
+  "labetalol": {
+    "cls": "Alpha/beta-blocker",
+    "use": "High blood pressure in pregnancy",
+    "watch": "Low BP, slow heart rate, dizziness",
+    "nursing": "Check BP and heart rate before giving."
+  },
+  "nifedipine": {
+    "cls": "Calcium channel blocker (dihydropyridine)",
+    "use": "High blood pressure, including pregnancy",
+    "watch": "Headache, flushing, low BP",
+    "nursing": "Do not crush the ER tablet."
+  },
+  "prenatal": {
+    "cls": "Vitamin and mineral supplement",
+    "use": "Pregnancy",
+    "watch": "Constipation, nausea (iron)",
+    "nursing": "Separate from antacids."
+  },
+  "carbidopa": {
+    "cls": "Dopamine precursor · time-critical",
+    "use": "Parkinson’s disease",
+    "watch": "Nausea, low BP when standing, involuntary movements",
+    "nursing": "Give within 30 min of the scheduled time. Late doses cause stiffness and swallowing problems."
+  },
+  "ampicillin": {
+    "cls": "Penicillin + beta-lactamase inhibitor",
+    "use": "Aspiration pneumonia, mixed infections",
+    "watch": "Allergy, rash, diarrhea",
+    "nursing": "Check penicillin allergy first."
+  },
+  "pantoprazole": {
+    "cls": "Proton pump inhibitor",
+    "use": "Bleeding stomach ulcers",
+    "watch": "Headache, diarrhea",
+    "nursing": "IV push over at least 2 minutes."
+  },
+  "piperacillin": {
+    "cls": "Penicillin + beta-lactamase inhibitor",
+    "use": "Sepsis, serious infections",
+    "watch": "Allergy, diarrhea, kidney effects",
+    "nursing": "Draw blood cultures first. First dose within 1 hour in sepsis."
+  },
+  "vancomycin": {
+    "cls": "Glycopeptide antibiotic",
+    "use": "Sepsis, MRSA",
+    "watch": "Kidney injury, flushing if infused too fast",
+    "nursing": "Infuse slowly (at least 60 min per gram). Dosing guided by blood levels."
+  },
+  "amoxicillin": {
+    "cls": "Penicillin antibiotic",
+    "use": "Ear, sinus, skin infections",
+    "watch": "Allergic reactions, diarrhea",
+    "nursing": "Check penicillin allergy first."
+  },
+  "hydrocodone": {
+    "cls": "Opioid + acetaminophen · high-alert",
+    "use": "Moderate to severe pain",
+    "watch": "Sedation, slowed breathing, liver injury from acetaminophen",
+    "nursing": "Count total daily acetaminophen."
+  },
+  "ibuprofen": {
+    "cls": "NSAID",
+    "use": "Pain, fever, inflammation",
+    "watch": "Stomach bleeding, kidney injury, higher BP",
+    "nursing": "Avoid with warfarin, kidney disease, heart failure, GI bleed and late pregnancy."
+  },
+  "ketorolac": {
+    "cls": "NSAID (IV)",
+    "use": "Short-term moderate to severe pain",
+    "watch": "Stomach bleeding, kidney injury",
+    "nursing": "Maximum 5 days of use."
+  },
+  "tramadol": {
+    "cls": "Weak opioid · high-alert",
+    "use": "Moderate pain",
+    "watch": "Seizures, serotonin syndrome, sedation",
+    "nursing": "Avoid with other opioids and benzodiazepines."
+  },
+  "codeine": {
+    "cls": "Opioid + acetaminophen · high-alert",
+    "use": "Mild to moderate pain",
+    "watch": "Nausea, sedation; effect varies by person",
+    "nursing": "Count total acetaminophen."
+  },
+  "lorazepam": {
+    "cls": "Benzodiazepine",
+    "use": "Anxiety, seizures",
+    "watch": "Sedation, slowed breathing, falls",
+    "nursing": "Never combine with opioids without close monitoring."
+  },
+  "zolpidem": {
+    "cls": "Sedative-hypnotic",
+    "use": "Short-term insomnia",
+    "watch": "Falls, confusion, sleepwalking",
+    "nursing": "Avoid in older adults when possible."
+  },
+  "propranolol": {
+    "cls": "Beta-blocker (non-selective)",
+    "use": "Blood pressure, tremor, migraine",
+    "watch": "Bronchospasm, slow heart rate",
+    "nursing": "Contraindicated in asthma."
+  },
+  "verapamil": {
+    "cls": "Calcium channel blocker (rate-slowing)",
+    "use": "Heart rate control, blood pressure",
+    "watch": "Heart block, constipation",
+    "nursing": "Avoid with beta-blockers and in heart failure."
+  },
+  "potassium": {
+    "cls": "Electrolyte replacement (IV = high-alert)",
+    "use": "Low potassium",
+    "watch": "High potassium, stomach irritation",
+    "nursing": "Check potassium first. Never give IV push."
+  },
+  "trimethoprim": {
+    "cls": "Sulfonamide antibiotic",
+    "use": "Urinary and skin infections",
+    "watch": "High potassium, raises INR, rash",
+    "nursing": "Check sulfa allergy first."
+  },
+  "ciprofloxacin": {
+    "cls": "Fluoroquinolone antibiotic",
+    "use": "Urinary and other infections",
+    "watch": "Tendon rupture, QT, confusion",
+    "nursing": "Boxed warning for tendon damage."
+  },
+  "clarithromycin": {
+    "cls": "Macrolide antibiotic",
+    "use": "Respiratory infections, H. pylori",
+    "watch": "QT prolongation, many drug interactions",
+    "nursing": "Strongly raises statin levels."
+  },
+  "fluconazole": {
+    "cls": "Azole antifungal",
+    "use": "Yeast infections",
+    "watch": "QT prolongation, liver effects",
+    "nursing": "Strongly raises warfarin effect."
+  },
+  "aspirin": {
+    "cls": "Antiplatelet",
+    "use": "Heart attack and stroke prevention",
+    "watch": "Bleeding, stomach ulcers",
+    "nursing": "Avoid in active GI bleeding."
+  },
+  "glipizide": {
+    "cls": "Sulfonylurea",
+    "use": "Type 2 diabetes",
+    "watch": "Low blood sugar",
+    "nursing": "Higher risk with kidney disease and with insulin."
+  },
+  "pioglitazone": {
+    "cls": "Thiazolidinedione",
+    "use": "Type 2 diabetes",
+    "watch": "Fluid retention, weight gain",
+    "nursing": "Boxed warning: avoid in heart failure."
+  },
+  "metoclopramide": {
+    "cls": "Dopamine-blocking antiemetic",
+    "use": "Nausea, slow stomach emptying",
+    "watch": "Muscle spasms, restlessness",
+    "nursing": "Contraindicated in Parkinson’s disease."
+  },
+  "haloperidol": {
+    "cls": "Antipsychotic",
+    "use": "Agitation, delirium",
+    "watch": "Muscle stiffness, QT prolongation",
+    "nursing": "Avoid in Parkinson’s disease."
+  }
+}

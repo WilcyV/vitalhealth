@@ -1,0 +1,156 @@
+{
+  "conditions": {
+    "PREG": "Pregnant",
+    "PID": "Pelvic inflammatory disease",
+    "PD": "Parkinson's disease",
+    "DYSPH": "Dysphagia (trouble swallowing)",
+    "GIB": "Active upper GI bleed",
+    "SEPSIS": "Sepsis",
+    "HF": "Heart failure",
+    "HTN": "Hypertension",
+    "DM": "Type 2 diabetes",
+    "CKD": "Chronic kidney disease",
+    "AF": "Atrial fibrillation",
+    "ASTHMA": "Asthma",
+    "POSTOP": "Post-op",
+    "PNA": "Pneumonia"
+  },
+  "classLabels": {
+    "ACEi": "ACE inhibitor",
+    "tetracycline": "tetracycline antibiotic",
+    "BB": "beta-blocker",
+    "NSAID": "NSAID",
+    "opioid": "opioid",
+    "anticoag": "anticoagulant",
+    "statin": "statin",
+    "benzo": "benzodiazepine",
+    "steroid": "steroid",
+    "metformin": "metformin",
+    "penicillin": "penicillin",
+    "sulfonamide": "sulfonamide",
+    "codeine": "codeine",
+    "CCB-nd": "rate-slowing calcium channel blocker"
+  },
+  "groupLabels": {
+    "pain": "pain relief",
+    "sleep-anxiety": "sleep or anxiety",
+    "rate-bp": "heart rate control",
+    "bp": "blood pressure",
+    "potassium": "potassium replacement",
+    "antibiotic": "antibiotics",
+    "antifungal": "antifungals",
+    "antiplatelet": "antiplatelets",
+    "anticoag": "clot prevention",
+    "diabetes": "diabetes",
+    "steroid": "steroids",
+    "statin": "cholesterol",
+    "nausea": "nausea",
+    "agitation": "agitation"
+  },
+  "allergens": [
+    {
+      "agent": "Penicillin",
+      "cls": "penicillin"
+    },
+    {
+      "agent": "Sulfa drugs",
+      "cls": "sulfonamide"
+    },
+    {
+      "agent": "Codeine",
+      "cls": "codeine"
+    },
+    {
+      "agent": "NSAIDs (ibuprofen, naproxen)",
+      "cls": "NSAID"
+    },
+    {
+      "agent": "Aspirin",
+      "cls": "antiplatelet"
+    },
+    {
+      "agent": "Cephalosporins",
+      "cls": "cephalosporin"
+    },
+    {
+      "agent": "Morphine / opioids",
+      "cls": "opioid"
+    },
+    {
+      "agent": "Tetracyclines",
+      "cls": "tetracycline"
+    },
+    {
+      "agent": "Statins",
+      "cls": "statin"
+    },
+    {
+      "agent": "Fluoroquinolones",
+      "cls": "quinolone"
+    },
+    {
+      "agent": "Latex",
+      "cls": "latex"
+    },
+    {
+      "agent": "Other",
+      "cls": "other"
+    }
+  ],
+  "beds": [
+    "410A",
+    "410B",
+    "412A",
+    "412B",
+    "414A",
+    "414B",
+    "416A",
+    "416B",
+    "418A",
+    "418B",
+    "420A",
+    "420B",
+    "422A",
+    "422B",
+    "424A",
+    "424B",
+    "426A",
+    "426B",
+    "428A",
+    "428B",
+    "430A",
+    "430B"
+  ],
+  "permissions": {
+    "administer": [
+      "nurse",
+      "charge"
+    ],
+    "tasks": [
+      "nurse",
+      "charge"
+    ],
+    "acknowledge": [
+      "nurse",
+      "charge",
+      "pharmacist",
+      "provider"
+    ],
+    "editPatient": [
+      "nurse",
+      "charge",
+      "provider"
+    ],
+    "order": [
+      "provider"
+    ],
+    "admit": [
+      "charge",
+      "provider"
+    ],
+    "discharge": [
+      "charge",
+      "provider"
+    ]
+  }
+}

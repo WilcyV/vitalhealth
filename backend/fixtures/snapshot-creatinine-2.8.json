@@ -1,0 +1,2906 @@
+{
+  "sim": 0,
+  "paused": false,
+  "patients": [
+    {
+      "id": "p1",
+      "bed": "412A",
+      "name": "Rosa Martínez",
+      "age": 72,
+      "sex": "F",
+      "wt": 68,
+      "dx": "Heart failure, hypertension",
+      "conditions": [
+        "HF",
+        "HTN"
+      ],
+      "allergies": [],
+      "vit": {
+        "sbp": 128,
+        "dbp": 76,
+        "hr": 78,
+        "rr": 16,
+        "spo2": 96
+      },
+      "labs": {
+        "k": {
+          "v": 4.6,
+          "t": -420
+        },
+        "cr": {
+          "v": 1.1,
+          "t": -420
+        },
+        "glu": {
+          "v": 132,
+          "t": -90
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Lisinopril",
+          "dose": "10 mg",
+          "route": "PO",
+          "freq": "Daily",
+          "due": "09:00",
+          "cls": [
+            "ACEi"
+          ],
+          "hold": {
+            "sbp": 90
+          },
+          "param": "Hold if SBP < 90",
+          "effect": "blood pressure",
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Metoprolol succinate",
+          "dose": "25 mg",
+          "route": "PO",
+          "freq": "Daily",
+          "due": "09:00",
+          "cls": [
+            "BB"
+          ],
+          "hold": {
+            "sbp": 90,
+            "hr": 55
+          },
+          "param": "Hold if SBP < 90 or HR < 55",
+          "effect": "blood pressure and heart rate",
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m3",
+          "name": "Furosemide",
+          "dose": "40 mg",
+          "route": "IV",
+          "freq": "BID",
+          "due": "09:00",
+          "cls": [
+            "loop"
+          ],
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m4",
+          "name": "Spironolactone",
+          "dose": "25 mg",
+          "route": "PO",
+          "freq": "Daily",
+          "due": "09:00",
+          "cls": [
+            "Ksparing"
+          ],
+          "status": "due",
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 128,
+        "dbp": 76,
+        "hr": 78,
+        "rr": 16,
+        "spo2": 96
+      },
+      "base": {
+        "sbp": 128,
+        "dbp": 76,
+        "hr": 78,
+        "rr": 16,
+        "spo2": 96
+      },
+      "hist": {
+        "sbp": [
+          128,
+          128,
+          130,
+          128,
+          129,
+          127,
+          126,
+          130,
+          126,
+          127,
+          129,
+          130,
+          129,
+          126,
+          129,
+          128,
+          128,
+          127,
+          127,
+          127,
+          128,
+          130,
+          126,
+          128
+        ],
+        "dbp": [
+          75,
+          76,
+          77,
+          77,
+          75,
+          75,
+          74,
+          76,
+          77,
+          77,
+          75,
+          76,
+          75,
+          75,
+          78,
+          76,
+          78,
+          75,
+          76,
+          77,
+          78,
+          74,
+          76,
+          75
+        ],
+        "hr": [
+          78,
+          76,
+          77,
+          77,
+          77,
+          79,
+          79,
+          76,
+          80,
+          76,
+          79,
+          77,
+          77,
+          77,
+          76,
+          79,
+          77,
+          79,
+          79,
+          78,
+          77,
+          80,
+          78,
+          77
+        ],
+        "rr": [
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16
+        ],
+        "spo2": [
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96,
+          96
+        ]
+      },
+      "tasks": []
+    },
+    {
+      "id": "p2",
+      "bed": "412B",
+      "name": "James Thompson",
+      "age": 64,
+      "sex": "M",
+      "wt": 78,
+      "dx": "Type 2 diabetes, CKD stage 3, cellulitis L leg",
+      "conditions": [
+        "DM",
+        "CKD"
+      ],
+      "allergies": [
+        {
+          "agent": "Penicillin",
+          "cls": "penicillin",
+          "rxn": "hives"
+        }
+      ],
+      "vit": {
+        "sbp": 138,
+        "dbp": 82,
+        "hr": 88,
+        "rr": 18,
+        "spo2": 97
+      },
+      "labs": {
+        "k": {
+          "v": 4.4,
+          "t": -400
+        },
+        "cr": {
+          "v": 2.8,
+          "t": 0,
+          "prev": 1.3
+        },
+        "glu": {
+          "v": 164,
+          "t": -60
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Metformin",
+          "dose": "1000 mg",
+          "route": "PO",
+          "freq": "BID",
+          "due": "09:00",
+          "cls": [
+            "metformin"
+          ],
+          "renal": true,
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Insulin lispro",
+          "dose": "per sliding scale",
+          "route": "SC",
+          "freq": "AC meals",
+          "due": "09:00",
+          "cls": [
+            "insulin"
+          ],
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m3",
+          "name": "Enoxaparin",
+          "dose": "40 mg",
+          "route": "SC",
+          "freq": "Daily",
+          "due": "10:00",
+          "cls": [
+            "LMWH",
+            "anticoag"
+          ],
+          "renal": true,
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m4",
+          "name": "Cefazolin",
+          "dose": "2 g",
+          "route": "IV",
+          "freq": "q8h",
+          "due": "10:00",
+          "cls": [
+            "cephalosporin"
+          ],
+          "status": "due",
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 138,
+        "dbp": 82,
+        "hr": 88,
+        "rr": 18,
+        "spo2": 97
+      },
+      "base": {
+        "sbp": 138,
+        "dbp": 82,
+        "hr": 88,
+        "rr": 18,
+        "spo2": 97
+      },
+      "hist": {
+        "sbp": [
+          136,
+          137,
+          139,
+          139,
+          138,
+          139,
+          137,
+          139,
+          139,
+          137,
+          138,
+          139,
+          140,
+          137,
+          137,
+          137,
+          138,
+          139,
+          139,
+          139,
+          140,
+          138,
+          140,
+          137
+        ],
+        "dbp": [
+          82,
+          83,
+          84,
+          83,
+          82,
+          82,
+          80,
+          83,
+          84,
+          82,
+          84,
+          83,
+          81,
+          81,
+          81,
+          83,
+          80,
+          83,
+          81,
+          80,
+          83,
+          81,
+          84,
+          81
+        ],
+        "hr": [
+          89,
+          87,
+          88,
+          86,
+          89,
+          89,
+          88,
+          87,
+          89,
+          89,
+          86,
+          86,
+          86,
+          88,
+          87,
+          87,
+          87,
+          88,
+          89,
+          87,
+          87,
+          86,
+          88,
+          90
+        ],
+        "rr": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ],
+        "spo2": [
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97
+        ]
+      },
+      "tasks": []
+    },
+    {
+      "id": "p3",
+      "bed": "414A",
+      "name": "Ana López",
+      "age": 58,
+      "sex": "F",
+      "wt": 70,
+      "dx": "Atrial fibrillation, anticoagulated",
+      "conditions": [
+        "AF"
+      ],
+      "allergies": [
+        {
+          "agent": "Codeine",
+          "cls": "codeine",
+          "rxn": "nausea (intolerance)",
+          "intol": true
+        }
+      ],
+      "vit": {
+        "sbp": 124,
+        "dbp": 78,
+        "hr": 84,
+        "rr": 16,
+        "spo2": 98
+      },
+      "labs": {
+        "k": {
+          "v": 4.1,
+          "t": -380
+        },
+        "cr": {
+          "v": 0.9,
+          "t": -380
+        },
+        "glu": {
+          "v": 108,
+          "t": -380
+        },
+        "inr": {
+          "v": 2.4,
+          "t": -380
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Warfarin",
+          "dose": "5 mg",
+          "route": "PO",
+          "freq": "Daily",
+          "due": "17:00",
+          "cls": [
+            "warfarin",
+            "anticoag"
+          ],
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Diltiazem ER",
+          "dose": "120 mg",
+          "route": "PO",
+          "freq": "Daily",
+          "due": "09:00",
+          "cls": [
+            "CCB",
+            "CCB-nd"
+          ],
+          "hold": {
+            "sbp": 90,
+            "hr": 55
+          },
+          "param": "Hold if SBP < 90 or HR < 55",
+          "effect": "blood pressure and heart rate",
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m3",
+          "name": "Atorvastatin",
+          "dose": "40 mg",
+          "route": "PO",
+          "freq": "Nightly",
+          "due": "21:00",
+          "cls": [
+            "statin"
+          ],
+          "dilt": true,
+          "status": "due",
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 124,
+        "dbp": 78,
+        "hr": 84,
+        "rr": 16,
+        "spo2": 98
+      },
+      "base": {
+        "sbp": 124,
+        "dbp": 78,
+        "hr": 84,
+        "rr": 16,
+        "spo2": 98
+      },
+      "hist": {
+        "sbp": [
+          125,
+          123,
+          122,
+          122,
+          124,
+          123,
+          125,
+          125,
+          124,
+          126,
+          123,
+          123,
+          122,
+          124,
+          122,
+          123,
+          126,
+          124,
+          123,
+          124,
+          125,
+          126,
+          126,
+          122
+        ],
+        "dbp": [
+          78,
+          79,
+          77,
+          78,
+          77,
+          78,
+          79,
+          79,
+          79,
+          77,
+          77,
+          77,
+          79,
+          79,
+          79,
+          77,
+          79,
+          78,
+          78,
+          80,
+          80,
+          77,
+          80,
+          79
+        ],
+        "hr": [
+          86,
+          83,
+          85,
+          83,
+          84,
+          85,
+          85,
+          84,
+          86,
+          83,
+          83,
+          84,
+          86,
+          85,
+          82,
+          85,
+          86,
+          85,
+          86,
+          85,
+          82,
+          82,
+          85,
+          85
+        ],
+        "rr": [
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16
+        ],
+        "spo2": [
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98
+        ]
+      },
+      "tasks": []
+    },
+    {
+      "id": "p4",
+      "bed": "414B",
+      "name": "Marcus Davis",
+      "age": 45,
+      "sex": "M",
+      "wt": 88,
+      "dx": "Post-op day 1, laparoscopic appendectomy",
+      "conditions": [
+        "POSTOP"
+      ],
+      "allergies": [],
+      "vit": {
+        "sbp": 132,
+        "dbp": 80,
+        "hr": 92,
+        "rr": 16,
+        "spo2": 97
+      },
+      "labs": {
+        "k": {
+          "v": 4,
+          "t": -300
+        },
+        "cr": {
+          "v": 1,
+          "t": -300
+        },
+        "glu": {
+          "v": 118,
+          "t": -300
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Acetaminophen",
+          "dose": "1000 mg",
+          "route": "PO",
+          "freq": "q6h",
+          "due": "09:00",
+          "cls": [
+            "analgesic"
+          ],
+          "apap": 4000,
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Morphine",
+          "dose": "2 mg",
+          "route": "IV",
+          "freq": "q2h PRN pain",
+          "due": "PRN",
+          "cls": [
+            "opioid"
+          ],
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m3",
+          "name": "Ondansetron",
+          "dose": "4 mg",
+          "route": "IV",
+          "freq": "q8h PRN nausea",
+          "due": "PRN",
+          "cls": [
+            "antiemetic",
+            "QT"
+          ],
+          "qt": true,
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m4",
+          "name": "Enoxaparin",
+          "dose": "40 mg",
+          "route": "SC",
+          "freq": "Daily",
+          "due": "10:00",
+          "cls": [
+            "LMWH",
+            "anticoag"
+          ],
+          "renal": true,
+          "status": "due",
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 132,
+        "dbp": 80,
+        "hr": 92,
+        "rr": 16,
+        "spo2": 97
+      },
+      "base": {
+        "sbp": 132,
+        "dbp": 80,
+        "hr": 92,
+        "rr": 16,
+        "spo2": 97
+      },
+      "hist": {
+        "sbp": [
+          132,
+          130,
+          134,
+          132,
+          131,
+          131,
+          133,
+          131,
+          131,
+          132,
+          131,
+          131,
+          132,
+          131,
+          132,
+          132,
+          132,
+          131,
+          131,
+          133,
+          134,
+          133,
+          133,
+          131
+        ],
+        "dbp": [
+          80,
+          79,
+          82,
+          80,
+          80,
+          78,
+          80,
+          78,
+          82,
+          78,
+          80,
+          81,
+          80,
+          79,
+          82,
+          81,
+          82,
+          82,
+          79,
+          79,
+          82,
+          80,
+          79,
+          78
+        ],
+        "hr": [
+          93,
+          91,
+          91,
+          91,
+          93,
+          93,
+          94,
+          92,
+          90,
+          91,
+          93,
+          93,
+          91,
+          91,
+          91,
+          93,
+          93,
+          93,
+          93,
+          91,
+          91,
+          91,
+          92,
+          91
+        ],
+        "rr": [
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16,
+          16
+        ],
+        "spo2": [
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97
+        ]
+      },
+      "tasks": []
+    },
+    {
+      "id": "p5",
+      "bed": "416A",
+      "name": "Grace Kim",
+      "age": 81,
+      "sex": "F",
+      "wt": 55,
+      "dx": "Community-acquired pneumonia",
+      "conditions": [
+        "PNA"
+      ],
+      "allergies": [],
+      "vit": {
+        "sbp": 118,
+        "dbp": 70,
+        "hr": 86,
+        "rr": 20,
+        "spo2": 94
+      },
+      "labs": {
+        "k": {
+          "v": 3.9,
+          "t": -300
+        },
+        "cr": {
+          "v": 0.8,
+          "t": -300
+        },
+        "glu": {
+          "v": 112,
+          "t": -300
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Ceftriaxone",
+          "dose": "1 g",
+          "route": "IV",
+          "freq": "Daily",
+          "due": "10:00",
+          "cls": [
+            "cephalosporin"
+          ],
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Azithromycin",
+          "dose": "500 mg",
+          "route": "PO",
+          "freq": "Daily",
+          "due": "10:00",
+          "cls": [
+            "macrolide",
+            "QT"
+          ],
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m3",
+          "name": "Diphenhydramine",
+          "dose": "25 mg",
+          "route": "PO",
+          "freq": "Nightly PRN sleep",
+          "due": "PRN",
+          "cls": [
+            "antihistamine"
+          ],
+          "beers": true,
+          "status": "due",
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 118,
+        "dbp": 70,
+        "hr": 86,
+        "rr": 20,
+        "spo2": 94
+      },
+      "base": {
+        "sbp": 118,
+        "dbp": 70,
+        "hr": 86,
+        "rr": 20,
+        "spo2": 94
+      },
+      "hist": {
+        "sbp": [
+          117,
+          117,
+          117,
+          119,
+          117,
+          118,
+          119,
+          116,
+          119,
+          117,
+          120,
+          120,
+          119,
+          119,
+          116,
+          118,
+          119,
+          118,
+          117,
+          116,
+          118,
+          116,
+          117,
+          120
+        ],
+        "dbp": [
+          70,
+          70,
+          69,
+          70,
+          71,
+          72,
+          70,
+          68,
+          69,
+          70,
+          68,
+          69,
+          68,
+          69,
+          71,
+          71,
+          69,
+          70,
+          69,
+          69,
+          69,
+          68,
+          72,
+          69
+        ],
+        "hr": [
+          87,
+          88,
+          86,
+          84,
+          86,
+          87,
+          87,
+          86,
+          84,
+          85,
+          87,
+          88,
+          87,
+          85,
+          88,
+          87,
+          87,
+          86,
+          85,
+          88,
+          84,
+          86,
+          84,
+          87
+        ],
+        "rr": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "spo2": [
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94
+        ]
+      },
+      "tasks": []
+    },
+    {
+      "id": "p6",
+      "bed": "416B",
+      "name": "Luis Herrera",
+      "age": 37,
+      "sex": "M",
+      "wt": 82,
+      "dx": "Asthma exacerbation",
+      "conditions": [
+        "ASTHMA"
+      ],
+      "allergies": [
+        {
+          "agent": "Sulfa drugs",
+          "cls": "sulfonamide",
+          "rxn": "rash"
+        }
+      ],
+      "vit": {
+        "sbp": 126,
+        "dbp": 78,
+        "hr": 102,
+        "rr": 20,
+        "spo2": 95
+      },
+      "labs": {
+        "k": {
+          "v": 3.7,
+          "t": -240
+        },
+        "cr": {
+          "v": 0.9,
+          "t": -240
+        },
+        "glu": {
+          "v": 148,
+          "t": -60
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Prednisone",
+          "dose": "40 mg",
+          "route": "PO",
+          "freq": "Daily",
+          "due": "09:00",
+          "cls": [
+            "steroid"
+          ],
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Albuterol neb",
+          "dose": "2.5 mg",
+          "route": "INH",
+          "freq": "q4h",
+          "due": "10:00",
+          "cls": [
+            "bronchodilator"
+          ],
+          "status": "due",
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 126,
+        "dbp": 78,
+        "hr": 102,
+        "rr": 20,
+        "spo2": 95
+      },
+      "base": {
+        "sbp": 126,
+        "dbp": 78,
+        "hr": 102,
+        "rr": 20,
+        "spo2": 95
+      },
+      "hist": {
+        "sbp": [
+          125,
+          126,
+          126,
+          127,
+          128,
+          127,
+          124,
+          126,
+          127,
+          126,
+          126,
+          125,
+          124,
+          125,
+          125,
+          124,
+          128,
+          128,
+          128,
+          126,
+          124,
+          127,
+          125,
+          126
+        ],
+        "dbp": [
+          76,
+          78,
+          79,
+          80,
+          77,
+          76,
+          77,
+          76,
+          78,
+          78,
+          79,
+          77,
+          78,
+          79,
+          78,
+          78,
+          77,
+          78,
+          77,
+          77,
+          78,
+          80,
+          79,
+          77
+        ],
+        "hr": [
+          101,
+          100,
+          100,
+          102,
+          104,
+          104,
+          101,
+          102,
+          101,
+          101,
+          103,
+          100,
+          103,
+          100,
+          102,
+          100,
+          103,
+          103,
+          102,
+          104,
+          103,
+          102,
+          104,
+          103
+        ],
+        "rr": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "spo2": [
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95,
+          95
+        ]
+      },
+      "tasks": []
+    },
+    {
+      "id": "p7",
+      "bed": "418A",
+      "name": "Tanya Reed",
+      "age": 24,
+      "sex": "F",
+      "wt": 62,
+      "dx": "Pelvic inflammatory disease",
+      "conditions": [
+        "PID"
+      ],
+      "allergies": [],
+      "vit": {
+        "sbp": 116,
+        "dbp": 72,
+        "hr": 96,
+        "rr": 18,
+        "spo2": 98
+      },
+      "labs": {
+        "k": {
+          "v": 3.8,
+          "t": -200
+        },
+        "cr": {
+          "v": 0.7,
+          "t": -200
+        },
+        "glu": {
+          "v": 96,
+          "t": -200
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Ceftriaxone",
+          "dose": "1 g",
+          "route": "IV",
+          "freq": "q24h",
+          "due": "10:00",
+          "cls": [
+            "cephalosporin"
+          ],
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Doxycycline",
+          "dose": "100 mg",
+          "route": "PO",
+          "freq": "BID",
+          "due": "09:00",
+          "cls": [
+            "tetracycline"
+          ],
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m3",
+          "name": "Metronidazole",
+          "dose": "500 mg",
+          "route": "PO",
+          "freq": "BID",
+          "due": "09:00",
+          "cls": [
+            "nitroimidazole"
+          ],
+          "status": "due",
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 116,
+        "dbp": 72,
+        "hr": 96,
+        "rr": 18,
+        "spo2": 98
+      },
+      "base": {
+        "sbp": 116,
+        "dbp": 72,
+        "hr": 96,
+        "rr": 18,
+        "spo2": 98
+      },
+      "hist": {
+        "sbp": [
+          118,
+          115,
+          115,
+          115,
+          118,
+          115,
+          116,
+          116,
+          116,
+          118,
+          118,
+          117,
+          117,
+          115,
+          117,
+          115,
+          116,
+          114,
+          116,
+          117,
+          115,
+          116,
+          114,
+          116
+        ],
+        "dbp": [
+          73,
+          74,
+          70,
+          74,
+          74,
+          72,
+          72,
+          72,
+          72,
+          74,
+          72,
+          72,
+          72,
+          72,
+          72,
+          74,
+          70,
+          73,
+          72,
+          71,
+          70,
+          72,
+          72,
+          71
+        ],
+        "hr": [
+          96,
+          95,
+          94,
+          95,
+          97,
+          96,
+          95,
+          98,
+          98,
+          96,
+          94,
+          95,
+          95,
+          98,
+          96,
+          98,
+          95,
+          96,
+          97,
+          95,
+          95,
+          97,
+          94,
+          96
+        ],
+        "rr": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ],
+        "spo2": [
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98
+        ]
+      },
+      "tasks": []
+    },
+    {
+      "id": "p8",
+      "bed": "418B",
+      "name": "Priya Shah",
+      "age": 31,
+      "sex": "F",
+      "wt": 74,
+      "dx": "Pregnant, 30 weeks (7 months), gestational hypertension",
+      "conditions": [
+        "PREG",
+        "HTN"
+      ],
+      "allergies": [],
+      "vit": {
+        "sbp": 146,
+        "dbp": 94,
+        "hr": 92,
+        "rr": 18,
+        "spo2": 98
+      },
+      "labs": {
+        "k": {
+          "v": 4,
+          "t": -180
+        },
+        "cr": {
+          "v": 0.6,
+          "t": -180
+        },
+        "glu": {
+          "v": 102,
+          "t": -180
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Labetalol",
+          "dose": "200 mg",
+          "route": "PO",
+          "freq": "BID",
+          "due": "09:00",
+          "cls": [
+            "BB"
+          ],
+          "hold": {
+            "sbp": 100,
+            "hr": 60
+          },
+          "param": "Hold if SBP < 100 or HR < 60",
+          "effect": "blood pressure and heart rate",
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Nifedipine ER",
+          "dose": "30 mg",
+          "route": "PO",
+          "freq": "Daily",
+          "due": "09:00",
+          "cls": [
+            "CCB",
+            "ER"
+          ],
+          "hold": {
+            "sbp": 100
+          },
+          "param": "Hold if SBP < 100",
+          "effect": "blood pressure",
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m3",
+          "name": "Prenatal vitamin",
+          "dose": "1 tab",
+          "route": "PO",
+          "freq": "Daily",
+          "due": "09:00",
+          "cls": [
+            "vitamin"
+          ],
+          "status": "due",
+          "at": null
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t1",
+          "name": "Fetal heart rate check",
+          "due": 35,
+          "grace": 15,
+          "why": "Fetal monitoring every 4 hours is ordered at 30 weeks with high blood pressure.",
+          "done": false,
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 146,
+        "dbp": 94,
+        "hr": 92,
+        "rr": 18,
+        "spo2": 98
+      },
+      "base": {
+        "sbp": 146,
+        "dbp": 94,
+        "hr": 92,
+        "rr": 18,
+        "spo2": 98
+      },
+      "hist": {
+        "sbp": [
+          144,
+          147,
+          147,
+          144,
+          148,
+          145,
+          147,
+          147,
+          144,
+          147,
+          147,
+          145,
+          148,
+          144,
+          145,
+          146,
+          146,
+          146,
+          148,
+          146,
+          146,
+          145,
+          148,
+          145
+        ],
+        "dbp": [
+          96,
+          94,
+          92,
+          92,
+          93,
+          93,
+          96,
+          94,
+          96,
+          94,
+          95,
+          94,
+          95,
+          95,
+          93,
+          94,
+          94,
+          94,
+          95,
+          95,
+          93,
+          96,
+          94,
+          94
+        ],
+        "hr": [
+          93,
+          93,
+          94,
+          90,
+          94,
+          93,
+          91,
+          92,
+          93,
+          91,
+          91,
+          91,
+          92,
+          91,
+          93,
+          93,
+          93,
+          91,
+          91,
+          92,
+          94,
+          93,
+          92,
+          94
+        ],
+        "rr": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ],
+        "spo2": [
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98,
+          98
+        ]
+      }
+    },
+    {
+      "id": "p9",
+      "bed": "420A",
+      "name": "Harold Brennan",
+      "age": 76,
+      "sex": "M",
+      "wt": 70,
+      "dx": "Parkinson's disease, dysphagia, aspiration pneumonia",
+      "conditions": [
+        "PD",
+        "DYSPH",
+        "PNA"
+      ],
+      "allergies": [],
+      "vit": {
+        "sbp": 124,
+        "dbp": 70,
+        "hr": 80,
+        "rr": 20,
+        "spo2": 94
+      },
+      "labs": {
+        "k": {
+          "v": 4.1,
+          "t": -240
+        },
+        "cr": {
+          "v": 1,
+          "t": -240
+        },
+        "glu": {
+          "v": 110,
+          "t": -240
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Carbidopa-levodopa",
+          "dose": "25/100 mg",
+          "route": "PO",
+          "freq": "q4h while awake · crushed in applesauce",
+          "due": "09:00",
+          "cls": [
+            "dopaminergic"
+          ],
+          "tc": {
+            "due": 20,
+            "grace": 30,
+            "why": "Late Parkinson's doses can cause stiffness, falls and trouble swallowing within hours. Give within 30 minutes of the scheduled time."
+          },
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Ampicillin-sulbactam",
+          "dose": "3 g",
+          "route": "IV",
+          "freq": "q6h",
+          "due": "10:00",
+          "cls": [
+            "penicillin"
+          ],
+          "status": "due",
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 124,
+        "dbp": 70,
+        "hr": 80,
+        "rr": 20,
+        "spo2": 94
+      },
+      "base": {
+        "sbp": 124,
+        "dbp": 70,
+        "hr": 80,
+        "rr": 20,
+        "spo2": 94
+      },
+      "hist": {
+        "sbp": [
+          122,
+          125,
+          125,
+          125,
+          122,
+          124,
+          123,
+          125,
+          126,
+          122,
+          126,
+          125,
+          125,
+          123,
+          124,
+          125,
+          123,
+          125,
+          125,
+          125,
+          125,
+          125,
+          123,
+          123
+        ],
+        "dbp": [
+          71,
+          68,
+          69,
+          72,
+          71,
+          72,
+          71,
+          72,
+          70,
+          68,
+          71,
+          70,
+          72,
+          71,
+          71,
+          69,
+          71,
+          72,
+          70,
+          70,
+          72,
+          69,
+          68,
+          69
+        ],
+        "hr": [
+          80,
+          82,
+          82,
+          81,
+          82,
+          79,
+          79,
+          80,
+          79,
+          81,
+          80,
+          81,
+          79,
+          80,
+          82,
+          82,
+          80,
+          78,
+          81,
+          80,
+          78,
+          81,
+          80,
+          79
+        ],
+        "rr": [
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "spo2": [
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94
+        ]
+      },
+      "tasks": []
+    },
+    {
+      "id": "p10",
+      "bed": "420B",
+      "name": "Robert Ellis",
+      "age": 67,
+      "sex": "M",
+      "wt": 80,
+      "dx": "Upper GI bleed (peptic ulcer), NPO",
+      "conditions": [
+        "GIB"
+      ],
+      "allergies": [],
+      "vit": {
+        "sbp": 108,
+        "dbp": 64,
+        "hr": 104,
+        "rr": 18,
+        "spo2": 97
+      },
+      "labs": {
+        "k": {
+          "v": 4.3,
+          "t": -120
+        },
+        "cr": {
+          "v": 1.2,
+          "t": -120
+        },
+        "glu": {
+          "v": 118,
+          "t": -120
+        },
+        "hgb": {
+          "v": 7.8,
+          "t": -120
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Pantoprazole",
+          "dose": "40 mg",
+          "route": "IV",
+          "freq": "BID",
+          "due": "09:00",
+          "cls": [
+            "PPI"
+          ],
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Ondansetron",
+          "dose": "4 mg",
+          "route": "IV",
+          "freq": "q8h PRN nausea",
+          "due": "PRN",
+          "cls": [
+            "antiemetic",
+            "QT"
+          ],
+          "qt": true,
+          "status": "due",
+          "at": null
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t1",
+          "name": "Hemoglobin recheck (every 6 h)",
+          "due": 30,
+          "grace": 15,
+          "why": "Hemoglobin is 7.8 after an active bleed. A drop means he may need a transfusion.",
+          "done": false,
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 108,
+        "dbp": 64,
+        "hr": 104,
+        "rr": 18,
+        "spo2": 97
+      },
+      "base": {
+        "sbp": 108,
+        "dbp": 64,
+        "hr": 104,
+        "rr": 18,
+        "spo2": 97
+      },
+      "hist": {
+        "sbp": [
+          109,
+          109,
+          108,
+          108,
+          109,
+          107,
+          108,
+          110,
+          109,
+          108,
+          107,
+          109,
+          110,
+          107,
+          106,
+          106,
+          110,
+          109,
+          107,
+          107,
+          107,
+          106,
+          109,
+          110
+        ],
+        "dbp": [
+          63,
+          65,
+          62,
+          62,
+          62,
+          65,
+          64,
+          63,
+          62,
+          66,
+          65,
+          64,
+          62,
+          63,
+          64,
+          63,
+          65,
+          63,
+          65,
+          66,
+          62,
+          62,
+          64,
+          64
+        ],
+        "hr": [
+          106,
+          102,
+          102,
+          103,
+          104,
+          104,
+          105,
+          105,
+          104,
+          105,
+          103,
+          106,
+          103,
+          106,
+          102,
+          104,
+          105,
+          105,
+          102,
+          103,
+          104,
+          105,
+          106,
+          104
+        ],
+        "rr": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ],
+        "spo2": [
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97,
+          97
+        ]
+      }
+    },
+    {
+      "id": "p11",
+      "bed": "422A",
+      "name": "Daniel Ortiz",
+      "age": 52,
+      "sex": "M",
+      "wt": 88,
+      "dx": "Sepsis, suspected urinary source",
+      "conditions": [
+        "SEPSIS"
+      ],
+      "allergies": [],
+      "vit": {
+        "sbp": 98,
+        "dbp": 58,
+        "hr": 116,
+        "rr": 24,
+        "spo2": 94
+      },
+      "labs": {
+        "k": {
+          "v": 4.2,
+          "t": -30
+        },
+        "cr": {
+          "v": 1.6,
+          "t": -30
+        },
+        "glu": {
+          "v": 142,
+          "t": -30
+        },
+        "lac": {
+          "v": 3.2,
+          "t": -30
+        }
+      },
+      "meds": [
+        {
+          "id": "m1",
+          "name": "Piperacillin-tazobactam",
+          "dose": "4.5 g",
+          "route": "IV",
+          "freq": "q6h",
+          "due": "09:25",
+          "cls": [
+            "penicillin",
+            "antibiotic"
+          ],
+          "tc": {
+            "due": 45,
+            "grace": 0,
+            "why": "Sepsis was recognized at 08:25. Guidelines call for the first antibiotic within 1 hour, and each hour of delay raises the risk of death."
+          },
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m2",
+          "name": "Vancomycin",
+          "dose": "1750 mg",
+          "route": "IV",
+          "freq": "Once (loading dose)",
+          "due": "09:25",
+          "cls": [
+            "glycopeptide"
+          ],
+          "renal": true,
+          "tc": {
+            "due": 45,
+            "grace": 0,
+            "why": "Part of the 1-hour sepsis antibiotic bundle (recognized 08:25)."
+          },
+          "status": "due",
+          "at": null
+        },
+        {
+          "id": "m3",
+          "name": "Acetaminophen",
+          "dose": "650 mg",
+          "route": "PO",
+          "freq": "q6h PRN fever",
+          "due": "PRN",
+          "cls": [
+            "analgesic"
+          ],
+          "apap": 2600,
+          "status": "due",
+          "at": null
+        }
+      ],
+      "tasks": [
+        {
+          "id": "t1",
+          "name": "Blood cultures x2 (before antibiotics)",
+          "due": 30,
+          "grace": 0,
+          "why": "Cultures must be drawn before the first antibiotic dose so the lab can identify the bacteria.",
+          "done": false,
+          "at": null
+        },
+        {
+          "id": "t2",
+          "name": "Repeat lactate",
+          "due": 105,
+          "grace": 0,
+          "why": "First lactate was 3.2 mmol/L. Guidelines call for a repeat when it is above 2.",
+          "done": false,
+          "at": null
+        }
+      ],
+      "target": {
+        "sbp": 98,
+        "dbp": 58,
+        "hr": 116,
+        "rr": 24,
+        "spo2": 94
+      },
+      "base": {
+        "sbp": 98,
+        "dbp": 58,
+        "hr": 116,
+        "rr": 24,
+        "spo2": 94
+      },
+      "hist": {
+        "sbp": [
+          96,
+          100,
+          99,
+          98,
+          96,
+          99,
+          97,
+          97,
+          98,
+          97,
+          97,
+          100,
+          99,
+          98,
+          97,
+          97,
+          99,
+          99,
+          100,
+          97,
+          98,
+          99,
+          100,
+          99
+        ],
+        "dbp": [
+          58,
+          60,
+          59,
+          59,
+          60,
+          56,
+          59,
+          57,
+          58,
+          60,
+          59,
+          59,
+          60,
+          57,
+          58,
+          56,
+          58,
+          57,
+          60,
+          57,
+          59,
+          59,
+          58,
+          60
+        ],
+        "hr": [
+          117,
+          115,
+          114,
+          116,
+          115,
+          117,
+          116,
+          116,
+          116,
+          117,
+          117,
+          117,
+          118,
+          116,
+          118,
+          116,
+          114,
+          118,
+          117,
+          115,
+          116,
+          118,
+          117,
+          116
+        ],
+        "rr": [
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24,
+          24
+        ],
+        "spo2": [
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94,
+          94
+        ]
+      }
+    }
+  ],
+  "alerts": [
+    {
+      "pid": "p2",
+      "id": "renal:p2:m1",
+      "sev": "crit",
+      "meds": [
+        "m1"
+      ],
+      "trigger": "New lab result",
+      "title": "Metformin contraindicated at current kidney function",
+      "why": "Creatinine went up and estimated CrCl is now 29 mL/min. Metformin should not be used below 30. It can build up and cause lactic acidosis.",
+      "data": [
+        "Creatinine 2.8 mg/dL · lab result · 08:40 (was 1.3)",
+        "Est. CrCl 29 mL/min (Cockcroft-Gault, 78 kg, age 64)",
+        "Rise of 1.5 mg/dL meets the acute kidney injury flag (≥ 0.3)"
+      ],
+      "action": "Hold metformin and ask the provider to change diabetes therapy.",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p2",
+      "id": "renal:p2:m3",
+      "sev": "warn",
+      "meds": [
+        "m3"
+      ],
+      "trigger": "New lab result",
+      "title": "Enoxaparin dose needs kidney adjustment",
+      "why": "Estimated CrCl is 29 mL/min. For prevention doses below 30 mL/min, the usual dose is 30 mg daily, not 40 mg. Higher levels raise bleeding risk.",
+      "data": [
+        "Creatinine 2.8 mg/dL · lab result · 08:40 (was 1.3)",
+        "Est. CrCl 29 mL/min (Cockcroft-Gault, 78 kg, age 64)",
+        "Rise of 1.5 mg/dL meets the acute kidney injury flag (≥ 0.3)"
+      ],
+      "action": "Ask the provider or pharmacist to adjust the dose before giving.",
+      "firstSeen": 0
+    }
+  ],
+  "heldBack": [
+    {
+      "pid": "p1",
+      "id": "kinfo:p1",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Lisinopril and Spironolactone: potassium can rise",
+      "why": "Known combination. Potassium is 4.6, within range. Daily labs are ordered.",
+      "data": [],
+      "action": "No action needed now.",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p1",
+      "id": "i1:p1",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Lisinopril + furosemide: additive BP lowering",
+      "why": "Common, intended combination. Vitals are monitored.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p2",
+      "id": "ceph:p2",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Cefazolin with penicillin allergy",
+      "why": "Low cross-reactivity; tolerated previous doses without reaction.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p3",
+      "id": "dil:p3",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Diltiazem can raise atorvastatin levels",
+      "why": "Dose is within the usual limit. Monitor for muscle pain.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p4",
+      "id": "qt:p4",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Ondansetron: low QT risk at this dose",
+      "why": "No other QT-prolonging drugs active.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p4",
+      "id": "lm:p4",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Enoxaparin: kidney function OK for current dose",
+      "why": "Est. CrCl 116 mL/min.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p5",
+      "id": "beers:p5:m3",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Diphenhydramine in a patient over 65 (Beers list)",
+      "why": "May cause confusion or falls. Already a PRN with fall precautions.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p5",
+      "id": "az:p5",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Azithromycin: QT prolongation (rare)",
+      "why": "No other risk factors found.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p6",
+      "id": "st:p6",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Prednisone can raise glucose",
+      "why": "Glucose is 148 mg/dL. Fingerstick checks are ordered.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p7",
+      "id": "dx:p7",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Doxycycline: pregnancy test negative on admission",
+      "why": "Take upright with a full glass of water.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p8",
+      "id": "pr:p8",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Labetalol + nifedipine: preferred in pregnancy",
+      "why": "Both are first-line for high blood pressure in pregnancy.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p9",
+      "id": "dy:p9",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Dysphagia: oral meds crushed per swallow evaluation",
+      "why": "Check each new oral order can be crushed.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p10",
+      "id": "qt:p10",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Ondansetron: low QT risk at this dose",
+      "why": "No other QT-prolonging drugs active.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p10",
+      "id": "gi:p10",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "NPO: all medications given IV",
+      "why": "NSAIDs, aspirin and anticoagulants will be blocked for this patient.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    },
+    {
+      "pid": "p11",
+      "id": "va:p11",
+      "sev": "info",
+      "meds": [],
+      "trigger": "Order check",
+      "title": "Vancomycin: infuse over at least 90 minutes",
+      "why": "Est. CrCl 67 mL/min. Pharmacy will dose follow-up by levels.",
+      "data": [],
+      "action": "",
+      "firstSeen": 0
+    }
+  ],
+  "log": [
+    {
+      "t": 0,
+      "text": "412B James Thompson · Enoxaparin dose needs kidney adjustment",
+      "kind": "warn"
+    },
+    {
+      "t": 0,
+      "text": "412B James Thompson · Metformin contraindicated at current kidney function",
+      "kind": "crit"
+    },
+    {
+      "t": 0,
+      "text": "412B James Thompson · Lab resulted: creatinine 2.8 mg/dL",
+      "kind": ""
+    },
+    {
+      "t": 0,
+      "text": "RN Jamie Rivera signed in (Registered nurse)",
+      "kind": ""
+    },
+    {
+      "t": 0,
+      "text": "Shift started. Monitoring 11 patients.",
+      "kind": ""
+    }
+  ],
+  "discharged": [],
+  "scenarios": [
+    {
+      "key": "bp",
+      "pid": "p1",
+      "label": "Blood pressure drops",
+      "patientLabel": "412A · Rosa Martínez",
+      "used": false
+    },
+    {
+      "key": "k",
+      "pid": "p1",
+      "label": "Potassium result: 5.8",
+      "patientLabel": "412A · Rosa Martínez",
+      "used": false
+    },
+    {
+      "key": "cr",
+      "pid": "p2",
+      "label": "Creatinine rises to 2.8",
+      "patientLabel": "412B · James Thompson",
+      "used": true
+    },
+    {
+      "key": "glu",
+      "pid": "p2",
+      "label": "Fingerstick glucose: 58",
+      "patientLabel": "412B · James Thompson",
+      "used": false
+    },
+    {
+      "key": "amox",
+      "pid": "p2",
+      "label": "Amoxicillin-clav ordered",
+      "patientLabel": "412B · James Thompson",
+      "used": false
+    },
+    {
+      "key": "norco",
+      "pid": "p4",
+      "label": "Norco ordered",
+      "patientLabel": "414B · Marcus Davis",
+      "used": false
+    },
+    {
+      "key": "resp",
+      "pid": "p4",
+      "label": "Breathing slows",
+      "patientLabel": "414B · Marcus Davis",
+      "used": false
+    },
+    {
+      "key": "inr",
+      "pid": "p3",
+      "label": "INR result: 4.8",
+      "patientLabel": "414A · Ana López",
+      "used": false
+    },
+    {
+      "key": "hgb",
+      "pid": "p10",
+      "label": "Hemoglobin drops to 6.6",
+      "patientLabel": "420B · Robert Ellis",
+      "used": false
+    },
+    {
+      "key": "nsaid",
+      "pid": "p3",
+      "label": "Ibuprofen ordered",
+      "patientLabel": "414A · Ana López",
+      "used": false
+    }
+  ]
+}
