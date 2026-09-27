@@ -17,11 +17,15 @@ The frontend is complete, including the polish items: login + roles, loading/err
 - [ ] Point the frontend at it with `VITE_API_URL` and run the UI tests against it.
 
 ## Person 2 — Vital engine & drug data
-- [ ] Port `frontend/src/engine/` to Python (`backend/vital/`), keeping alert IDs and field names.
-- [ ] Port `rules.test.ts` to pytest so both implementations agree.
-- [ ] Replace the 37-drug catalog with RxNorm (RxCUI) lookups + a curated rules file; add DDInter / openFDA for interactions and label warnings.
-- [ ] Expand drug info, therapeutic groups (for safer alternatives) and look-alike pairs (ISMP list).
-- [ ] Collect the clinical review feedback and update rule text.
+- [x] Port `frontend/src/engine/` to Python (`backend/vital/`), keeping alert IDs and field names (full-text parity tests).
+- [x] Port `rules.test.ts` to pytest so both implementations agree.
+- [x] Drug database in `backend/vital/drugs.py`: 91 drugs (was 37) with RxNorm ingredient codes (RxCUI, from NIH RxNav), a reference card for each, 8 ISMP look-alike pairs, 4 new therapeutic groups.
+- [x] Curated rules as data in `drugs.py`: drug interactions (ACEi+ARB, digoxin, amiodarone, warfarin, DOACs, SSRIs, serotonin syndrome, CYP3A4 statins…), kidney dosing limits for 17 drugs, age 65+ (Beers) cautions. Plus new lab/vital checks (K+ with ACEi/ARB/diuretics/digoxin, INR, glucose with insulin, ARB in pregnancy).
+- [ ] **Pharmacist review** of every row in `INTERACTIONS`, `RENAL_DOSING` and `AGE_CAUTIONS`, the new catalog doses, and the new wording. Values are simplified from common references and have not been clinically checked.
+- [ ] Nurse review of the alert wording (why / action text) for the new rules.
+- [ ] Frontend: add the new group labels (`diuretic`, `mood`, `stomach`, `seizure`) to `GROUP_LABEL` in `frontend/src/engine/data.ts`. Until then the "Safer options" heading says "this need" for those drugs in server mode.
+- [ ] Optional: copy the new drugs into `data.ts` so demo mode (no server) has them too (the backend drug tests allow the frontend to be a subset).
+- [ ] Later: live RxNorm search instead of a fixed catalog; DDInter / openFDA label data to cross-check the interaction table.
 
 ## Person 3 — AI layer, pitch & demo
 - [x] LLM rewrite with template fallback (`vital_ai/llm.py`); `explain()` ready for alert text.

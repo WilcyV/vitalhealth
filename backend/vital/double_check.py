@@ -15,7 +15,7 @@ def sliding_scale(glucose: float) -> int:
 
 
 def expected_dose(p: Patient, m: Medication) -> ExpectedDose:
-    if "insulin" in m.cls:
+    if "insulin" in m.cls and "sliding scale" in m.dose:
         g = p.labs.glu.v
         n = sliding_scale(g)
         band = ("≤ 150 = 0" if g <= 150 else "151–200 = 2" if g <= 200 else "201–250 = 4" if g <= 250

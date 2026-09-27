@@ -53,6 +53,11 @@ def last_log():
     return STATE.log[-1]["text"]
 
 
+def logged(text):
+    """Newest log entry containing `text`. Actions are logged first; alerts they raise are logged after."""
+    return next((e for e in reversed(STATE.log) if text in e["text"]), None)
+
+
 # ---- auth & permissions ----------------------------------------------------------------
 def test_health():
     assert anon.get("/health").json() == {"ok": True}
@@ -189,7 +194,7 @@ def test_order_medication(provider):
     assert provider.post("/api/patients/p6/medications", json={"drugKey": "ibu"}).json()["ok"]
     new = STATE.by_id("p6").meds[-1]
     assert new.catKey == "ibu" and new.isNew and new.id.startswith("n")
-    assert "Passed Vital check. — Dr. Samuel Patel" in last_log()
+    assert logged("Passed Vital check. — Dr. Samuel Patel")
     assert provider.post("/api/patients/p6/medications", json={"drugKey": "zzz"}).json()["ok"] is False
 
 
@@ -201,7 +206,7 @@ def test_order_with_critical_issue_needs_reason(provider, monkeypatch):
     r = provider.post("/api/patients/p1/medications", json={"drugKey": "ibu"}).json()
     assert r["ok"] is False and "reason" in r["error"]
     assert provider.post("/api/patients/p1/medications", json={"drugKey": "ibu", "overrideReason": "Benefit > risk"}).json()["ok"]
-    assert 'Ordered despite Vital warning: "Benefit > risk"' in last_log()
+    assert logged('Ordered despite Vital warning: "Benefit > risk"')
 
 
 def test_alternatives_route(nurse):
@@ -216,7 +221,7 @@ def test_complete_task_on_time_and_late(nurse):
     assert STATE.by_id("p11").tasks[0].done and STATE.log[-1]["kind"] == "ok"
     STATE.sim = 150
     assert nurse.post("/api/patients/p11/tasks/t2/complete").json()["ok"]
-    assert "(45 min late)" in last_log() and STATE.log[-1]["kind"] == "warn"
+    assert logged("(45 min late)")["kind"] == "warn"
 
 
 # ---- patients --------------------------------------------------------------------------
@@ -302,7 +307,7 @@ def test_vitals_move_toward_target(nurse):
 
 def test_skip_pause_reset(nurse):
     nurse.post("/api/demo/skip", json={"minutes": 15})
-    assert STATE.sim == 15 and "Clock moved forward 15 min (demo)" in STATE.log[-1]["text"]
+    assert STATE.sim == 15 and logged("Clock moved forward 15 min (demo)")
     nurse.post("/api/demo/pause", json={"paused": True})
     assert STATE.paused
     nurse.post("/api/demo/reset")

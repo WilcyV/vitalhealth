@@ -22,10 +22,8 @@ Set up Python once (Persons 1–3):
 cd backend
 python3 -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-pytest                                                   # should end: "13 passed, ... xfailed, ... xpassed"
+pytest                                                   # everything should pass
 ```
-
-`xfailed` / `xpassed` are the engine's to-do tests (see Person 2). Nothing is broken.
 
 ## 2. Pick your part
 

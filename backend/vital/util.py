@@ -53,3 +53,23 @@ def js_hash(s: str) -> str:
         h, r = divmod(h, 36)
         out = digits[r] + out
     return out
+
+
+def first_name(p: Patient) -> str:
+    return p.name.split(" ")[0]
+
+
+def sev_rank(s: str) -> int:
+    return {"crit": 0, "warn": 1, "info": 2}[s]
+
+
+def num(x: float) -> str:
+    """Format a number the way JS template strings do: 5.0 -> "5", 5.8 -> "5.8"."""
+    if isinstance(x, float) and x.is_integer():
+        return str(int(x))
+    return str(x)
+
+
+def thousands(x: float) -> str:
+    """JS toLocaleString() for whole mg totals: 4600 -> "4,600"."""
+    return f"{x:,.0f}" if float(x).is_integer() else f"{x:,}"
