@@ -35,11 +35,11 @@ A medication that was safe when it was ordered at 8 am can be dangerous at 2 pm:
 
 ```
 START_HERE.md   ← teammates: read this first (setup + your part)
-frontend/       React + TypeScript app (finished; runs with a built-in mock backend)
+frontend/       React + TypeScript app (done) — demo mode or connected to the server
 backend/
-  app/          FastAPI server            (Person 1)  — skeleton running, routes to build
-  vital/        Vital rules engine         (Person 2)  — models, helpers, parity tests ready
-  vital_ai/     AI explanations, SBAR      (Person 3)  — template versions working
+  app/          FastAPI server            (Person 1)  — done: every route, live feed, simulator
+  vital/        Vital rules engine         (Person 2)  — in progress: rules.py + checker.py to port
+  vital_ai/     SBAR, handoff, AI guard    (Person 3)  — done: works with or without an API key
   fixtures/     Shared test data exported from the frontend
 demo/           vitalhealth-demo.html: the single-file demo, open it in any browser
 NEXT_STEPS.md   Follow-up checklist split across the team
@@ -51,19 +51,57 @@ Three people, each working independently in their own folder and branch. **New t
 
 ## Quick start
 
+### Option A — Demo mode (no server, best for presenting)
+
 ```bash
 cd frontend
 npm install
-npm run dev      # http://localhost:5173
-npm test         # 24 tests: rules engine + UI flows
+npm run dev
 ```
 
-Sign in with any demo account. **PIN: 1234.** Try:
+Open http://localhost:5173 and sign in with any account. **PIN: 1234.**
+
+### Option B — With the real server
+
+Terminal 1 (backend):
+
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+uvicorn app.main:app --reload --port 8000
+```
+
+API docs: http://localhost:8000/docs
+
+Terminal 2 (frontend):
+
+```bash
+cd frontend
+echo "VITE_API_URL=http://localhost:8000" > .env.local
+npm run dev
+```
+
+> Until the Python rules engine (Person 2) is merged, the server shows no Vital alerts. Use Option A to demo the safety checks.
+
+**Turn on the AI (optional):** add `ANTHROPIC_API_KEY=...` to `backend/.env`. Without it, SBAR and handoff use template text. Never commit `.env`.
+
+### Run the tests
+
+```bash
+cd frontend && npm test          # 26 tests: rules engine + UI flows
+cd backend && pytest             # 56 passing + engine to-do tests (xfail until Person 2 ports the rules)
+```
+
+### Demo script
 
 1. **RN Jamie Rivera** (nurse) → Rosa Martínez → click **Blood pressure drops** → Scan & give **Lisinopril** → Vital stops you.
-2. **James Thompson** → Scan & give **Insulin lispro** → double-check with **RN Maria Chen**; enter 4 units (caught), then 2.
-3. **Dr. Samuel Patel** (provider) → Rosa → search **ibuprofen** → Not compatible → safer options.
-4. **RN Sofia Reyes** (charge nurse) → Unit view → press **+15 min** a few times and watch late items escalate.
+2. **James Thompson** → Scan & give **Insulin lispro** → double-check with **RN Maria Chen** (PIN 1234); enter 4 units (caught), then 2.
+3. **Rosa** → **Potassium result: 5.8** → **Notify provider** → SBAR message ready to send.
+4. **Dr. Samuel Patel** (provider) → Rosa → search **ibuprofen** → Not compatible → safer options. Search **hydrox** → look-alike name warning.
+5. **RN Sofia Reyes** (charge nurse) → Unit view → press **+15 min** a few times and watch late items escalate → **Handoff** summary.
 
 No install? Open `demo/vitalhealth-demo.html` in a browser.
 
