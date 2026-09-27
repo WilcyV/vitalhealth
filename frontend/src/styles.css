@@ -341,3 +341,5 @@ button.bedtile:hover{border-color:var(--accent)}
   .userbar .who{margin-left:0}
 }
 .panel-h{flex-wrap:wrap}
+
+.aitext{font:inherit;font-family:var(--mono);font-size:13px;line-height:1.55;width:100%;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;resize:vertical}

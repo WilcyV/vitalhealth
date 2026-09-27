@@ -19,6 +19,7 @@ import { DoubleCheckModal } from './components/modals/DoubleCheckModal';
 import { DrugInfoModal } from './components/modals/DrugInfoModal';
 import { PatientFormModal } from './components/modals/PatientFormModal';
 import { DischargeModal } from './components/modals/DischargeModal';
+import { AiTextModal } from './components/modals/AiTextModal';
 
 type ModalState =
   | null
@@ -26,7 +27,8 @@ type ModalState =
   | { kind: 'double'; pid: string; mid: string; check: AdministrationCheck; overrideReason?: string }
   | { kind: 'info'; pid: string; mid: string }
   | { kind: 'patient'; pid?: string }
-  | { kind: 'discharge'; pid: string };
+  | { kind: 'discharge'; pid: string }
+  | { kind: 'sbar' | 'handoff'; pid: string };
 
 export default function App() {
   return <NoticeProvider><Shell /></NoticeProvider>;
@@ -121,6 +123,8 @@ function Shell() {
           onInfo: (pid, mid) => setModal({ kind: 'info', pid, mid }),
           onEdit: pid => setModal({ kind: 'patient', pid }),
           onDischarge: pid => setModal({ kind: 'discharge', pid }),
+          onSbar: pid => setModal({ kind: 'sbar', pid }),
+          onHandoff: pid => setModal({ kind: 'handoff', pid }),
         }} />}
         <aside className="feedcol">
           <AlertsFeed snap={snap} onOpenPatient={select} fresh={fresh} />
@@ -144,6 +148,7 @@ function Shell() {
       {modal?.kind === 'double' && mp && mm && <DoubleCheckModal p={mp} m={mm} check={modal.check} overrideReason={modal.overrideReason} onClose={close} />}
       {modal?.kind === 'info' && mp && mm && <DrugInfoModal p={mp} m={mm} alerts={snap.alerts} sim={snap.sim} onClose={close} />}
       {modal?.kind === 'patient' && <PatientFormModal patient={mp} onClose={close} onSaved={id => { if (id) setSelected(id); close(); }} />}
+      {(modal?.kind === 'sbar' || modal?.kind === 'handoff') && mp && <AiTextModal kind={modal.kind} p={mp} onClose={close} />}
       {modal?.kind === 'discharge' && mp && <DischargeModal p={mp} alerts={snap.alerts} onClose={close} onDone={close} />}
     </div>
   );

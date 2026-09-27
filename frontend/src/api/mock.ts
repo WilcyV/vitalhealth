@@ -2,7 +2,7 @@
 // It simulates bedside monitors, runs the Vital rules engine on every change, and keeps
 // the audit log, exactly like the FastAPI server will. Swap it out by setting VITE_API_URL.
 import type {
-  AdministrationCheck, Alert, Alternative, CatalogDrug, CheckIssue, Connection, DischargedPatient, DrugInfo, GiveOptions, LabKey, LogEntry,
+  AdministrationCheck, AiText, Alert, Alternative, CatalogDrug, CheckIssue, Connection, DischargedPatient, DrugInfo, GiveOptions, LabKey, LogEntry,
   LoginResult, Medication, Patient, PatientInput, Permission, Result, Snapshot, User, VitalKey,
 } from '../types';
 import type { VitalApi } from './index';
@@ -11,6 +11,7 @@ import { can, whyNot } from '../engine/permissions';
 import { evaluate } from '../engine/rules';
 import { checkNewMedication } from '../engine/checker';
 import { expectedDose } from '../engine/doubleCheck';
+import { handoffText, sbarText } from '../engine/aiText';
 import { isActive, isHighAlert } from '../engine/util';
 
 const TICK_MS = 2000;       // real time between monitor updates
@@ -368,6 +369,25 @@ export class MockApi implements VitalApi {
     const taken = new Set(this.patients.filter(p => p.id !== exceptPid).map(p => p.bed));
     const free = BED_POOL.filter(b => !taken.has(b));
     return free.length ? free[Math.floor(Math.random() * free.length)] : '';
+  }
+
+  // ---------- Vital AI (template text in demo mode) ----------
+  private visibleAlerts(pid: string) { return this.alerts.filter(a => a.pid === pid && a.sev !== 'info' && !this.resolved(a)); }
+  async getSbar(pid: string): Promise<AiText> {
+    const p = this.byId(pid); if (!p) return { text: '', source: 'template' };
+    return { text: sbarText(p, this.visibleAlerts(pid)), source: 'template' };
+  }
+  async getHandoff(pid: string): Promise<AiText> {
+    const p = this.byId(pid); if (!p) return { text: '', source: 'template' };
+    return { text: handoffText(p, this.visibleAlerts(pid)), source: 'template' };
+  }
+  async sendSbar(pid: string, text: string): Promise<Result> {
+    if (!this.user) return { ok: false, error: 'Your session ended. Sign in again.' };
+    const p = this.byId(pid); if (!p) return { ok: false, error: 'Patient not found.' };
+    const first = text.trim().split('\n')[0].slice(0, 120);
+    this.addLog(`${this.label(p)} · SBAR sent to provider: "${first}"${this.by()}`, 'ok');
+    this.emit();
+    return { ok: true };
   }
 
   async getDrugInfo(name: string): Promise<DrugInfo | null> { return drugInfoFor(name); }

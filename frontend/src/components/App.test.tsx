@@ -108,3 +108,25 @@ describe('Safer alternatives and look-alike names', () => {
     expect(add).toBeEnabled();
   });
 });
+
+describe('Vital AI', () => {
+  it('writes an SBAR message from the active alert and logs it when sent', async () => {
+    const user = await signIn(/Jamie Rivera/);
+    await user.click(await screen.findByRole('button', { name: /Potassium result/ }));
+    await user.click(screen.getByRole('button', { name: 'Notify provider' }));
+    const dialog = await screen.findByRole('dialog');
+    const box = await within(dialog).findByLabelText('SBAR message') as HTMLTextAreaElement;
+    expect(box.value).toMatch(/^S: Rosa Martínez, bed 412A\. High potassium/);
+    expect(box.value).toContain('K+ 5.8');
+    expect(box.value).toMatch(/\nR: Hold both\./);
+    await user.click(within(dialog).getByRole('button', { name: 'Mark as sent' }));
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+    expect(screen.getByText(/SBAR sent to provider/)).toBeInTheDocument();
+  });
+  it('writes a handoff summary', async () => {
+    const user = await signIn(/Jamie Rivera/);
+    await user.click(await screen.findByRole('button', { name: 'Handoff' }));
+    const box = await within(await screen.findByRole('dialog')).findByLabelText('Handoff summary') as HTMLTextAreaElement;
+    expect(box.value).toMatch(/^412A Rosa Martínez — Heart failure/);
+  });
+});

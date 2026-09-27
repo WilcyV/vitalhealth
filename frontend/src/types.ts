@@ -109,6 +109,9 @@ export interface CatalogDrug {
   purpose?: string;       // short plain-language purpose, shown in LASA warnings
 }
 
+/** Text written by Vital AI (or its template fallback). */
+export interface AiText { text: string; source: 'ai' | 'template' }
+
 export interface Alternative { drug: CatalogDrug; issues: CheckIssue[] }
 
 export type Role = 'nurse' | 'charge' | 'pharmacist' | 'provider';
