@@ -24,9 +24,10 @@ The frontend is complete, including the polish items: login + roles, loading/err
 - [ ] Collect the clinical review feedback and update rule text.
 
 ## Person 3 — AI layer, pitch & demo
-- [ ] LLM explanations: turn rule output into the alert text (replace templates).
-- [ ] "Notify provider" button that writes an SBAR message; shift handoff summary per patient.
-- [ ] Guardrail: the LLM only writes text; never changes severity, dose or the decision.
+- [x] LLM rewrite with template fallback (`vital_ai/llm.py`); `explain()` ready for alert text.
+- [x] "Notify provider" (SBAR) and "Handoff" buttons in the app + `/sbar`, `/handoff`, `/sbar/sent` endpoints.
+- [x] Guardrail: `guard()` rejects changed numbers, new drug names, softer severity or dropped actions (tested).
+- [ ] Add your `ANTHROPIC_API_KEY` in `backend/.env` and tune the prompts with real output.
 - [ ] Pitch deck: problem (cite the WHO source), why current systems miss it, solution + one-liner, live demo, architecture, safety/ethics, roadmap.
 - [ ] Own the demo script and deployment link.
 

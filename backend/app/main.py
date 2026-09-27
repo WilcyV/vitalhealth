@@ -341,3 +341,9 @@ async def demo_skip(body: SkipBody = SkipBody(), _user: User = Depends(current_u
 @app.post("/api/demo/pause")
 async def demo_pause(body: PauseBody, _user: User = Depends(current_user)):
     return await done(STATE.set_paused(body.paused))
+
+
+# ---- AI: SBAR + handoff (Person 3) ------------------------------------------------------
+from .ai_routes import router as ai_router  # noqa: E402  (imported last: it uses the helpers above)
+
+app.include_router(ai_router)

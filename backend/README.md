@@ -63,6 +63,9 @@ After **every** state change, push the full `Snapshot` (see `frontend/src/types.
 | PUT | `/api/patients/{pid}` | `PatientInput` | editPatient |
 | POST | `/api/patients/{pid}/discharge` | | discharge |
 | GET | `/api/beds/suggest?except={pid}` | → `{ bed }` | any |
+| GET | `/api/patients/{pid}/sbar` | → `{ text, source }` (Vital AI) | any |
+| GET | `/api/patients/{pid}/handoff` | → `{ text, source }` (Vital AI) | any |
+| POST | `/api/patients/{pid}/sbar/sent` | `{ text }` → logged | any |
 | GET | `/api/drug-info?name=` | → `DrugInfo \| null` | any |
 | POST | `/api/demo/scenarios/{key}`, `/api/demo/reset`, `/api/demo/skip`, `/api/demo/pause` | demo only | any |
 

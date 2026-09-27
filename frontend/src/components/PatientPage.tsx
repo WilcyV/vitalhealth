@@ -15,6 +15,8 @@ export interface PatientActions {
   onInfo: (pid: string, mid: string) => void;
   onEdit: (pid: string) => void;
   onDischarge: (pid: string) => void;
+  onSbar: (pid: string) => void;
+  onHandoff: (pid: string) => void;
 }
 
 export function PatientPage({ snap, patient: p, actions, fresh }: { snap: Snapshot; patient: Patient | undefined; actions: PatientActions; fresh: Set<string> }) {
@@ -56,6 +58,8 @@ function PatientHeader({ snap, p, actions }: { snap: Snapshot; p: Patient; actio
         </div>
         <div className="phbtns">
           <PatientStatus alerts={snap.alerts} pid={p.id} />
+          <button className="btn sm primary" onClick={() => actions.onSbar(p.id)} title="Write an SBAR message to the provider">Notify provider</button>
+          <button className="btn sm" onClick={() => actions.onHandoff(p.id)} title="Shift handoff summary">Handoff</button>
           <button className="btn sm" onClick={() => actions.onEdit(p.id)} disabled={!canEdit} title={canEdit ? 'Edit patient details' : whyNot('editPatient')}>Edit</button>
           <button className="btn sm" onClick={() => actions.onDischarge(p.id)} disabled={!canDis} title={canDis ? 'Discharge this patient' : whyNot('discharge')}>Discharge</button>
         </div>
