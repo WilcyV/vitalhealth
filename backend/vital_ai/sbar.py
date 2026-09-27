@@ -20,4 +20,4 @@ def sbar(patient: Patient, alerts: list[Alert]) -> str:
         + (f" {main.why}" if main else ""),
         f"R: {main.action} Please advise." if main else "R: For your awareness.",
     ])
-    return rewrite(template, "Tighten this SBAR message. Keep the S/B/A/R lines and every fact.")
+    return rewrite(template, "Tighten this SBAR message. Keep the S/B/A/R lines and every fact.", patient, "sbar")

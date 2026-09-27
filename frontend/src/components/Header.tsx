@@ -7,7 +7,7 @@ import { AsyncButton } from './AsyncButton';
 
 export type View = 'patients' | 'unit';
 
-export function Header({ snap, user, view, onView }: { snap: Snapshot; user: User; view: View; onView: (v: View) => void }) {
+export function Header({ snap, user, view, onView, onAiControls }: { snap: Snapshot; user: User; view: View; onView: (v: View) => void; onAiControls?: () => void }) {
   const c = snap.alerts.filter(a => a.sev === 'crit').length;
   const w = snap.alerts.filter(a => a.sev === 'warn').length;
   return (
@@ -38,6 +38,7 @@ export function Header({ snap, user, view, onView }: { snap: Snapshot; user: Use
           <button role="tab" aria-selected={view === 'patients'} className={view === 'patients' ? 'on' : ''} onClick={() => onView('patients')}>Patients</button>
           <button role="tab" aria-selected={view === 'unit'} className={view === 'unit' ? 'on' : ''} onClick={() => onView('unit')}>Unit view</button>
         </div>
+        {onAiControls && <button className="btn sm" onClick={onAiControls} title="Privacy, spending and on/off for Vital AI">AI controls</button>}
         <span className="who"><b>{user.name}</b><span className="chip neutral">{ROLE_LABEL[user.role]}</span></span>
         <AsyncButton className="btn sm" action={() => api.logout()}>Switch user</AsyncButton>
       </div>

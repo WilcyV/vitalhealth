@@ -2,7 +2,7 @@
 // It simulates bedside monitors, runs the Vital rules engine on every change, and keeps
 // the audit log, exactly like the FastAPI server will. Swap it out by setting VITE_API_URL.
 import type {
-  AdministrationCheck, AiText, Alert, Alternative, CatalogDrug, CheckIssue, Connection, DischargedPatient, DrugInfo, GiveOptions, LabKey, LogEntry,
+  AdministrationCheck, AiText, AiUsage, Alert, Alternative, CatalogDrug, CheckIssue, Connection, DischargedPatient, DrugInfo, GiveOptions, LabKey, LogEntry,
   LoginResult, Medication, Patient, PatientInput, Permission, Result, Snapshot, User, VitalKey,
 } from '../types';
 import type { VitalApi } from './index';
@@ -12,6 +12,7 @@ import { evaluate } from '../engine/rules';
 import { checkNewMedication } from '../engine/checker';
 import { expectedDose } from '../engine/doubleCheck';
 import { handoffText, sbarText } from '../engine/aiText';
+import { AiLedger } from '../engine/aiControl';
 import { isActive, isHighAlert } from '../engine/util';
 
 const TICK_MS = 2000;       // real time between monitor updates
@@ -54,6 +55,7 @@ function initPatient(seed: SeedPatient): Patient {
 const delay = <T,>(v: T): Promise<T> => Promise.resolve(v);
 
 export class MockApi implements VitalApi {
+  private ai = new AiLedger();
   private sim = 0;
   private paused = false;
   private patients: Patient[] = [];
@@ -375,11 +377,24 @@ export class MockApi implements VitalApi {
   private visibleAlerts(pid: string) { return this.alerts.filter(a => a.pid === pid && a.sev !== 'info' && !this.resolved(a)); }
   async getSbar(pid: string): Promise<AiText> {
     const p = this.byId(pid); if (!p) return { text: '', source: 'template' };
-    return { text: sbarText(p, this.visibleAlerts(pid)), source: 'template' };
+    const text = sbarText(p, this.visibleAlerts(pid));
+    return { text, source: 'template', details: this.ai.request('sbar', text, p) };
   }
   async getHandoff(pid: string): Promise<AiText> {
     const p = this.byId(pid); if (!p) return { text: '', source: 'template' };
-    return { text: handoffText(p, this.visibleAlerts(pid)), source: 'template' };
+    const text = handoffText(p, this.visibleAlerts(pid));
+    return { text, source: 'template', details: this.ai.request('handoff', text, p) };
+  }
+  async getAiUsage(): Promise<AiUsage> { return this.ai.summary(); }
+  async setAiSettings(s: { mode?: 'on' | 'off'; budgetUsd?: number }): Promise<Result & { usage?: AiUsage }> {
+    if (!this.user) return { ok: false, error: 'Your session ended. Sign in again.' };
+    if (s.budgetUsd !== undefined && this.user.role !== 'charge') return { ok: false, error: 'Only the charge nurse can change the AI budget.' };
+    const before = this.ai.summary();
+    const after = this.ai.set(s);
+    if (after.mode !== before.mode) this.addLog((after.mode === 'on' ? 'Vital AI turned ON (de-identified text only)' : 'Vital AI turned OFF: templates only, nothing sent to AI') + this.by(), 'warn');
+    if (after.budgetUsd !== before.budgetUsd) this.addLog(`Vital AI monthly budget set to $${after.budgetUsd.toFixed(2)}${this.by()}`);
+    this.emit();
+    return { ok: true, usage: after };
   }
   async sendSbar(pid: string, text: string): Promise<Result> {
     if (!this.user) return { ok: false, error: 'Your session ended. Sign in again.' };
@@ -414,7 +429,7 @@ export class MockApi implements VitalApi {
     }
     this.commit();
   }
-  async resetDemo() { const u = this.user; this.boot(); this.user = u; this.emit(); }
+  async resetDemo() { const u = this.user; this.boot(); this.ai = new AiLedger(); this.user = u; this.emit(); }
   async skipMinutes(minutes: number) { this.sim += minutes - SIM_PER_TICK; this.addLog(`Clock moved forward ${minutes} min (demo)`); this.tick(); }
   async setPaused(paused: boolean) { this.paused = paused; this.emit(); }
 }

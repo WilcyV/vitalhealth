@@ -63,9 +63,11 @@ After **every** state change, push the full `Snapshot` (see `frontend/src/types.
 | PUT | `/api/patients/{pid}` | `PatientInput` | editPatient |
 | POST | `/api/patients/{pid}/discharge` | | discharge |
 | GET | `/api/beds/suggest?except={pid}` | → `{ bed }` | any |
-| GET | `/api/patients/{pid}/sbar` | → `{ text, source }` (Vital AI) | any |
-| GET | `/api/patients/{pid}/handoff` | → `{ text, source }` (Vital AI) | any |
+| GET | `/api/patients/{pid}/sbar` | → `{ text, source, details }` (Vital AI; `details` = de-identified text sent, tokens, cost, reason) | any |
+| GET | `/api/patients/{pid}/handoff` | → `{ text, source, details }` (Vital AI; `details` = de-identified text sent, tokens, cost, reason) | any |
 | POST | `/api/patients/{pid}/sbar/sent` | `{ text }` → logged | any |
+| GET | `/api/ai/usage` | → `AiUsage` (mode, budget, calls, tokens, cost, blocked, recent) | any |
+| POST | `/api/ai/settings` | `{ mode?: "on"\|"off", budgetUsd? }` → logged | any for mode, charge nurse for budget |
 | GET | `/api/drug-info?name=` | → `DrugInfo \| null` | any |
 | POST | `/api/demo/scenarios/{key}`, `/api/demo/reset`, `/api/demo/skip`, `/api/demo/pause` | demo only | any |
 

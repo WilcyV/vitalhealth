@@ -20,4 +20,4 @@ def handoff(patient: Patient, alerts: list[Alert]) -> str:
         lines.append("Given this shift: " + ", ".join(f"{m.name} at {fmt(m.at or 0)}" for m in given) + ".")
     if open_tasks:
         lines.append("Still due: " + ", ".join(f"{t.name} by {fmt(t.due + t.grace)}" for t in open_tasks) + ".")
-    return rewrite(" ".join(lines), "Turn this into a short, clear nursing handoff. Keep every fact.")
+    return rewrite(" ".join(lines), "Turn this into a short, clear nursing handoff. Keep every fact.", patient, "handoff")

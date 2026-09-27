@@ -1,5 +1,5 @@
 import type {
-  AdministrationCheck, AiText, Alternative, CatalogDrug, CheckIssue, Connection, DrugInfo, GiveOptions, LoginResult, PatientInput, Result, Snapshot, User,
+  AdministrationCheck, AiText, AiUsage, Alternative, CatalogDrug, CheckIssue, Connection, DrugInfo, GiveOptions, LoginResult, PatientInput, Result, Snapshot, User,
 } from '../types';
 import { MockApi } from './mock';
 import { HttpApi } from './http';
@@ -49,6 +49,10 @@ export interface VitalApi {
   getSbar(pid: string): Promise<AiText>;
   getHandoff(pid: string): Promise<AiText>;
   sendSbar(pid: string, text: string): Promise<Result>;
+
+  // take control of AI: usage, spending, on/off
+  getAiUsage(): Promise<AiUsage>;
+  setAiSettings(s: { mode?: 'on' | 'off'; budgetUsd?: number }): Promise<Result & { usage?: AiUsage }>;
 
   // reference
   getDrugInfo(name: string): Promise<DrugInfo | null>;

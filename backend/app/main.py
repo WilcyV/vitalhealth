@@ -329,7 +329,10 @@ async def demo_scenario(key: str, user: User = Depends(current_user)):
 
 @app.post("/api/demo/reset")
 async def demo_reset(_user: User = Depends(current_user)):
+    from vital_ai import usage
+
     STATE.reset()
+    usage.reset()
     return await done({"ok": True})
 
 

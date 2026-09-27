@@ -343,3 +343,32 @@ button.bedtile:hover{border-color:var(--accent)}
 .panel-h{flex-wrap:wrap}
 
 .aitext{font:inherit;font-family:var(--mono);font-size:13px;line-height:1.55;width:100%;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;resize:vertical}
+
+/* ---- Take control of AI (Assurant) ---- */
+.aitx{border:1px solid var(--line);border-radius:9px;background:var(--surface-2);margin-top:10px}
+.aitx summary{cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 10px;font-size:13px}
+.aitx-body{padding:0 10px 10px;display:grid;gap:8px}
+.aitx-body p{margin:0}
+.aitx-sent{white-space:pre-wrap;word-break:break-word;margin:0;padding:8px;border-radius:7px;background:var(--surface);border:1px solid var(--line);font-size:12px;max-height:180px;overflow:auto}
+.aitx-kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:6px;margin:0}
+.aitx-kv div{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:5px 8px}
+.aitx-kv dt{font-size:11px;color:var(--muted)} .aitx-kv dd{margin:0;font-size:12.5px}
+.aictl{display:grid;gap:14px}
+.aictl section{display:grid;gap:6px}
+.aictl h4{margin:0;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.aictl-row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.aictl-row p{margin:2px 0 0}
+.aictl-list{margin:0;padding-left:18px;display:grid;gap:3px}
+.aictl-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px}
+.aictl-stats div{border:1px solid var(--line);border-radius:8px;padding:6px 9px;display:grid}
+.aictl-stats b{font-size:17px} .aictl-stats span{font-size:11.5px;color:var(--muted)}
+.meter{height:8px;border-radius:9px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line)}
+.meter span{display:block;height:100%;background:var(--accent,#2E8B7A)}
+.meter span.warn{background:#C98A1B} .meter span.crit{background:#C23B3B}
+.aictl-table{width:100%;border-collapse:collapse}
+.aictl-table th,.aictl-table td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line)}
+.aictl-table th{color:var(--muted);font-weight:600}
+.switch{width:44px;height:24px;border-radius:99px;border:1px solid var(--line);background:var(--surface-2);position:relative;flex:none;padding:0}
+.switch span{position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:var(--muted);transition:left .15s}
+.switch.on{background:var(--accent,#2E8B7A)} .switch.on span{left:22px;background:#fff}
+.aictl-row>div{flex:1;min-width:200px}

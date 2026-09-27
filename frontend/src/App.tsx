@@ -20,6 +20,7 @@ import { DrugInfoModal } from './components/modals/DrugInfoModal';
 import { PatientFormModal } from './components/modals/PatientFormModal';
 import { DischargeModal } from './components/modals/DischargeModal';
 import { AiTextModal } from './components/modals/AiTextModal';
+import { AiControlModal } from './components/modals/AiControlModal';
 
 type ModalState =
   | null
@@ -28,7 +29,8 @@ type ModalState =
   | { kind: 'info'; pid: string; mid: string }
   | { kind: 'patient'; pid?: string }
   | { kind: 'discharge'; pid: string }
-  | { kind: 'sbar' | 'handoff'; pid: string };
+  | { kind: 'sbar' | 'handoff'; pid: string }
+  | { kind: 'aictl' };
 
 export default function App() {
   return <NoticeProvider><Shell /></NoticeProvider>;
@@ -114,7 +116,7 @@ function Shell() {
           <span>Showing the last data received ({fmt(snap.sim)}). Don't rely on this screen until it reconnects.</span>
         </div>
       )}
-      <Header snap={snap} user={user} view={view} onView={setView} />
+      <Header snap={snap} user={user} view={view} onView={setView} onAiControls={() => setModal({ kind: 'aictl' })} />
       {isDemoMode && <DemoControls snap={snap} onSelect={select} />}
       <div className="main">
         <PatientList snap={snap} selected={selected} onSelect={select} onAdmit={() => setModal({ kind: 'patient' })} />
@@ -149,6 +151,7 @@ function Shell() {
       {modal?.kind === 'info' && mp && mm && <DrugInfoModal p={mp} m={mm} alerts={snap.alerts} sim={snap.sim} onClose={close} />}
       {modal?.kind === 'patient' && <PatientFormModal patient={mp} onClose={close} onSaved={id => { if (id) setSelected(id); close(); }} />}
       {(modal?.kind === 'sbar' || modal?.kind === 'handoff') && mp && <AiTextModal kind={modal.kind} p={mp} onClose={close} />}
+      {modal?.kind === 'aictl' && <AiControlModal onClose={close} />}
       {modal?.kind === 'discharge' && mp && <DischargeModal p={mp} alerts={snap.alerts} onClose={close} onDone={close} />}
     </div>
   );

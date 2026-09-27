@@ -28,6 +28,7 @@ A medication that was safe when it was ordered at 8 am can be dangerous at 2 pm:
 | **Roles** | Nurse, charge nurse, pharmacist, provider. Each sees and can do only what their role allows. The charge nurse gets a unit-wide risk view. |
 | **Patients** | Admit (random free bed, editable), edit demographics/conditions/allergies, discharge. |
 | **Audit log** | Every alert, dose, hold, override, co-sign and patient change, with who did it. |
+| **Take control of AI** | Patient name and bed are **removed before any text reaches the AI** and restored only on screen. Every AI message has an **AI transparency** panel: exactly what was sent, tokens and cost. **AI controls**: anyone can turn AI off (templates only, nothing sent), and it's logged. Rewrites that change a fact are blocked and counted. |
 
 **The nurse or provider always makes the decision.** The AI writes explanations and summaries; plain, tested code does all safety logic and dose math.
 
@@ -97,7 +98,7 @@ cd backend && pytest             # server, engine parity (same alerts as the fro
 
 1. **RN Jamie Rivera** (nurse) → Rosa Martínez → click **Blood pressure drops** → Scan & give **Lisinopril** → Vital stops you.
 2. **James Thompson** → Scan & give **Insulin lispro** → double-check with **RN Maria Chen** (PIN 1234); enter 4 units (caught), then 2.
-3. **Rosa** → **Potassium result: 5.8** → **Notify provider** → SBAR message ready to send.
+3. **Rosa** → **Potassium result: 5.8** → **Notify provider** → SBAR message ready to send → open **AI transparency**: the text the AI sees says `[PATIENT]`, `[BED]`, plus tokens and cost. Top bar → **AI controls** → turn AI off; it's logged.
 4. **Dr. Samuel Patel** (provider) → Rosa → search **ibuprofen** → Not compatible → safer options. Search **hydrox** → look-alike name warning.
 5. **RN Sofia Reyes** (charge nurse) → Unit view → press **+15 min** a few times and watch late items escalate → **Handoff** summary.
 
