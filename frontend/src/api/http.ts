@@ -2,7 +2,7 @@
 // The server pushes a full Snapshot over the WebSocket every time state changes,
 // and every action below is a plain REST call. The contract is documented in README.md.
 import type {
-  AdministrationCheck, AiText, Alternative, CatalogDrug, CheckIssue, Connection, DrugInfo, GiveOptions, LoginResult, PatientInput, Result, Snapshot, User,
+  AdministrationCheck, AiText, AiUsage, Alternative, CatalogDrug, CheckIssue, Connection, DrugInfo, GiveOptions, LoginResult, PatientInput, Result, Snapshot, User,
 } from '../types';
 import type { VitalApi } from './index';
 
@@ -85,6 +85,8 @@ export class HttpApi implements VitalApi {
   getSbar(pid: string) { return this.req<AiText>('GET', `/api/patients/${pid}/sbar`); }
   getHandoff(pid: string) { return this.req<AiText>('GET', `/api/patients/${pid}/handoff`); }
   sendSbar(pid: string, text: string) { return this.req<Result>('POST', `/api/patients/${pid}/sbar/sent`, { text }); }
+  getAiUsage() { return this.req<AiUsage>('GET', '/api/ai/usage'); }
+  setAiSettings(s: { mode?: 'on' | 'off'; budgetUsd?: number }) { return this.req<Result & { usage?: AiUsage }>('POST', '/api/ai/settings', s); }
 
   getDrugInfo(name: string) { return this.req<DrugInfo | null>('GET', `/api/drug-info?name=${encodeURIComponent(name)}`); }
 

@@ -109,8 +109,35 @@ export interface CatalogDrug {
   purpose?: string;       // short plain-language purpose, shown in LASA warnings
 }
 
+/** Why Vital did or didn't use the AI for a text. */
+export type AiReason = 'ai' | 'off' | 'no-key' | 'budget' | 'guard' | 'error';
+
+/** Transparency record for one AI request (Assurant: privacy + spending visibility). */
+export interface AiDetails {
+  kind: string;
+  model: string;
+  sentText: string;        // exactly what was (or would be) sent, with the patient de-identified
+  removed: string[];       // identifiers removed before sending, e.g. ["name", "bed"]
+  deidentified: boolean;
+  tokensIn: number;
+  tokensOut: number;
+  costUsd: number;
+  estimated: boolean;      // token counts estimated (~4 chars/token) rather than reported by the API
+  reason: AiReason;
+}
+
 /** Text written by Vital AI (or its template fallback). */
-export interface AiText { text: string; source: 'ai' | 'template' }
+export interface AiText { text: string; source: 'ai' | 'template'; details?: AiDetails | null }
+
+export interface AiUsage {
+  mode: 'on' | 'off';
+  budgetUsd: number;
+  calls: number; aiCalls: number; templateCalls: number; blocked: number;
+  tokensIn: number; tokensOut: number; costUsd: number;
+  overBudget: boolean; keyConfigured: boolean; model: string;
+  priceInPerM: number; priceOutPerM: number;
+  recent: { at: number; kind: string; reason: AiReason; tokens: number; costUsd: number; deidentified: boolean }[];
+}
 
 export interface Alternative { drug: CatalogDrug; issues: CheckIssue[] }
 

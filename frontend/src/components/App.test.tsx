@@ -130,3 +130,32 @@ describe('Vital AI', () => {
     expect(box.value).toMatch(/^412A Rosa Martínez — Heart failure/);
   });
 });
+
+describe('Take control of AI', () => {
+  it('shows exactly what would be sent to the AI, with the patient de-identified', async () => {
+    const user = await signIn(/Jamie Rivera/);
+    await user.click(await screen.findByRole('button', { name: /Potassium result/ }));
+    await user.click(screen.getByRole('button', { name: 'Notify provider' }));
+    const dialog = await screen.findByRole('dialog');
+    await user.click(await within(dialog).findByText('AI transparency'));
+    const sent = within(dialog).getByLabelText('Text sent to the AI');
+    expect(sent.textContent).toMatch(/^S: \[PATIENT\], bed \[BED\]\./);
+    expect(sent.textContent).not.toMatch(/Rosa|Martínez|412A/);
+    expect(sent.textContent).toContain('K+ 5.8');
+    expect(within(dialog).getByText(/Nothing left the hospital/)).toBeInTheDocument();
+  });
+  it('lets any nurse turn AI off, and it is logged', async () => {
+    const user = await signIn(/Jamie Rivera/);
+    await user.click(await screen.findByRole('button', { name: 'AI controls' }));
+    const dialog = await screen.findByRole('dialog');
+    const sw = await within(dialog).findByRole('switch', { name: 'Use AI' });
+    expect(sw).toHaveAttribute('aria-checked', 'true');
+    await user.click(sw);
+    await waitFor(() => expect(sw).toHaveAttribute('aria-checked', 'false'));
+    expect(screen.getByText(/Vital AI turned OFF/)).toBeInTheDocument();
+    const r = await api.getSbar('p1');
+    expect(r.details?.reason).toBe('off');
+    expect((await api.getAiUsage()).recent[0].reason).toBe('off');
+  });
+});
+

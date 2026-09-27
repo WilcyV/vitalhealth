@@ -3,6 +3,7 @@ import type { AiText, Patient } from '../../types';
 import { api } from '../../api';
 import { Modal } from './Modal';
 import { NETWORK_ERROR } from '../Notices';
+import { AiTransparency } from '../AiTransparency';
 
 /** Shows text written by Vital AI: the SBAR message to the provider, or the shift handoff. */
 export function AiTextModal({ kind, p, onClose }: { kind: 'sbar' | 'handoff'; p: Patient; onClose: () => void }) {
@@ -44,12 +45,13 @@ export function AiTextModal({ kind, p, onClose }: { kind: 'sbar' | 'handoff'; p:
       {data && (
         <>
           <p className="muted small" style={{ margin: 0 }}>
-            <span className={`chip ${data.source === 'ai' ? 'info' : 'neutral'}`}>{data.source === 'ai' ? 'Written by Vital AI' : 'Template (AI off)'}</span>{' '}
+            <span className={`chip ${data.source === 'ai' ? 'info' : 'neutral'}`}>{data.source === 'ai' ? 'Written by Vital AI' : 'Template (AI not used)'}</span>{' '}
             {kind === 'sbar' ? 'Situation · Background · Assessment · Recommendation. Review and edit before sending.' : 'Review before handing off.'}
           </p>
           <label className="sr" htmlFor="aiText">{kind === 'sbar' ? 'SBAR message' : 'Handoff summary'}</label>
           <textarea id="aiText" ref={area} className="aitext" value={text} onChange={e => setText(e.target.value)} rows={kind === 'sbar' ? 9 : 6} />
           <p className="decide">The facts come from Vital's rules. The AI only rewrites the wording and is blocked from changing any number, drug or recommendation.</p>
+          {data.details && <AiTransparency d={data.details} />}
         </>
       )}
       {err && <p className="dcerr" role="alert">{err}</p>}
