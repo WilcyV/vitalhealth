@@ -38,7 +38,7 @@ START_HERE.md   ← teammates: read this first (setup + your part)
 frontend/       React + TypeScript app (done) — demo mode or connected to the server
 backend/
   app/          FastAPI server            (Person 1)  — done: every route, live feed, simulator
-  vital/        Vital rules engine         (Person 2)  — in progress: rules.py + checker.py to port
+  vital/        Vital rules engine         (Person 2)  — done: rules, new-med checker, drug database
   vital_ai/     SBAR, handoff, AI guard    (Person 3)  — done: works with or without an API key
   fixtures/     Shared test data exported from the frontend
 demo/           vitalhealth-demo.html: the single-file demo, open it in any browser
@@ -84,15 +84,13 @@ echo "VITE_API_URL=http://localhost:8000" > .env.local
 npm run dev
 ```
 
-> Until the Python rules engine (Person 2) is merged, the server shows no Vital alerts. Use Option A to demo the safety checks.
-
 **Turn on the AI (optional):** add `ANTHROPIC_API_KEY=...` to `backend/.env`. Without it, SBAR and handoff use template text. Never commit `.env`.
 
 ### Run the tests
 
 ```bash
 cd frontend && npm test          # 26 tests: rules engine + UI flows
-cd backend && pytest             # 56 passing + engine to-do tests (xfail until Person 2 ports the rules)
+cd backend && pytest             # server, engine parity (same alerts as the frontend) and AI tests
 ```
 
 ### Demo script

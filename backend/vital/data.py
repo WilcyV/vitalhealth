@@ -1,6 +1,8 @@
-"""Reference data loaded from backend/fixtures (exported from the frontend with `npm run fixtures`).
+"""Data access for the server and the engine.
 
-Person 2: later, replace CATALOG with RxNorm lookups + a curated rules file.
+Drug data (catalog, drug reference, class/group labels) lives in `vital/drugs.py`, owned by the
+backend. Demo patients, snapshots and the permissions table still come from backend/fixtures
+(exported from the frontend with `npm run fixtures`).
 """
 from __future__ import annotations
 
@@ -8,6 +10,8 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
+from . import drugs
+from .drugs import CLASS_LABELS, CONDITIONS, GROUP_LABELS  # noqa: F401  (re-exported)
 from .models import CatalogDrug, Patient, Snapshot
 
 FIXTURES = Path(__file__).resolve().parent.parent / "fixtures"
@@ -22,18 +26,19 @@ def reference() -> dict:
     return load_json("reference.json")
 
 
-@lru_cache
 def catalog() -> list[CatalogDrug]:
-    return [CatalogDrug(**d) for d in load_json("catalog.json")]
+    return drugs.CATALOG
 
 
 def drug(key: str) -> CatalogDrug:
-    return next(d for d in catalog() if d.key == key)
+    d = drugs.by_key(key)
+    if d is None:
+        raise KeyError(key)
+    return d
 
 
-@lru_cache
 def drug_info() -> dict:
-    return load_json("drug-info.json")
+    return drugs.DRUG_INFO
 
 
 def snapshot(name: str = "snapshot.json") -> Snapshot:
@@ -42,16 +47,3 @@ def snapshot(name: str = "snapshot.json") -> Snapshot:
 
 def patient(snap: Snapshot, pid: str) -> Patient:
     return next(p for p in snap.patients if p.id == pid)
-
-
-CONDITIONS: dict = {}
-CLASS_LABELS: dict = {}
-
-
-def _init() -> None:
-    ref = reference()
-    CONDITIONS.update(ref["conditions"])
-    CLASS_LABELS.update(ref["classLabels"])
-
-
-_init()
